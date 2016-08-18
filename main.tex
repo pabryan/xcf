@@ -102,39 +102,87 @@ In the sequel, $\mu_{ijk}$ is the volume form and is nonzero only when $i,j,k$ a
 \begin{equation}
 P^{mn}=-\frac{1}{4}\mu^{ijm}\mu^{kln}R_{ijkl}.
 \end{equation}
+\section{Harnack quadratic}
+A solution to cross curvature flow is a cross curvature soliton if there exists a vector field $V$ and $\lambda\in \mathbb{R}$ such that at some time
+\begin{equation}
+2h_{ij}+\nabla_iV_j+\nabla_jV_i=2\lambda g_{ij}.
+\end{equation}
+To obtain a suitable Harnack quadratic for XCF we follow Hamilton's procedure in obtaining his Harnack quadratic for the Ricci flow.
 
+Suppose $V_i=\nabla_if.$ Then the soliton equation reads
+\begin{equation}
+h_{ij}+\nabla_iV_j=\lambda g_{ij}.
+\end{equation}
+We take the covariant derivative of both sides with respect to $\nabla_l:$
+\begin{align*}
+\nabla_lh_{ij}+\nabla_l\nabla_iV_j=0.
+\end{align*}
+We have
+\begin{align*}
+\nabla_l\nabla_iV_j-\nabla_i\nabla_lV_j={R_{lij}}^mV_m.
+\end{align*}
+Thus putting the last two identities together gives
+\begin{align*}
+\nabla_lh_{ij}-\nabla_ih_{lj}={R_{ilj}}^mV_m.
+\end{align*}
+We take the covariant derivative of both sides with respect to $\nabla_k:$
+\begin{align*}
+\nabla_k\nabla_lh_{ij}-\nabla_k\nabla_ih_{lj}=\nabla_k{R_{ilj}}^mV_m+{R_{ilj}}^m(\lambda g_{km}-h_{km}).
+\end{align*}
+Taking the trace with respect to $P^{kl}$ yields:
+\begin{align*}
+\Box h_{ij}-P^{kl}\nabla_k\nabla_ih_{lj}&=P^{kl}\nabla_k{R_{ilj}}^mV_m+P^{kl}{R_{ilj}}^m(\lambda g_{km}-h_{km})\\
+&=P^{kl}(-\nabla^mR_{ilkj}-\nabla_j{{R_{il}}^m}_k)V_m+P^{kl}{R_{ilj}}^m(\lambda g_{km}-h_{km})\\
+&=-P^{kl}\nabla^mR_{ilkj}V_m-P^{kl}\nabla_j{{R_{il}}^m}_kV_m-2\lambda h_{ij}-\det P R_{ij}.
+\end{align*}
+We may write
+\[P^{kl}\nabla^mR_{ilkj}=2\nabla^mh_{ij}-R_{ilkj}\nabla^mP^{kl}\]
+and
+\[P^{kl}\nabla_j{{R_{il}}^m}_k=-2\nabla_jh_i^m-{{R_{il}}^m}_k\nabla_jP^{kl}.\]
+Using these two identities we arrive at
+\begin{align*}
+\Box h_{ij}-P^{kl}\nabla_k\nabla_ih_{lj}=&-2(\nabla^mh_{ij}-\nabla_jh_i^m)V_m+(R_{ilkj}\nabla^mP^{kl}+{{R_{il}}^m}_k\nabla_jP^{kl})V_m\\
+&-2\lambda h_{ij}-R_{ij}\det P .
+\end{align*}
+Moreover, we calculate
+\begin{align*}
+P^{kl}\nabla_k\nabla_ih_{lj}&=P^{kl}(\nabla_i\nabla_k h_{lj}+{R_{kil}}^mh_{mj}+{R_{kij}}^mh_{lm})\\
+&=P^{kl}\nabla_i\nabla_k h_{lj}-2(h^2)_{ij}-R_{ij}\det P\\
+&=\frac{1}{2}\nabla_i(P^{kl}\nabla_j h_{kl})-\nabla_iP^{kl}\nabla_k h_{lj}-2(h^2)_{ij}-R_{ij}\det P\\
+&=\frac{1}{2}P^{kl}\nabla_i\nabla_j h_{kl}+\frac{1}{2}\nabla_iP^{kl}\nabla_j h_{kl}-\nabla_iP^{kl}\nabla_k h_{lj}-2(h^2)_{ij}-R_{ij}\det P.
+\end{align*}
+Consequently,
+\begin{align*}
+\Box h_{ij}=&-2(\nabla^mh_{ij}-\nabla_jh_i^m)V_m+(R_{ilkj}\nabla^mP^{kl}+{{R_{il}}^m}_k\nabla_jP^{kl})V_m\\
+&-2\lambda h_{ij}-2R_{ij}\det P-2(h^2)_{ij}\\
+&+\frac{1}{2}P^{kl}\nabla_i\nabla_j h_{kl}+\frac{1}{2}\nabla_iP^{kl}\nabla_j h_{kl}-\nabla_iP^{kl}\nabla_k h_{lj}.
+\end{align*}
+Taking the trace with respect to $P^{ij}$  gives
+\begin{align*}
+\frac{1}{2}P^{ij}\Box h_{ij}=&(2h_{ij}\nabla^mP^{ij}+P^{ij}{{R_{il}}^m}_k\nabla_jP^{kl}-P^{ij}\nabla^mh_{ij})V_m\\
+&-6\lambda \det P+4H\det P-2H\det P+P^{ij}\left(\frac{1}{2}\nabla_iP^{kl}\nabla_j h_{kl}-\nabla_iP^{kl}\nabla_k h_{lj}\right).
+\end{align*}
+Note that for any choice of $\gamma$ we have
+\[\nabla^mh_{ij}-\nabla_jh_i^m={{{R_j}^{m}}_{i}}^nV_n\Rightarrow \frac{\gamma}{2}P^{ij}\nabla^mh_{ij}V_m=-2\gamma h^{mn}V_nV_m.\]
+Therefore,
+\begin{align*}
+\frac{1}{2}P^{ij}\Box h_{ij}=&\left(2h_{ij}\nabla^mP^{ij}+P^{ij}{{R_{il}}^m}_k\nabla_jP^{kl}+(\frac{\gamma}{2}-1)P^{ij}\nabla^mh_{ij}\right)V_m+2\gamma h^{mn}V_nV_m\\
+&-6\lambda \det P+2H\det P+ P^{ij}\left(\frac{1}{2}\nabla_iP^{kl}\nabla_j h_{kl}-\nabla_iP^{kl}\nabla_k h_{lj}\right).
+\end{align*}
+
+\section{Basic evolution equations}
 The following is the main result of the paper.
 \begin{theorem}
 \[\partial_t u-\frac{1}{2}P^{ij}\nabla_iu\nabla_ju+\frac{3}{2t}\geq 0. \]
 \end{theorem}
-Define a family of time dependent diffeomorphisms by
-\begin{align*}
-\varphi_t&:M^3\to M^3\\
-\partial_t\varphi&=-\frac{1}{2}\operatorname{grad}_h\det P=:W.
-\end{align*}
-Under this re-parametrization, the metric $\bar{g}=\varphi_t^{\ast}g$ evolves by
-\begin{align}
-\partial_t \bar{g}_{ij}&=2(\bar{h}_{ij}+\frac{1}{2}(\mathcal{L}_{W^{\natural}}g)_{ij}).
-\end{align}
-For simplicity, we set
-\begin{align}
-v_{ij}:=\frac{1}{2}(\mathcal{L}_{W^{\natural}}g)_{ij},\quad v=g^{ij}v_{ij}=\operatorname{div}W^{\natural}\textcolor[rgb]{1.00,0.00,0.00}{=}-\frac{1}{2}\Box u.
-\end{align}
-In this parametrization, to prove our main theorem, it suffices to show that
-\[\partial_t \bar{u}+\frac{3}{2t}\geq 0. \]
-For convenience, we drop the over bar in the sequel.
+
 \begin{lemma}
 We have the following evolution equations:
 \begin{align}
-\partial_tP^{mn}=&\Box P^{mn}-\nabla_lP^{km}\nabla_kP^{ln}-g^{mn}\det P-HP^{mn}\\
-&+\mu^{ijm}\mu^{kln}\left(\nabla^2_{ik}v_{jl}-\frac{1}{2}g^{pq}R_{ijpl}v_{qk}\right)-2vP^{mn}.
+\partial_tP^{mn}=&\Box P^{mn}-\nabla_lP^{km}\nabla_kP^{ln}-g^{mn}\det P-HP^{mn}.
 \end{align}
 \begin{align}
-\partial_t u=&\Box u+\left(P^{jl}\nabla_lP^{ik}-P^{kl}\nabla_l P^{ij}\right)\nabla_kV_{ij}-2H-4v\\
-&+V_{mn}\mu^{ijm}\mu^{kln}\nabla^2_{ik}v_{jl}\\
-&+V_{11}\left(R_{2313}v_{12}-R_{2312}v_{13}\right)\\
-&+V_{22}\left(R_{1323}v_{12}-R_{1321}v_{23}\right)\\
-&+V_{33}\left(R_{1232}v_{31}-R_{1231}v_{23}\right).
+\partial_t u=&\Box u+\left(P^{jl}\nabla_lP^{ik}-P^{kl}\nabla_l P^{ij}\right)\nabla_kV_{ij}-2H.
 \end{align}
 \end{lemma}
 \begin{proof}
@@ -142,90 +190,80 @@ The evolution of the Riemann curvature tensor is given by the standard formula
 
 \begin{align*}
 \partial_t R_{ijkl}=&\nabla_{il}^2h_{jk}+\nabla^2_{jk}h_{il}-\nabla^2_{ik}h_{jl}-\nabla^2_{jl}h_{ik}\\
-&+\nabla_{il}^2v_{jk}+\nabla^2_{jk}v_{il}-\nabla^2_{ik}v_{jl}-\nabla^2_{jl}v_{ik}\\
-&+g^{pq}(R_{ijpk}h_{ql}+R_{ijpl}h_{qk})+g^{pq}(R_{ijpk}v_{ql}+R_{ijpl}v_{qk}).
+&+g^{pq}(R_{ijpk}h_{ql}+R_{ijpl}h_{qk}).
 \end{align*}
-On the other hand, the evolution of the volume form is given by $$\partial_t\mu_{ijk}=(H+v)\mu_{ijk},\quad\partial_t\mu^{ijk}=-(H+v)\mu^{ijk}.$$
+On the other hand, the evolution of the volume form is given by $$\partial_t\mu_{ijk}=H\mu_{ijk},\quad\partial_t\mu^{ijk}=-H\mu^{ijk}.$$
 Since $P^{mn}=-\frac{1}{4}\mu^{ijm}\mu^{kln}R_{ijkl}$, we obtain
 \begin{align*}
-\partial_tP^{mn}=&\mu^{ijm}\mu^{kln}\nabla^2_{ik}h_{jl}-\frac{1}{2}\mu^{ijm}\mu^{kln}g^{pq}R_{ijpl}h_{qk}-2HP^{mn}\\
-&+\mu^{ijm}\mu^{kln}\nabla^2_{ik}v_{jl}-\frac{1}{2}\mu^{ijm}\mu^{kln}g^{pq}R_{ijpl}v_{qk}-2vP^{mn}.
+\partial_tP^{mn}=&\mu^{ijm}\mu^{kln}\nabla^2_{ik}h_{jl}-\frac{1}{2}\mu^{ijm}\mu^{kln}g^{pq}R_{ijpl}h_{qk}-2HP^{mn}.
 \end{align*}
 Now using the identity
 \[\frac{1}{2}\mu^{ijm}\mu^{kln}g^{pq}R_{ijpl}h_{qk}+HP^{mn}=g^{mn}\det P,\]
 we arrive at
 \begin{align*}
-\partial_tP^{mn}=&\nabla^2_{kl}(P^{kl}P^{mn}-P^{km}P^{ln})-g^{mn}\det P-HP^{mn}\\
-&+\mu^{ijm}\mu^{kln}\nabla^2_{ik}v_{jl}-\frac{1}{2}\mu^{ijm}\mu^{kln}g^{pq}R_{ijpl}v_{qk}-2vP^{mn}.
+\partial_tP^{mn}=&\nabla^2_{kl}(P^{kl}P^{mn}-P^{km}P^{ln})-g^{mn}\det P-HP^{mn}.
 \end{align*}
 
 \begin{align*}
 \partial_t u=& V_{ij}\left(\Box P^{ij}-\nabla_lP^{ik}\nabla_kP^{jl}-g^{ij}\det P -HP^{ij}\right)- g_{ij}\partial_t g^{ij}\\
-&+V_{mn}(\mu^{ijm}\mu^{kln}\nabla^2_{ik}v_{jl}-\frac{1}{2}\mu^{ijm}\mu^{kln}g^{pq}R_{ijpl}v_{qk}-2vP^{mn})\\
 =&V_{ij}P^{kl}\nabla_k\nabla_lP^{ij}- V_{ij}\nabla_lP^{ik}\nabla_kP^{jl}-2H\\
-&+V_{mn}(\mu^{ijm}\mu^{kln}\nabla^2_{ik}v_{jl}-\frac{1}{2}\mu^{ijm}\mu^{kln}g^{pq}R_{ijpl}v_{qk}-2vP^{mn})\\
 =&P^{kl}\nabla_k\left(V_{ij}\nabla_lP^{ij}\right)-P^{kl}\nabla_k V_{ij}\nabla_l P^{ij}-V_{ij}\nabla_lP^{ik}\nabla_kP^{jl}-2H\\
-&+V_{mn}(\mu^{ijm}\mu^{kln}\nabla^2_{ik}v_{jl}-\frac{1}{2}\mu^{ijm}\mu^{kln}g^{pq}R_{ijpl}v_{qk}-2vP^{mn})\\
-=&\Box u-P^{kl}\nabla_k V_{ij}\nabla_l P^{ij}+P^{jl}\nabla_kV_{ij}\nabla_lP^{ik}-2H\\
-&+V_{mn}(\mu^{ijm}\mu^{kln}\nabla^2_{ik}v_{jl}-\frac{1}{2}\mu^{ijm}\mu^{kln}g^{pq}R_{ijpl}v_{qk})-6v.
-\end{align*}
-Furthermore,
-
-\begin{align*}
-\frac{1}{2}\mu^{ij1}\mu^{kl1}R_{ijpl}v_{pk}&=\mu^{kl1}R_{23pl}v_{pk}\\
-&=\mu^{321}R_{23p2}v_{p3}+\mu^{231}R_{23p3}v_{p2}\\
-&=R_{2323}v_{22}+R_{2313}v_{12}-R_{2312}v_{13}-R_{2332}v_{33}\\
-&=-P^{11}(v_{22}+v_{33})+R_{2313}v_{12}-R_{2312}v_{13}.
-\end{align*}
-Thus
-\[V_{11}\left(\frac{1}{2}\mu^{ij1}\mu^{kl1}R_{ijpl}v_{pk}\right)=-(v_{22}+v_{33})+V_{11}\left(R_{2313}v_{12}-R_{2312}v_{13}\right)\]
-\[V_{22}\left(\frac{1}{2}\mu^{ij2}\mu^{kl2}R_{ijpl}v_{pk}\right)=-(v_{11}+v_{33})+V_{22}\left(R_{1323}v_{12}-R_{1321}v_{23}\right)\]
-\[V_{33}\left(\frac{1}{2}\mu^{ij3}\mu^{kl3}R_{ijpl}v_{pk}\right)=-(v_{11}+v_{22})+V_{33}\left(R_{1232}v_{31}-R_{1231}v_{23}\right).\]
-
-Consequently, we obtain
-\begin{align*}
-\partial_t u=&\Box u-P^{kl}\nabla_k V_{ij}\nabla_l P^{ij}+P^{jl}\nabla_kV_{ij}\nabla_lP^{ik}-2H-4v\\
-&+V_{mn}\mu^{ijm}\mu^{kln}\nabla^2_{ik}v_{jl}\\
-&+V_{11}\left(R_{2313}v_{12}-R_{2312}v_{13}\right)\\
-&+V_{22}\left(R_{1323}v_{12}-R_{1321}v_{23}\right)\\
-&+V_{33}\left(R_{1232}v_{31}-R_{1231}v_{23}\right).
+=&\Box u-P^{kl}\nabla_k V_{ij}\nabla_l P^{ij}+P^{jl}\nabla_kV_{ij}\nabla_lP^{ik}-2H.
 \end{align*}
 \end{proof}
 
 
 A simple calculation shows that the time derivative of the Christoffel symbols is give by
 \begin{align}
-\partial_t \Gamma_{ij}^k&=g^{kl}\left(\nabla_ih_{jl}+\nabla_jh_{il}-\nabla_{l}h_{ij}\right)+g^{kl}\left(\nabla_iv_{jl}+\nabla_jv_{il}-\nabla_{l}v_{ij}\right).
+\partial_t \Gamma_{ij}^k&=g^{kl}\left(\nabla_ih_{jl}+\nabla_jh_{il}-\nabla_{l}h_{ij}\right).
 \end{align}
 We recall the following identities from Lemma 1 in Chow-Hamilton
 \begin{align}
 P^{ij}\nabla_ih_{jk}=\frac{1}{2}P^{ij}\nabla_kh_{ij}.
 \end{align}
 Using these identities we calculate
-\begin{align}
+\begin{align*}
 P^{ij}\partial_t \Gamma_{ij}^k=&g^{kl}\left(P^{ij}\nabla_ih_{jl}+P^{ij}\nabla_jh_{il}-P^{ij}\nabla_{l}h_{ij}\right)\\
-&+g^{kl}P^{ij}\left(\nabla_iv_{jl}+\nabla_jv_{il}-\nabla_{l}v_{ij}\right)\\
-=&g^{kl}\left(\frac{1}{2}P^{ij}\nabla_lh_{ij}+\frac{1}{2}P^{ij}\nabla_lh_{ij}-P^{ij}\nabla_{l}h_{ij}\right)\\
-&+g^{kl}P^{ij}\left(\nabla_iv_{jl}+\nabla_jv_{il}-\nabla_{l}v_{ij}\right)\\
-=&g^{kl}P^{ij}\left(2\nabla_iv_{jl}-\nabla_{l}v_{ij}\right).
-\end{align}
+=&g^{kl}\left(\frac{1}{2}P^{ij}\nabla_lh_{ij}+\frac{1}{2}P^{ij}\nabla_lh_{ij}-P^{ij}\nabla_{l}h_{ij}\right)=0.
+\end{align*}
 \begin{lemma}
  We have
 \begin{align}
-(\partial_t \Box-\Box\partial_t) u=&\left(\Box P^{mn}-\nabla_l P^{km}\nabla_lP^{kn}-g^{mn}\det P\right)\nabla^2_{mn}u\\
-&+\left(\mu^{ijm}\mu^{kln}\nabla^2_{ik}v_{jl}-\frac{1}{2}\mu^{ijm}\mu^{kln}g^{pq}R_{ijpl}v_{qk}\right)\nabla^2_{mn}u\\
-&-g^{kl}P^{ij}\left(2\nabla_iv_{jl}-\nabla_{l}v_{ij}\right)\nabla_ku-(H+2v)\Box u.
+(\partial_t \Box-\Box\partial_t) u=&\partial_tP^{ij}\cdot\nabla^2_{ij}u.
 \end{align}
 \end{lemma}
 \begin{proof}
 \begin{align*}
 (\partial_t \Box-\Box \partial_t)u
-=&\partial_tP^{ij}\cdot\nabla^2_{ij}u-P^{ij}\partial_t\Gamma_{ij}^k\cdot\nabla_ku\\
-=&\left(\Box P^{mn}-\nabla_l P^{km}\nabla_lP^{kn}-g^{mn}\det P-HP^{mn}\right)\nabla^2_{mn}u\\
-&+\left(\mu^{ijm}\mu^{kln}\nabla^2_{ik}v_{jl}-\frac{1}{2}\mu^{ijm}\mu^{kln}g^{pq}R_{ijpl}v_{qk}-2vP^{mn}\right)\nabla^2_{mn}u\\
-&-g^{kl}P^{ij}\left(2\nabla_iv_{jl}-\nabla_{l}v_{ij}\right)\nabla_ku.
+=&\partial_tP^{ij}\cdot\nabla^2_{ij}u-P^{ij}\partial_t\Gamma_{ij}^k\cdot\nabla_ku.
 \end{align*}
 \end{proof}
-
-
+\begin{lemma}
+\begin{align}
+\partial_t\nabla_iu&=\Box\nabla_i u+\nabla_iP^{kl}\cdot \nabla_{kl}^2u+2h_i^m\nabla_mu\\
+&+\nabla_i\left(\left(P^{ml}\nabla_lP^{mk}-P^{kl}\nabla_l P^{mn}\right)\nabla_kV_{mn}\right)-2\nabla_iH.\nonumber
+\end{align}
+\end{lemma}
+\begin{proof}
+\begin{align*}
+\partial_t\nabla_iu&=\nabla_i(\Box u+\left(P^{ml}\nabla_lP^{mk}-P^{kl}\nabla_l P^{mn}\right)\nabla_kV_{mn}-2H)\\
+&=\Box\nabla_i u+\nabla_iP^{kl}\cdot \nabla_{kl}^2u+P^{kl}{R_{ikl}}^m\nabla_mu\\
+&+\nabla_i\left(\left(P^{ml}\nabla_lP^{mk}-P^{kl}\nabla_l P^{mn}\right)\nabla_kV_{mn}\right)-2\nabla_iH.
+\end{align*}
+Furthermore,
+\[P^{kl}{R_{ikl}}^m=2h_{ij}g^{jm}.\]
+\end{proof}
+\begin{lemma}
+\begin{equation}
+\partial_tH=-2\|h\|^2-\frac{(h^2)_{mn}}{\det P}\partial_tP^{mn}+H\partial_tu.
+\end{equation}
+\end{lemma}
+\begin{proof}
+\begin{align*}
+\partial_tH=&\partial_t(V\det P)\\
+=&\det P\partial_t V+H\partial_tu\\
+=&\det P(-2h^{ij}V_{ij}-g^{ij}V_{im}V_{jn}\partial_tP^{mn})+H\partial_tu\\
+=&-2\|h\|^2-\frac{(h^2)_{mn}}{\det P}\partial_tP^{mn}+H\partial_tu.
+\end{align*}
+\end{proof}
 \end{document}
