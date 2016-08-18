@@ -110,66 +110,50 @@ A solution to cross curvature flow is a cross curvature soliton if there exists 
 To obtain a suitable Harnack quadratic for XCF we follow Hamilton's procedure in obtaining his Harnack quadratic for the Ricci flow.
 
 Suppose $V_i=\nabla_if.$ Then the soliton equation reads
-\begin{equation}
+\begin{equation}\label{eq: soliton}
 h_{ij}+\nabla_iV_j=\lambda g_{ij}.
 \end{equation}
+We take the covariant derivative of both sides of (\ref{eq: soliton}) with respect to $\nabla_l:$
+\begin{align}\label{eq: soliton derv}
+\nabla_lh_{ij}+\nabla_l\nabla_iV_j=0.
+\end{align}
+
+We also take trace of (\ref{eq: soliton}) with respect to $P^{ij}$:
+\begin{align*}
+3\det P+P^{ij}\nabla_iV_j=\lambda P.
+\end{align*}
 We take the covariant derivative of both sides with respect to $\nabla_l:$
 \begin{align*}
-\nabla_lh_{ij}+\nabla_l\nabla_iV_j=0.
+3\nabla_l\det P+\nabla_l P^{ij}\nabla_iV_j+P^{ij}\nabla_l\nabla_iV_j=\lambda \nabla_l P.
 \end{align*}
-We have
+Since
+\[\nabla_l\nabla_iV_j-\nabla_i\nabla_lV_j={R_{lij}}^mV_m,\]
+we get
 \begin{align*}
-\nabla_l\nabla_iV_j-\nabla_i\nabla_lV_j={R_{lij}}^mV_m.
+\lambda \nabla_l P&=3\nabla_l\det P+\nabla_l P^{ij}\nabla_iV_j+P^{ij}(\nabla_i\nabla_lV_j+{R_{lij}}^mV_m)\\
+&=3\nabla_l\det P+\nabla_l P^{ij}\nabla_iV_j+P^{ij}\nabla_i\nabla_lV_j+2h_l^mV_m
 \end{align*}
-Thus putting the last two identities together gives
+So using (\ref{eq: soliton}), (\ref{eq: soliton derv}) we obtain
 \begin{align*}
-\nabla_lh_{ij}-\nabla_ih_{lj}={R_{ilj}}^mV_m.
+\lambda \nabla_l P
+=&3\nabla_l\det P+2h_l^mV_m+\nabla_l P^{ij}(\lambda g_{ij}-h_{ij})-P^{ij}\nabla_ih_{jl}\\
+=&3\nabla_l\det P+2h_l^mV_m+\lambda \nabla_l P-h_{ij}\nabla_l P^{ij}-\frac{1}{2}P^{ij}\nabla_lh_{ij}
 \end{align*}
-We take the covariant derivative of both sides with respect to $\nabla_k:$
+So we arrive at
+\[3\nabla_l\det P+2h_l^mV_m-h_{ij}\nabla_l P^{ij}-\frac{1}{2}P^{ij}\nabla_lh_{ij}=0.\]
+We take a covariant derivative of both sides with respect to $\nabla_k:$
 \begin{align*}
-\nabla_k\nabla_lh_{ij}-\nabla_k\nabla_ih_{lj}=\nabla_k{R_{ilj}}^mV_m+{R_{ilj}}^m(\lambda g_{km}-h_{km}).
+3\nabla_k\nabla_l\det P=&\nabla_k(-2h_l^mV_m+h_{ij}\nabla_l P^{ij}+\frac{1}{2}P^{ij}\nabla_lh_{ij})\\
+=&-2\nabla_kh_l^m V_m+2h_l^m(h_{km}-\lambda g_{km})\\
+&+\nabla_kh_{ij}\nabla_l P^{ij}+h_{ij}\nabla_k\nabla_l P^{ij}\\
+&+\frac{1}{2}\nabla_kP^{ij}\nabla_lh_{ij}+\frac{1}{2}P^{ij}\nabla_k\nabla_lh_{ij}.
 \end{align*}
-Taking the trace with respect to $P^{kl}$ yields:
+We take trace with respect to $P^{kl}$ to obtain 
 \begin{align*}
-\Box h_{ij}-P^{kl}\nabla_k\nabla_ih_{lj}&=P^{kl}\nabla_k{R_{ilj}}^mV_m+P^{kl}{R_{ilj}}^m(\lambda g_{km}-h_{km})\\
-&=P^{kl}(-\nabla^mR_{ilkj}-\nabla_j{{R_{il}}^m}_k)V_m+P^{kl}{R_{ilj}}^m(\lambda g_{km}-h_{km})\\
-&=-P^{kl}\nabla^mR_{ilkj}V_m-P^{kl}\nabla_j{{R_{il}}^m}_kV_m-2\lambda h_{ij}-\det P R_{ij}.
+3\Box\det P
+=&-P^{kl}\nabla^mh_{kl} V_m+2H\det P-2\lambda H\\
+&+\frac{3}{2}P^{kl}\nabla_kh_{ij}\nabla_l P^{ij}+h_{ij}\Box P^{ij}+\frac{1}{2}P^{ij}\Box h_{ij}.
 \end{align*}
-We may write
-\[P^{kl}\nabla^mR_{ilkj}=2\nabla^mh_{ij}-R_{ilkj}\nabla^mP^{kl}\]
-and
-\[P^{kl}\nabla_j{{R_{il}}^m}_k=-2\nabla_jh_i^m-{{R_{il}}^m}_k\nabla_jP^{kl}.\]
-Using these two identities we arrive at
-\begin{align*}
-\Box h_{ij}-P^{kl}\nabla_k\nabla_ih_{lj}=&-2(\nabla^mh_{ij}-\nabla_jh_i^m)V_m+(R_{ilkj}\nabla^mP^{kl}+{{R_{il}}^m}_k\nabla_jP^{kl})V_m\\
-&-2\lambda h_{ij}-R_{ij}\det P .
-\end{align*}
-Moreover, we calculate
-\begin{align*}
-P^{kl}\nabla_k\nabla_ih_{lj}&=P^{kl}(\nabla_i\nabla_k h_{lj}+{R_{kil}}^mh_{mj}+{R_{kij}}^mh_{lm})\\
-&=P^{kl}\nabla_i\nabla_k h_{lj}-2(h^2)_{ij}-R_{ij}\det P\\
-&=\frac{1}{2}\nabla_i(P^{kl}\nabla_j h_{kl})-\nabla_iP^{kl}\nabla_k h_{lj}-2(h^2)_{ij}-R_{ij}\det P\\
-&=\frac{1}{2}P^{kl}\nabla_i\nabla_j h_{kl}+\frac{1}{2}\nabla_iP^{kl}\nabla_j h_{kl}-\nabla_iP^{kl}\nabla_k h_{lj}-2(h^2)_{ij}-R_{ij}\det P.
-\end{align*}
-Consequently,
-\begin{align*}
-\Box h_{ij}=&-2(\nabla^mh_{ij}-\nabla_jh_i^m)V_m+(R_{ilkj}\nabla^mP^{kl}+{{R_{il}}^m}_k\nabla_jP^{kl})V_m\\
-&-2\lambda h_{ij}-2R_{ij}\det P-2(h^2)_{ij}\\
-&+\frac{1}{2}P^{kl}\nabla_i\nabla_j h_{kl}+\frac{1}{2}\nabla_iP^{kl}\nabla_j h_{kl}-\nabla_iP^{kl}\nabla_k h_{lj}.
-\end{align*}
-Taking the trace with respect to $P^{ij}$  gives
-\begin{align*}
-\frac{1}{2}P^{ij}\Box h_{ij}=&(2h_{ij}\nabla^mP^{ij}+P^{ij}{{R_{il}}^m}_k\nabla_jP^{kl}-P^{ij}\nabla^mh_{ij})V_m\\
-&-6\lambda \det P+4H\det P-2H\det P+P^{ij}\left(\frac{1}{2}\nabla_iP^{kl}\nabla_j h_{kl}-\nabla_iP^{kl}\nabla_k h_{lj}\right).
-\end{align*}
-Note that for any choice of $\gamma$ we have
-\[\nabla^mh_{ij}-\nabla_jh_i^m={{{R_j}^{m}}_{i}}^nV_n\Rightarrow \frac{\gamma}{2}P^{ij}\nabla^mh_{ij}V_m=-2\gamma h^{mn}V_nV_m.\]
-Therefore,
-\begin{align*}
-\frac{1}{2}P^{ij}\Box h_{ij}=&\left(2h_{ij}\nabla^mP^{ij}+P^{ij}{{R_{il}}^m}_k\nabla_jP^{kl}+(\frac{\gamma}{2}-1)P^{ij}\nabla^mh_{ij}\right)V_m+2\gamma h^{mn}V_nV_m\\
-&-6\lambda \det P+2H\det P+ P^{ij}\left(\frac{1}{2}\nabla_iP^{kl}\nabla_j h_{kl}-\nabla_iP^{kl}\nabla_k h_{lj}\right).
-\end{align*}
-
 \section{Basic evolution equations}
 The following is the main result of the paper.
 \begin{theorem}
