@@ -51,9 +51,11 @@ We prove a differential Harnack inequality for cross curvature flow. As an appli
 \section{Notation}
 The Riemannian metric is $g_{ij},$ its inverse is $g^{ij}$. The Levi-Civita connection is given by the Christoffel symbols
 \begin{equation}
-\Gamma_{ij}^k=\frac{1}{2}g^{kl}\left(\partial_ig_{jl}+\partial_jg_{il}-\partial_lg_{ij}\right),
+\Gamma_{ij}^k=\frac{1}{2}g^{kl}\left(\partial_ig_{jl}+\partial_jg_{il}-\partial_lg_{ij}\right).
 \end{equation}
-and the Riemannian curvature tensor is
+Write $\nabla^2_{i,j}$ for the second covariant derivative; for any tensor $\alpha:$
+\[\nabla^2_{i,j}\alpha=\nabla_{\partial_i}\nabla_{\partial_j}\alpha-\nabla_{\nabla_{\partial_i}\partial_j}\alpha.\]
+The Riemannian curvature tensor is
 \begin{equation}
 R_{ijk}^l=\partial_i\Gamma_{jk}^l-\partial_j\Gamma_{ik}^l+\Gamma_{jk}^p\Gamma_{ip}^l-\Gamma_{ik}^p\Gamma_{jp}^l.
 \end{equation}
@@ -67,9 +69,10 @@ R_{ij}=g^{kl}R_{ikjl}.
 \end{equation}
 The scalar curvature $R=g^{ij}R_{ij}.$
 
+
 The evolution equation of the metric is given by
 \begin{equation}
-\partial_tg_{ij}=2h_{ij}
+\partial_tg_{ij}=2h_{ij},
 \end{equation}
 where
 \begin{equation}
@@ -111,7 +114,7 @@ To obtain a suitable Harnack quadratic for XCF, we follow Hamilton's procedure i
 
 We take the covariant derivative of both sides of (\ref{soliton 0}) with respect to $\nabla_l:$
 \begin{align}\label{eq: soliton derv}
-\nabla_lh_{ij}+\nabla_l\nabla_iW_j+\nabla_l\nabla_jW_i=0.
+\nabla_lh_{ij}+\nabla^2_{l,i}W_j+\nabla^2_{l,j}W_i=0.
 \end{align}
 We also take the trace of (\ref{soliton 0}) with respect to $P^{ij}$:
 \begin{align}\label{trace}
@@ -119,18 +122,18 @@ We also take the trace of (\ref{soliton 0}) with respect to $P^{ij}$:
 \end{align}
 Taking the covariant derivative of both sides with respect to $\nabla_l$ yields
 \begin{align*}
-\lambda \nabla_l P=3\nabla_l\det P+\nabla_l P^{ij}\nabla_iW_j+P^{ij}\nabla_l\nabla_iW_j.
+\lambda \nabla_l P=3\nabla_l\det P+\nabla_l P^{ij}\nabla_iW_j+P^{ij}\nabla^2_{l,i}W_j.
 \end{align*}
 In view of
 \begin{align*}
-\nabla_l\nabla_iW_j-\nabla_i\nabla_lW_j={R_{lij}}^mW_m,
+\nabla^2_{l,i}W_j-\nabla^2_{i,l}W_j={R_{lij}}^mW_m,
 \end{align*}
 we obtain
 \begin{align}\label{equ00}
-\lambda \nabla_l P&=3\nabla_l\det P+\nabla_l P^{ij}\nabla_iW_j+P^{ij}(\nabla_i\nabla_lW_j+{R_{lij}}^mW_m)\\
-&=3\nabla_l\det P+\nabla_l P^{ij}\nabla_iW_j+P^{ij}\nabla_i\nabla_lW_j+2h_l^mW_m.\nonumber
+\lambda \nabla_l P&=3\nabla_l\det P+\nabla_l P^{ij}\nabla_iW_j+P^{ij}(\nabla^2_{i,l}W_j+{R_{lij}}^mW_m)\\
+&=3\nabla_l\det P+\nabla_l P^{ij}\nabla_iW_j+P^{ij}\nabla^2_{i,l}W_j+2h_l^mW_m.\nonumber
 \end{align}
-For now on  we consider gradient solitons which are by definition, when $W_i=\nabla_if$ for a smooth function.
+For now on  we consider gradient solitons which are by definition, when $W_i=\nabla_if$ for a smooth function (note that in this case $\nabla_iW_j=\nabla_jW_i$).
 Putting (\ref{soliton 0}), (\ref{eq: soliton derv}) together we obtain
 \begin{align}\label{eq:1}
 \lambda \nabla_l P
@@ -147,9 +150,9 @@ where we used
 \begin{equation}\label{eq0}
 \frac{P^{ij}}{\det P}\nabla_lh_{ij}=2\nabla_lu,\quad V_{ij}\nabla_lP^{ij}=\nabla_lu.
 \end{equation}
-Taking the covariant derivative of (\ref{eq:a}) with respect to $\nabla_k$ and then using the first soliton equation yields
+Taking the covariant derivative of (\ref{eq:a}) with respect to $\nabla_k$ and then using the first soliton equation (\ref{soliton 0}) yields
 \begin{equation*}
-\nabla_k\nabla_lu+\frac{2}{\det P}\nabla_kh_l^mW_m-\frac{2}{\det P}h_l^mW_m\nabla_ku-2V_l^mh_{km}+2\lambda V_{kl}=0.
+\nabla^2_{k,l}u+\frac{2}{\det P}\nabla_kh_l^mW_m-\frac{2}{\det P}h_l^mW_m\nabla_ku-2V_l^mh_{km}+2\lambda V_{kl}=0.
 \end{equation*}
 We take the trace with respect to $P^{kl}$ and use the first identity in (\ref{eq0}):
 \begin{equation}\label{eq:5}
@@ -200,23 +203,23 @@ The only compact solitons of XCF with negative sectional curvature are metrics w
 \begin{proof}
 Apply (\ref{soliton 0}) to (\ref{equ00}):
 \begin{align*}
-\lambda \nabla_l P&=3\nabla_l\det P+(\lambda g_{ij}-h_{ij})\nabla_l P^{ij}+P^{ij}\nabla_i\nabla_lW_j+2h_l^mW_m\\
-&=3\nabla_l\det P+\lambda \nabla_l P-h_{ij}\nabla_l P^{ij}+P^{ij}(-2\nabla_ih_{lj}-\nabla_i\nabla_jW_l)+2h_l^mW_m.
+\lambda \nabla_l P&=3\nabla_l\det P+(\lambda g_{ij}-h_{ij})\nabla_l P^{ij}+P^{ij}\nabla^2_{i,l}W_j+2h_l^mW_m\\
+&=3\nabla_l\det P+\lambda \nabla_l P-h_{ij}\nabla_l P^{ij}+P^{ij}(-2\nabla_ih_{lj}-\nabla^2_{i,j}W_l)+2h_l^mW_m.
 \end{align*}
 Dividing both sides by $\det P$ implies that
 \begin{align*}
-3\nabla_lu-V_{ij}\nabla_l P^{ij}-\frac{P^{ij}}{\det P}\nabla_lh_{ij}-\Box W_l+2V_l^mW_m=0.
+3\nabla_lu-V_{ij}\nabla_l P^{ij}-\frac{P^{ij}}{\det P}\nabla_lh_{ij}-\frac{1}{\det P}(\Box W_l-2h_l^kW_k)=0.
 \end{align*}
 Therefore, by (\ref{eq0}) we obtain
 \begin{align*}
-\Box W_l-2V_l^mW_m=0\Rightarrow W^l\Box W_l-2V_l^mW_mW^l=0.
+\Box W_l-2h_l^kW_k=0\Rightarrow W^l\Box W_l-2h_l^kW_kW^l=0.
 \end{align*}
-Let us point out the first identity on the previous line becomes exactly (\ref{eq:a}) if $W=\operatorname{grad} f.$
+Let us point out the first identity on the previous line becomes exactly (\ref{eq:a}) if $W=\nabla f.$
 The second identity reads
 \begin{align}\label{soliton equation for W}
-\Box \frac{1}{2}|W|_g^2-P^{kl}g^{ij}\nabla_kW_i\nabla_lW_j-2V^{kl}W_kW_l=0.
+\Box \frac{1}{2}|W|_g^2-P^{kl}g^{ij}\nabla_kW_i\nabla_lW_j-2h^{kl}W_kW_l=0.
 \end{align}
-Note that, by (\ref{equ: important}), $\int \Box fd\mu_{M}=0$ for any smooth function $f$ defined on $M$. Thus integrating (\ref{soliton equation for W}) against $d\mu_{M}$ and taking into account that $P_{ij}$ and $V_{ij}$ are both positive definite proves that $W\equiv0$ (also note that $g,P$ and $V$ can all be diagonalized simultaneously); therefore, by (\ref{soliton 0}), we get
+Note that, by (\ref{equ: important}), $\int \Box fd\mu_{M}=0$ for any smooth function $f$ defined on $M$. Thus integrating (\ref{soliton equation for W}) against $d\mu_{M}$ and taking into account that $P_{ij}$ and $h_{ij}$ are both positive definite proves that $W\equiv0$ (also note that $g,P$ and $h$ can all be diagonalized simultaneously at any fixed point); therefore, by (\ref{soliton 0}), we get
 \[(\det P)^2=\det h_{ij}=\lambda ^3\Rightarrow \det P=\lambda^{\frac{3}{2}}.\]
 Moreover, in view of (\ref{trace}), we have $3\det P=\lambda P$; therefore, we obtain $$3(\det P)^{\frac{1}{3}}=P.$$ Thus the metric has constant negative curvature.
 \end{proof}
@@ -233,24 +236,24 @@ The following evolution equations hold:
 \begin{proof}
 The evolution equation of the Riemann curvature tensor is given by the standard formula
 \begin{align*}
-\partial_t R_{ijkl}=&\nabla_i\nabla_lh_{jk}+\nabla_j\nabla_kh_{il}-\nabla_i\nabla_kh_{jl}-\nabla_j\nabla_lh_{ik}\\
+\partial_t R_{ijkl}=&\nabla^2_{i,l}h_{jk}+\nabla^2_{j,k}h_{il}-\nabla^2_{i,k}h_{jl}-\nabla^2_{j,l}h_{ik}\\
 &+g^{pq}(R_{ijpk}h_{ql}+R_{ijpl}h_{qk}).
 \end{align*}
 On the other hand, the evolution of the volume form is given by $$\partial_t\mu_{ijk}=H\mu_{ijk},\quad\partial_t\mu^{ijk}=-H\mu^{ijk}.$$
 Since $P^{mn}=-\frac{1}{4}\mu^{ijm}\mu^{kln}R_{ijkl}$, we obtain
 \begin{align*}
-\partial_tP^{mn}=&\mu^{ijm}\mu^{kln}\nabla_i\nabla_kh_{jl}-\frac{1}{2}\mu^{ijm}\mu^{kln}g^{pq}R_{ijpl}h_{qk}-2HP^{mn}.
+\partial_tP^{mn}=&\mu^{ijm}\mu^{kln}\nabla^2_{i,k}h_{jl}-\frac{1}{2}\mu^{ijm}\mu^{kln}g^{pq}R_{ijpl}h_{qk}-2HP^{mn}.
 \end{align*}
 Now using the identity
 \[\frac{1}{2}\mu^{ijm}\mu^{kln}g^{pq}R_{ijpl}h_{qk}+HP^{mn}=g^{mn}\det P,\]
 we arrive at
 \begin{align*}
-\partial_tP^{mn}=&\nabla_k\nabla_l(P^{kl}P^{mn}-P^{km}P^{ln})-g^{mn}\det P-HP^{mn}.
+\partial_tP^{mn}=&\nabla^2_{k,l}(P^{kl}P^{mn}-P^{km}P^{ln})-g^{mn}\det P-HP^{mn}.
 \end{align*}
 Next we calculate the evolution equation of $u:$
 \begin{align*}
 \partial_t u=& V_{ij}\left(\Box P^{ij}-\nabla_lP^{ik}\nabla_kP^{jl}-g^{ij}\det P -HP^{ij}\right)- g_{ij}\partial_t g^{ij}\\
-=&V_{ij}P^{kl}\nabla_k\nabla_lP^{ij}- V_{ij}\nabla_lP^{ik}\nabla_kP^{jl}-2H\\
+=&V_{ij}P^{kl}\nabla^2_{k,l}P^{ij}- V_{ij}\nabla_lP^{ik}\nabla_kP^{jl}-2H\\
 =&P^{kl}\nabla_k\left(V_{ij}\nabla_lP^{ij}\right)-P^{kl}\nabla_k V_{ij}\nabla_l P^{ij}-V_{ij}\nabla_lP^{ik}\nabla_kP^{jl}-2H\\
 =&\Box u-P^{kl}\nabla_k V_{ij}\nabla_l P^{ij}+P^{jl}\nabla_kV_{ij}\nabla_lP^{ik}-2H.
 \end{align*}
@@ -263,7 +266,7 @@ Next we calculate the evolution equation of $u:$
 \begin{proof}
 \begin{align*}
 (\partial_t \Box-\Box \partial_t)u
-=&\partial_tP^{ij}\cdot\nabla_i\nabla_ju-P^{ij}\partial_t\Gamma_{ij}^k\cdot\nabla_ku.
+=&\partial_tP^{ij}\cdot\nabla^2_{i,j}u-P^{ij}\partial_t\Gamma_{ij}^k\cdot\nabla_ku.
 \end{align*}
 A calculation shows that the time derivative of the Christoffel symbols is give by
 \begin{align}
@@ -291,14 +294,14 @@ P^{ij}\partial_t \Gamma_{ij}^k=&g^{kl}\left(P^{ij}\nabla_ih_{jl}+P^{ij}\nabla_jh
 \section{The computation}
 Let us define
 \begin{align*}
-w_{kl}:=&\nabla_k\nabla_lu+V_{lm}\nabla_kP^{mn}\nabla_nu-2h_k^mV_{ml},\\
+w_{kl}:=&\nabla^2_{k,l}u+V_{lm}\nabla_kP^{mn}\nabla_nu-2h_k^mV_{ml},\\
 z:=&\left(P^{jl}\nabla_lP^{ik}-P^{kl}\nabla_l P^{ij}\right)\nabla_kV_{ij}=\left(P^{kl}\nabla_l P^{ij}-P^{jl}\nabla_lP^{ik}\right)V_{im}V_{jn}\nabla_kP^{mn},\\
 w:=&P^{kl}w_{kl}=\Box u-2H=\partial_tu-z.\\
 \end{align*}
 Note that we have
 \begin{align}
 (\partial_t-\Box)w
-&=\Box z-2\partial_tH+\partial_tP^{ij}\cdot\nabla_i\nabla_ju,\quad P^{ik}P^{jl}w_{ij}w_{kl}\geq \frac{1}{3}w^2.
+&=\Box z-2\partial_tH+\partial_tP^{ij}\cdot\nabla^2_{i,j}u,\quad P^{ik}P^{jl}w_{ij}w_{kl}\geq \frac{1}{3}w^2.
 \end{align}
 \begin{lemma}
 \begin{align*}
@@ -308,16 +311,19 @@ Note that we have
 \begin{proof}
 We start by multiplying
 \begin{align*}
-w_{ij}&=\nabla_i\nabla_ju+V_{jr}\nabla_iP^{rs}\nabla_su-2h_i^rV_{rj},\\
-w_{kl}&=\nabla_k\nabla_lu+V_{lm}\nabla_kP^{mn}\nabla_nu-2h_k^mV_{ml}.
+w_{ij}&=\nabla^2_{i,j}u+V_{jr}\nabla_iP^{rs}\nabla_su-2h_i^rV_{rj},\\
+w_{kl}&=\nabla^2_{k,l}u+V_{lm}\nabla_kP^{mn}\nabla_nu-2h_k^mV_{ml}.
 \end{align*}
 We have
 \begin{align*}
-P^{ik}P^{jl}w_{ij}w_{kl}=&P^{ik}P^{jl}\nabla_i\nabla_ju\nabla_k\nabla_lu+2P^{ik}P^{jl}V_{lm}\nabla_kP^{mn}\nabla_nu\nabla_i\nabla_ju\\
-&-4P^{ik}P^{jl}h_k^mV_{ml}\nabla_i\nabla_ju+P^{ik}P^{jl}V_{jr}V_{lm}\nabla_iP^{rs}\nabla_kP^{mn}\nabla_su\nabla_nu\\
+P^{ik}P^{jl}w_{ij}w_{kl}=&P^{ik}P^{jl}\nabla^2_{i,j}u\nabla^2_{k,l}u+2P^{ik}P^{jl}V_{lm}\nabla_kP^{mn}\nabla_nu\nabla^2_{i,j}u\\
+&-4P^{ik}P^{jl}h_k^mV_{ml}\nabla^2_{i,j}u+P^{ik}P^{jl}V_{jr}V_{lm}\nabla_iP^{rs}\nabla_kP^{mn}\nabla_su\nabla_nu\\
 &-4P^{ik}P^{jl}V_{jr}h_k^mV_{ml}\nabla_iP^{rs}\nabla_su+4P^{ik}P^{jl}h_i^rV_{rj}h_k^mV_{ml}\\
-=&P^{ik}P^{jl}\nabla_i\nabla_ju\nabla_k\nabla_lu+2P^{ik}\nabla_kP^{nj}\nabla_nu\nabla_i\nabla_ju\\
-&-4\det P g^{ij}\nabla_i\nabla_ju+P^{ik}V_{jr}\nabla_iP^{rs}\nabla_kP^{jn}\nabla_su\nabla_nu\\
+=&P^{ik}P^{jl}\nabla^2_{i,j}u\nabla^2_{k,l}u+2P^{ik}\nabla_kP^{nj}\nabla_nu\nabla^2_{i,j}u\\
+&-4\det P g^{ij}\nabla^2_{i,j}u+P^{ik}V_{jr}\nabla_iP^{rs}\nabla_kP^{jn}\nabla_su\nabla_nu\\
+&-4h_{ir}\nabla_iP^{rs}\nabla_su+4\|h\|^2\\
+=&P^{ik}P^{jl}\nabla^2_{i,j}u\nabla^2_{k,l}u+2T^{ijk}\nabla_ku\nabla^2_{i,j}u\\
+&-4\det P \Delta u+T^{ijk}V_{jr}\nabla_iP^{rs}\nabla_su\nabla_ku\\
 &-4h_{ir}\nabla_iP^{rs}\nabla_su+4\|h\|^2.
 \end{align*}
 We also have
@@ -327,80 +333,82 @@ w^2=&(\Box u)^2-4H\Box u+4H^2.
 Next we calculate
 \begin{align*}
 \nabla_k w=&\nabla_k\Box u-2g^{ij}\nabla_k(V_{ij}\det P)\\
-=&\nabla_k(P^{ij}\nabla_i\nabla_j u)+\frac{2}{\det P}(h^2)_{ij}\nabla_kP^{ij}-2H\nabla_ku\\
-=&\nabla_kP^{ij}\nabla_i\nabla_ju+2h_k^i\nabla_iu+\Box\nabla_ku+\frac{2}{\det P}(h^2)_{ij}\nabla_kP^{ij}-2H\nabla_ku.
+=&\nabla_k(P^{ij}\nabla^2_{i,j} u)+\frac{2}{\det P}(h^2)_{ij}\nabla_kP^{ij}-2H\nabla_ku\\
+=&\nabla_kP^{ij}\nabla^2_{i,j}u+2h_k^i\nabla_iu+\Box\nabla_ku+\frac{2}{\det P}(h^2)_{ij}\nabla_kP^{ij}-2H\nabla_ku.
 \end{align*}
 Therefore, we obtain
 \begin{align*}
 P^{kl}\nabla_k w\nabla_lu
-=&P^{kl}\nabla_kP^{ij}\nabla_lu\nabla_i\nabla_ju+2\det Pg^{ij}\nabla_iu\nabla_ju+P^{kl}\Box\nabla_ku\nabla_lu\\
-&+\frac{2}{\det P}(h^2)_{ij}P^{kl}\nabla_kP^{ij}\nabla_lu-2HP^{kl}\nabla_ku\nabla_lu.
+=&P^{kl}\nabla_kP^{ij}\nabla_lu\nabla^2_{i,j}u+2\det Pg^{ij}\nabla_iu\nabla_ju+P^{kl}\Box\nabla_ku\nabla_lu\\
+&+\frac{2}{\det P}(h^2)_{ij}P^{kl}\nabla_kP^{ij}\nabla_lu-2HP^{kl}\nabla_ku\nabla_lu\\
+=&T^{kij}\nabla_lu\nabla^2_{i,j}u+2\det Pg^{ij}\nabla_iu\nabla_ju+P^{kl}\Box\nabla_ku\nabla_lu\\
+&+\frac{2}{\det P}(h^2)_{ij}T^{lij}\nabla_lu-2HP^{kl}\nabla_ku\nabla_lu.
 \end{align*}
 In addition, we have
 \begin{align*}
--2\partial_tH+\partial_tP^{ij}\cdot\nabla_i\nabla_ju=&4\|h\|^2+2\frac{(h^2)_{ij}}{\det P}\Box P^{ij}-2\frac{(h^2)_{ij}}{\det P}\nabla_lP^{ik}\nabla_kP^{jl}\\
+-2\partial_tH+\partial_tP^{ij}\cdot\nabla^2_{i,j}u=&4\|h\|^2+2\frac{(h^2)_{ij}}{\det P}\Box P^{ij}-2\frac{(h^2)_{ij}}{\det P}\nabla_lP^{ik}\nabla_kP^{jl}\\
 &-2\|h\|^2-2\frac{H}{\det P}P^{ij}(h^2)_{ij}\\
-&+\Box P^{ij}\nabla_i\nabla_ju-\nabla_lP^{ik}\nabla_kP^{jl}\nabla_i\nabla_ju\\
-&-g^{ij}\det P\nabla_i\nabla_ju-H\Box u-2H\partial_tu\\
+&+\Box P^{ij}\nabla^2_{i,j}u-\nabla_lP^{ik}\nabla_kP^{jl}\nabla^2_{i,j}u\\
+&-g^{ij}\det P\nabla^2_{i,j}u-H\Box u-2H\partial_tu\\
 =&2\|h\|^2+2\frac{(h^2)_{ij}}{\det P}\Box P^{ij}-2\frac{(h^2)_{ij}}{\det P}\nabla_lP^{ik}\nabla_kP^{jl}\\
-&+2H^2+\Box P^{ij}\nabla_i\nabla_ju-\nabla_lP^{ik}\nabla_kP^{jl}\nabla_i\nabla_ju\\
-&-g^{ij}\det P\nabla_i\nabla_ju-3H\Box u-2Hz.
+&+2H^2+\Box P^{ij}\nabla^2_{i,j}u-\nabla_lP^{ik}\nabla_kP^{jl}\nabla^2_{i,j}u\\
+&-g^{ij}\det P\nabla^2_{i,j}u-3H\Box u-2Hz.
 \end{align*}
 On the other hand, we have
 \begin{align*}
 \nabla_s z=&\nabla_s\left(\left(P^{kl}\nabla_l P^{ij}-P^{jl}\nabla_lP^{ik}\right)V_{im}V_{jn}\nabla_kP^{mn}\right)\\
 =&V_{im}V_{jn}\nabla_kP^{mn}\nabla_s P^{kl}\nabla_l P^{ij}\\
-&+P^{kl}V_{im}V_{jn}\nabla_kP^{mn}\nabla_s\nabla_l P^{ij}\\
+&+P^{kl}V_{im}V_{jn}\nabla_kP^{mn}\nabla^2_{s,l} P^{ij}\\
 &-V_{im}V_{jn}\nabla_kP^{mn}\nabla_sP^{jl}\nabla_lP^{ik}\\
-&-P^{jl}V_{im}V_{jn}\nabla_kP^{mn}\nabla_s\nabla_lP^{ik}\\
+&-P^{jl}V_{im}V_{jn}\nabla_kP^{mn}\nabla^2_{s,l}P^{ik}\\
 &-V_{ip}V_{mq}V_{jn}P^{kl}\nabla_sP^{pq}\nabla_l P^{ij}\nabla_kP^{mn}\\
 &-V_{im}V_{jp}V_{nq}P^{kl}\nabla_sP^{pq}\nabla_l P^{ij}\nabla_kP^{mn}\\
-&+V_{im}V_{jn}P^{kl}\nabla_l P^{ij}\nabla_s\nabla_kP^{mn}\\
+&+V_{im}V_{jn}P^{kl}\nabla_l P^{ij}\nabla^2_{s,k}P^{mn}\\
 &+V_{ip}V_{mq}V_{jn}P^{jl}\nabla_sP^{pq}\nabla_lP^{ik}\nabla_kP^{mn}\\
 &+V_{im}V_{jp}V_{nq}P^{jl}\nabla_sP^{pq}\nabla_lP^{ik}\nabla_kP^{mn}\\
-&-V_{im}V_{jn}P^{jl}\nabla_lP^{ik}\nabla_s\nabla_kP^{mn}\\
+&-V_{im}V_{jn}P^{jl}\nabla_lP^{ik}\nabla^2_{s,k}P^{mn}\\
 =&V_{im}V_{jn}\nabla_kP^{mn}\nabla_s P^{kl}\nabla_l P^{ij}\\
-&+P^{kl}V_{im}V_{jn}\nabla_kP^{mn}\nabla_s\nabla_l P^{ij}\\
+&+P^{kl}V_{im}V_{jn}\nabla_kP^{mn}\nabla^2_{s,l} P^{ij}\\
 &-V_{im}V_{jn}\nabla_kP^{mn}\nabla_sP^{jl}\nabla_lP^{ik}\\
-&-V_{im}\nabla_kP^{ml}\nabla_s\nabla_lP^{ik}\\
+&-V_{im}\nabla_kP^{ml}\nabla^2_{s,l}P^{ik}\\
 &-V_{ip}V_{mq}V_{jn}P^{kl}\nabla_sP^{pq}\nabla_l P^{ij}\nabla_kP^{mn}\\
 &-V_{im}V_{jp}V_{nq}P^{kl}\nabla_sP^{pq}\nabla_l P^{ij}\nabla_kP^{mn}\\
-&+V_{im}V_{jn}P^{kl}\nabla_l P^{ij}\nabla_s\nabla_kP^{mn}\\
+&+V_{im}V_{jn}P^{kl}\nabla_l P^{ij}\nabla^2_{s,k}P^{mn}\\
 &+V_{ip}V_{mq}\nabla_sP^{pq}\nabla_lP^{ik}\nabla_kP^{ml}\\
 &+V_{im}V_{nq}\nabla_sP^{lq}\nabla_lP^{ik}\nabla_kP^{mn}\\
-&-V_{im}\nabla_lP^{ik}\nabla_s\nabla_kP^{ml}.
+&-V_{im}\nabla_lP^{ik}\nabla^2_{s,k}P^{ml}.
 \end{align*}
 Therefore
 \begin{align*}
-&\nabla_r\nabla_s z\\
+&\nabla^2_{r,s} z\\
 =&-V_{ia}V_{mb}V_{jn}\nabla_r P^{ab}\nabla_kP^{mn}\nabla_s P^{kl}\nabla_l P^{ij}-V_{ja}V_{nb}V_{im}\nabla_r P^{ab}\nabla_kP^{mn}\nabla_s P^{kl}\nabla_l P^{ij}\\
-&+V_{im}V_{jn}\nabla_r\nabla_kP^{mn}\nabla_s P^{kl}\nabla_l P^{ij}+V_{im}V_{jn}\nabla_kP^{mn}\nabla_r\nabla_s P^{kl}\nabla_l P^{ij}\\
-&+V_{im}V_{jn}\nabla_kP^{mn}\nabla_s P^{kl}\nabla_r\nabla_l P^{ij}-V_{ia}V_{mb}V_{jn}P^{kl}\nabla_rP^{ab}\nabla_kP^{mn}\nabla_s\nabla_l P^{ij}\\
-&-V_{ja}V_{nb}V_{im}P^{kl}\nabla_rP^{ab}\nabla_kP^{mn}\nabla_s\nabla_l P^{ij}+V_{im}V_{jn}\nabla_rP^{kl}\nabla_kP^{mn}\nabla_s\nabla_l P^{ij}\\
-&+V_{im}V_{jn}P^{kl}\nabla_r\nabla_kP^{mn}\nabla_s\nabla_l P^{ij}+V_{im}V_{jn}P^{kl}\nabla_kP^{mn}\nabla_r\nabla_s\nabla_l P^{ij}\\
+&+V_{im}V_{jn}\nabla^2_{r,k}P^{mn}\nabla_s P^{kl}\nabla_l P^{ij}+V_{im}V_{jn}\nabla_kP^{mn}\nabla^2_{r,s} P^{kl}\nabla_l P^{ij}\\
+&+V_{im}V_{jn}\nabla_kP^{mn}\nabla_s P^{kl}\nabla^2_{r,l} P^{ij}-V_{ia}V_{mb}V_{jn}P^{kl}\nabla_rP^{ab}\nabla_kP^{mn}\nabla^2_{s,l} P^{ij}\\
+&-V_{ja}V_{nb}V_{im}P^{kl}\nabla_rP^{ab}\nabla_kP^{mn}\nabla^2_{s,l} P^{ij}+V_{im}V_{jn}\nabla_rP^{kl}\nabla_kP^{mn}\nabla^2_{s,l} P^{ij}\\
+&+V_{im}V_{jn}P^{kl}\nabla^2_{r,k}P^{mn}\nabla^2_{s,l} P^{ij}+V_{im}V_{jn}P^{kl}\nabla_kP^{mn}\nabla_r\nabla^2_{s,l} P^{ij}\\
 &+V_{ia}V_{mb}V_{jn}\nabla_rP^{ab}\nabla_kP^{mn}\nabla_sP^{jl}\nabla_lP^{ik}\\
-&+V_{ja}V_{nb}V_{im}\nabla_rP^{ab}\nabla_kP^{mn}\nabla_sP^{jl}\nabla_lP^{ik}-V_{im}V_{jn}\nabla_r\nabla_kP^{mn}\nabla_sP^{jl}\nabla_lP^{ik}\\
-&-V_{im}V_{jn}\nabla_kP^{mn}\nabla_r\nabla_sP^{jl}\nabla_lP^{ik}-V_{im}V_{jn}\nabla_kP^{mn}\nabla_sP^{jl}\nabla_r\nabla_lP^{ik}\\
-&+V_{ia}V_{mb}\nabla_rP^{ab}\nabla_kP^{ml}\nabla_s\nabla_lP^{ik}-V_{im}\nabla_r\nabla_kP^{ml}\nabla_s\nabla_lP^{ik}\\
-&-V_{im}\nabla_kP^{ml}\nabla_r\nabla_s\nabla_lP^{ik}+V_{ia}V_{pb}V_{mq}V_{jn}P^{kl}\nabla_rP^{ab}\nabla_sP^{pq}\nabla_l P^{ij}\nabla_kP^{mn}\\
+&+V_{ja}V_{nb}V_{im}\nabla_rP^{ab}\nabla_kP^{mn}\nabla_sP^{jl}\nabla_lP^{ik}-V_{im}V_{jn}\nabla^2_{r,k}P^{mn}\nabla_sP^{jl}\nabla_lP^{ik}\\
+&-V_{im}V_{jn}\nabla_kP^{mn}\nabla^2_{r,s}P^{jl}\nabla_lP^{ik}-V_{im}V_{jn}\nabla_kP^{mn}\nabla_sP^{jl}\nabla^2_{r,l}P^{ik}\\
+&+V_{ia}V_{mb}\nabla_rP^{ab}\nabla_kP^{ml}\nabla^2_{s,l}P^{ik}-V_{im}\nabla^2_{r,k}P^{ml}\nabla^2_{s,l}P^{ik}\\
+&-V_{im}\nabla_kP^{ml}\nabla_r\nabla^2_{s,l}P^{ik}+V_{ia}V_{pb}V_{mq}V_{jn}P^{kl}\nabla_rP^{ab}\nabla_sP^{pq}\nabla_l P^{ij}\nabla_kP^{mn}\\
 &+V_{ma}V_{qb}V_{ip}V_{jn}P^{kl}\nabla_rP^{ab}\nabla_sP^{pq}\nabla_l P^{ij}\nabla_kP^{mn}+V_{ja}V_{nb}V_{mq}V_{ip}P^{kl}\nabla_rP^{ab}\nabla_sP^{pq}\nabla_l P^{ij}\nabla_kP^{mn}\\
-&-V_{ip}V_{mq}V_{jn}\nabla_rP^{kl}\nabla_sP^{pq}\nabla_l P^{ij}\nabla_kP^{mn}-V_{ip}V_{mq}V_{jn}P^{kl}\nabla_r\nabla_sP^{pq}\nabla_l P^{ij}\nabla_kP^{mn}\\
-&-V_{ip}V_{mq}V_{jn}P^{kl}\nabla_sP^{pq}\nabla_r\nabla_l P^{ij}\nabla_kP^{mn}-V_{ip}V_{mq}V_{jn}P^{kl}\nabla_sP^{pq}\nabla_l P^{ij}\nabla_r\nabla_kP^{mn}\\
+&-V_{ip}V_{mq}V_{jn}\nabla_rP^{kl}\nabla_sP^{pq}\nabla_l P^{ij}\nabla_kP^{mn}-V_{ip}V_{mq}V_{jn}P^{kl}\nabla^2_{r,s}P^{pq}\nabla_l P^{ij}\nabla_kP^{mn}\\
+&-V_{ip}V_{mq}V_{jn}P^{kl}\nabla_sP^{pq}\nabla^2_{r,l} P^{ij}\nabla_kP^{mn}-V_{ip}V_{mq}V_{jn}P^{kl}\nabla_sP^{pq}\nabla_l P^{ij}\nabla^2_{r,k}P^{mn}\\
 &+V_{ia}V_{mb}V_{jp}V_{nq}P^{kl}\nabla_rP^{ab}\nabla_sP^{pq}\nabla_l P^{ij}\nabla_kP^{mn}+V_{ja}V_{pb}V_{im}V_{nq}P^{kl}\nabla_rP^{ab}\nabla_sP^{pq}\nabla_l P^{ij}\nabla_kP^{mn}\\
 &+V_{na}V_{qb}V_{im}V_{jp}P^{kl}\nabla_rP^{ab}\nabla_sP^{pq}\nabla_l P^{ij}\nabla_kP^{mn}-V_{im}V_{jp}V_{nq}\nabla_rP^{kl}\nabla_sP^{pq}\nabla_l P^{ij}\nabla_kP^{mn}\\
-&-V_{im}V_{jp}V_{nq}P^{kl}\nabla_r\nabla_sP^{pq}\nabla_l P^{ij}\nabla_kP^{mn}-V_{im}V_{jp}V_{nq}P^{kl}\nabla_sP^{pq}\nabla_r\nabla_l P^{ij}\nabla_kP^{mn}\\
-&-V_{im}V_{jp}V_{nq}P^{kl}\nabla_sP^{pq}\nabla_l P^{ij}\nabla_r\nabla_kP^{mn}-V_{ia}V_{mb}V_{jn}P^{kl}\nabla_rP^{ab}\nabla_l P^{ij}\nabla_s\nabla_kP^{mn}\\
-&-V_{ja}V_{nb}V_{im}P^{kl}\nabla_rP^{ab}\nabla_l P^{ij}\nabla_s\nabla_kP^{mn}+V_{im}V_{jn}P^{kl}\nabla_r\nabla_l P^{ij}\nabla_s\nabla_kP^{mn}\\
-&+V_{im}V_{jn}P^{kl}\nabla_l P^{ij}\nabla_r\nabla_s\nabla_kP^{mn}-V_{ia}V_{pb}V_{mq}\nabla_rP^{ab}\nabla_sP^{pq}\nabla_lP^{ik}\nabla_kP^{ml}\\
-&-V_{ip}V_{ma}V_{mb}\nabla_rP^{ab}\nabla_sP^{pq}\nabla_lP^{ik}\nabla_kP^{ml}+V_{ip}V_{mq}\nabla_r\nabla_sP^{pq}\nabla_lP^{ik}\nabla_kP^{ml}\\
-&+V_{ip}V_{mq}\nabla_sP^{pq}\nabla_r\nabla_lP^{ik}\nabla_kP^{ml}+V_{ip}V_{mq}\nabla_sP^{pq}\nabla_lP^{ik}\nabla_r\nabla_kP^{ml}\\
+&-V_{im}V_{jp}V_{nq}P^{kl}\nabla^2_{r,s}P^{pq}\nabla_l P^{ij}\nabla_kP^{mn}-V_{im}V_{jp}V_{nq}P^{kl}\nabla_sP^{pq}\nabla^2_{r,l} P^{ij}\nabla_kP^{mn}\\
+&-V_{im}V_{jp}V_{nq}P^{kl}\nabla_sP^{pq}\nabla_l P^{ij}\nabla^2_{r,k}P^{mn}-V_{ia}V_{mb}V_{jn}P^{kl}\nabla_rP^{ab}\nabla_l P^{ij}\nabla^2_{s,k}P^{mn}\\
+&-V_{ja}V_{nb}V_{im}P^{kl}\nabla_rP^{ab}\nabla_l P^{ij}\nabla^2_{s,k}P^{mn}+V_{im}V_{jn}P^{kl}\nabla^2_{r,l} P^{ij}\nabla^2_{s,k}P^{mn}\\
+&+V_{im}V_{jn}P^{kl}\nabla_l P^{ij}\nabla_r\nabla^2_{s,k}P^{mn}-V_{ia}V_{pb}V_{mq}\nabla_rP^{ab}\nabla_sP^{pq}\nabla_lP^{ik}\nabla_kP^{ml}\\
+&-V_{ip}V_{ma}V_{mb}\nabla_rP^{ab}\nabla_sP^{pq}\nabla_lP^{ik}\nabla_kP^{ml}+V_{ip}V_{mq}\nabla^2_{r,s}P^{pq}\nabla_lP^{ik}\nabla_kP^{ml}\\
+&+V_{ip}V_{mq}\nabla_sP^{pq}\nabla^2_{r,l}P^{ik}\nabla_kP^{ml}+V_{ip}V_{mq}\nabla_sP^{pq}\nabla_lP^{ik}\nabla^2_{r,k}P^{ml}\\
 &-V_{ia}V_{mb}V_{nq}\nabla_rP^{ab}\nabla_sP^{lq}\nabla_lP^{ik}\nabla_kP^{mn}-V_{na}V_{qb}V_{im}\nabla_rP^{ab}\nabla_sP^{lq}\nabla_lP^{ik}\nabla_kP^{mn}\\
-&+V_{im}V_{nq}\nabla_r\nabla_sP^{lq}\nabla_lP^{ik}\nabla_kP^{mn}+V_{im}V_{nq}\nabla_sP^{lq}\nabla_r\nabla_lP^{ik}\nabla_kP^{mn}+V_{im}V_{nq}\nabla_sP^{lq}\nabla_lP^{ik}\nabla_r\nabla_kP^{mn}\\
-&+V_{ia}V_{mb}\nabla_rP^{ab}\nabla_lP^{ik}\nabla_s\nabla_kP^{ml}-V_{im}\nabla_r\nabla_lP^{ik}\nabla_s\nabla_kP^{ml}-V_{im}\nabla_lP^{ik}\nabla_r\nabla_s\nabla_kP^{ml}.
+&+V_{im}V_{nq}\nabla^2_{r,s}P^{lq}\nabla_lP^{ik}\nabla_kP^{mn}+V_{im}V_{nq}\nabla_sP^{lq}\nabla^2_{r,l}P^{ik}\nabla_kP^{mn}+V_{im}V_{nq}\nabla_sP^{lq}\nabla_lP^{ik}\nabla^2_{r,k}P^{mn}\\
+&+V_{ia}V_{mb}\nabla_rP^{ab}\nabla_lP^{ik}\nabla^2_{s,k}P^{ml}-V_{im}\nabla^2_{r,l}P^{ik}\nabla^2_{s,k}P^{ml}-V_{im}\nabla_lP^{ik}\nabla_r\nabla^2_{s,k}P^{ml}.
 \end{align*}
 
 \begin{align*}
-\nabla_i\nabla_ju+V_{ac}V_{bd}\nabla_iP^{cd}\nabla_jP^{ab}=& V_{ab}\nabla_i\nabla_jP^{ab},\\
+\nabla^2_{i,j}u+V_{ac}V_{bd}\nabla_iP^{cd}\nabla_jP^{ab}=& V_{ab}\nabla^2_{i,j}P^{ab},\\
 \nabla_iu&\leftrightarrow V_{ab}\nabla_iP^{ab}.
 \end{align*}
 \end{proof}
@@ -414,6 +422,6 @@ Therefore
 \end{document}
 
 \begin{align*}
-\nabla_i\nabla_ju+V_{ac}V_{bd}\nabla_iP^{cd}\nabla_jP^{ab}=& V_{ab}\nabla_i\nabla_jP^{ab},\\
+\nabla^2_{i,j}u+V_{ac}V_{bd}\nabla_iP^{cd}\nabla_jP^{ab}=& V_{ab}\nabla^2_{i,j}P^{ab},\\
 \nabla_iu&\leftrightarrow V_{ab}\nabla_iP^{ab}.
 \end{align*} 
