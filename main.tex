@@ -43,7 +43,6 @@
 \keywords{}
 
 \begin{abstract}
-We prove a differential Harnack inequality for cross curvature flow. As an application, we prove that as long as the solution exists, the evolving metric has negative sectional curvature.
 \end{abstract}
 
 \maketitle
@@ -83,26 +82,27 @@ and
 P_{ij}:=R_{ij}-\frac{1}{2}Rg_{ij},\quad
 P^{mn}=\left(R_{ij}-\frac{1}{2}Rg_{ij}\right)g^{im}g^{jn}.
 \end{equation}
-We also write
-\begin{equation}
-P=g_{ij}P^{ij},\quad V=g^{ij}V_{ij},\quad H=g^{ij}h_{ij},\quad  T^{kij}=P^{kl}\nabla_l P^{ij}.
-\end{equation}
 Let $V_{ij}$ be the inverse of $P^{ij}$. We mention that
 \begin{equation}
 h_{ij}=V_{ij}\det P,
 \end{equation}
 where $\det P = \det (g_{km} P^{ml}).$
 
-We recall the following identities from \cite[Lemma 1]{Chowcross2002}:
-\begin{align}\label{equ: important}
-P^{ij}\nabla_ih_{jk}=\frac{1}{2}P^{ij}\nabla_kh_{ij},\quad\nabla_iP^{ij}=0.
+
+We also write
+\begin{align}
+P&=g_{ij}P^{ij},\quad V=g^{ij}V_{ij},\quad H=g^{ij}h_{ij},\quad u:=\log\det P\\
+T^{kij}&=P^{kl}\nabla_l P^{ij},\quad T^i=V_{jk}T^{ijk}=P^{ij}\nabla_ju.
 \end{align}
-For simplicity we set
-\[u:=\log\det P.\]
 In the sequel, $\mu_{ijk}$ is the volume form and is nonzero only when $i,j,k$ are distinct, in which case it is sign of the permutation $(ijk)$. Using the volume form, we may express $P^{mn}$ as
 \begin{equation}
 P^{mn}=-\frac{1}{4}\mu^{ijm}\mu^{kln}R_{ijkl}.
 \end{equation}
+We conclude this section by scatting the following identities from \cite[Lemma 1]{Chowcross2002}:
+\begin{align}\label{equ: important}
+P^{ij}\nabla_ih_{jk}&=\frac{1}{2}P^{ij}\nabla_kh_{ij},\quad
+\nabla_iP^{ij}=0.
+\end{align}
 \section{Solitons}
 A solution to cross curvature flow is a cross curvature soliton if there exists a vector field $W$ and $\lambda\in \mathbb{R}$ such that at some time
 \begin{equation}\label{soliton 0}
@@ -173,15 +173,14 @@ We take the trace with respect to $P^{kl}$ and use the first identity in (\ref{e
 %\end{align}
 So Lemma \ref{ev u} proposes the following candidate as the  Harnack inequality:
  \begin{align}\label{harnack est}
-\partial_tu-\left(P^{jl}\nabla_lP^{ik}-P^{kl}\nabla_l P^{ij}\right)\nabla_kV_{ij}+\frac{3}{2t}\geq 0.
+\partial_tu-\frac{1}{2}\left(\left|E^{ijk}-E^{jik}\right|^2_V+\left|T^i\right|_V^2\right)+\frac{3}{2t}\geq 0,
 \end{align}
-In the case of embeddable case into Minkowski 4-space, we have
- \begin{align}\label{question}
- \left(P^{jl}\nabla_lP^{ik}-P^{kl}\nabla_l P^{ij}\right)\nabla_kV_{ij}=\frac{1}{2}P^{ij}\nabla_i u\nabla_j u\geq 0.
- \end{align}
- In general, we have may write
- \[\left(P^{jl}\nabla_lP^{ik}-P^{kl}\nabla_l P^{ij}\right)\nabla_kV_{ij}=\frac{1}{2}\left|T^{ijk}-T^{jik}\right|^2_{V}\Rightarrow \partial_t\left(t^{\frac{3}{2}}\det P(\cdot,t)\right)\geq 0. \]
-In Minkowski 4-space, inequality (\ref{harnack est}) was proven  by the authors \cite{BIS4}.
+ where
+ \[T^{ijk}=E^{ijk}-\frac{1}{10}\left(P^{ij}T^k+P^{ik}T^j\right)+\frac{2}{5}P^{jk}T^i,\]
+ and we have $T^{ijk}V_{ij}=0,$ $V_{ij}E^{ijk}=V_{ik}E^{ijk}=V_{jk}E^{ijk}=0;$ see \cite[Prop. 9]{Chowcross2002}. In the case of embeddability into Minkowski or Euclidean 4-space, we have
+ \begin{align*}
+\left|E^{ijk}-E^{jik}\right|^2_V=0,\quad\frac{1}{2}\left|T^i\right|_V^2=\frac{1}{2}P^{ij}\nabla_i u\nabla_ju.
+ \end{align*}
 \begin{theorem}
 Let $(M^3,g(t))$, $t\in [0,T)$, be a solution to the XCF on a closed 3-manifold starting from a metric $g(0)$ with negative sectional curvature. Then $g(t)$ has negative sectional curvature for all $t<T.$
 Moreover, it is not possible that $T<\infty$ and $\inf_{M\times [0,T)}\det P=0.$
@@ -223,15 +222,27 @@ Note that, by (\ref{equ: important}), $\int \Box fd\mu_{M}=0$ for any smooth fun
 \[(\det P)^2=\det h_{ij}=\lambda ^3\Rightarrow \det P=\lambda^{\frac{3}{2}}.\]
 Moreover, in view of (\ref{trace}), we have $3\det P=\lambda P$; therefore, we obtain $$3(\det P)^{\frac{1}{3}}=P.$$ Thus the metric has constant negative curvature.
 \end{proof}
-\section{Basic evolution equations}
+\section{evolution equations}
+We first collect a few identities that will be used without further mention:
+\begin{align}\label{equ: important1}
+P^{ij}\nabla_ih_{jk}&=\frac{1}{2}P^{ij}\nabla_kh_{ij},\quad
+\nabla_iP^{ij}=0,\quad \nabla_iT^i=\Box u,\\
+T^k\nabla_kP^{ij}&=T^{kij}\nabla_ku,\quad P^{ij}\nabla_j T^k=P^{ij}P^{kl}\nabla^2_{j,l}u+T^{ikl}\nabla_lu,\\
+T^{ijk}-T^{jik}&=E^{ijk}-E^{jik}+\frac{1}{2}\left(P^{jk}T^i-P^{ik}T^j\right).
+\end{align}
+For simplicity, we write
+\[D^{ijk}=E^{ijk}-E^{jik}.\]
 \begin{lemma}\label{ev u}
 The following evolution equations hold:
-\begin{align}
-\partial_tP^{ij}=&\Box P^{ij}-\nabla_lP^{ki}\nabla_kP^{jl}-g^{ij}\det P-HP^{ij},
-\end{align}
-\begin{align}
-\partial_t u=&\Box u+\left(P^{jl}\nabla_lP^{ik}-P^{kl}\nabla_l P^{ij}\right)\nabla_kV_{ij}-2H.
-\end{align}
+\begin{align*}
+\partial_tP^{mn}
+=&-g^{mn}\det P-HP^{mn}+\frac{1}{4}P^{mn}T^k\nabla_ku\\
+&-\frac{1}{4}T^mT^n+\frac{1}{2}P^{mn}\Box u-\frac{1}{2}P^{mk}P^{nl}\nabla^2_{k,l}u\\
+&+\nabla_kD^{knm}+\frac{1}{2}D^{kmn}\nabla_ku,
+\end{align*}
+\begin{align*}
+\partial_t u=&\Box u+\frac{1}{2}\left(\left|D^{ijk}\right|^2_V+\left|T^i\right|_V^2\right)-2H.
+\end{align*}
 \end{lemma}
 \begin{proof}
 The evolution equation of the Riemann curvature tensor is given by the standard formula
@@ -248,64 +259,107 @@ Now using the identity
 \[\frac{1}{2}\mu^{ijm}\mu^{kln}g^{pq}R_{ijpl}h_{qk}+HP^{mn}=g^{mn}\det P,\]
 we arrive at
 \begin{align*}
-\partial_tP^{mn}=&\nabla^2_{k,l}(P^{kl}P^{mn}-P^{km}P^{ln})-g^{mn}\det P-HP^{mn}.
+\partial_tP^{mn}=&\nabla^2_{k,l}(P^{kl}P^{mn}-P^{km}P^{ln})-g^{mn}\det P-HP^{mn}\\
+=&\nabla_k(P^{kl}\nabla_lP^{nm}-P^{nl}\nabla_lP^{km})-g^{mn}\det P-HP^{mn}\\
+=&\nabla_k\left(T^{knm}-T^{nkm}\right)-g^{mn}\det P-HP^{mn}\\
+=&\nabla_kD^{knm}+\frac{1}{2}\nabla_k\left(P^{nm}T^k-P^{mk}T^n\right)-g^{mn}\det P-HP^{mn}\\
+=&\nabla_kD^{knm}-g^{mn}\det P-HP^{mn}+\frac{1}{2}P^{mn}\Box u\\
+&+\frac{1}{2}\left(T^{kmn}-T^{mkn}\right)\nabla_ku-\frac{1}{2}P^{mk}P^{nl}\nabla^2_{k,l}u\\
+=&\nabla_kD^{knm}+\frac{1}{2}D^{kmn}\nabla_ku-g^{mn}\det P-HP^{mn}+\frac{1}{2}P^{mn}\Box u\\
+&+\frac{1}{4}\left(P^{mn}T^k-P^{nk}T^m\right)\nabla_ku-\frac{1}{2}P^{mk}P^{nl}\nabla^2_{k,l}u.
 \end{align*}
-Next we calculate the evolution equation of $u:$
+The second evolution equation follows from \cite[Prop. 9]{Chowcross2002} and  \cite[Equ. (4)]{Chowcross2002}.
+\end{proof}
+\begin{lemma}
 \begin{align*}
-\partial_t u=& V_{ij}\left(\Box P^{ij}-\nabla_lP^{ik}\nabla_kP^{jl}-g^{ij}\det P -HP^{ij}\right)- g_{ij}\partial_t g^{ij}\\
-=&V_{ij}P^{kl}\nabla^2_{k,l}P^{ij}- V_{ij}\nabla_lP^{ik}\nabla_kP^{jl}-2H\\
-=&P^{kl}\nabla_k\left(V_{ij}\nabla_lP^{ij}\right)-P^{kl}\nabla_k V_{ij}\nabla_l P^{ij}-V_{ij}\nabla_lP^{ik}\nabla_kP^{jl}-2H\\
-=&\Box u-P^{kl}\nabla_k V_{ij}\nabla_l P^{ij}+P^{jl}\nabla_kV_{ij}\nabla_lP^{ik}-2H.
+\frac{1}{2}\Box P^{ij}\nabla_iu\nabla_ju=&\frac{1}{2}\nabla_k E^{kij}\nabla_iu\nabla_ju-\frac{1}{10}T^iT^j\nabla^2_{i,j}u\\
+&+\frac{1}{10}T^{ijk}\nabla_iu\nabla_ju\nabla_ku+\frac{1}{5}T^{i}\nabla_iu\Box u.
+\end{align*}
+\end{lemma}
+\begin{proof}
+\begin{align*}
+\Box P^{ij}\nabla_iu\nabla_ju=&\nabla_kT^{kij}\nabla_iu\nabla_ju=\nabla_k E^{kij}\nabla_iu\nabla_ju-\frac{1}{5}P^{ik}\nabla_kT^j\nabla_iu\nabla_ju\\
+&+\frac{2}{5}T^{ijk}\nabla_iu\nabla_ju\nabla_ku+\frac{2}{5}T^{i}\nabla_iu\Box u\\
+=&\nabla_k E^{kij}\nabla_iu\nabla_ju-\frac{1}{5}\left(P^{ik}P^{jl}\nabla^2_{k,l}u+T^{ijk}\nabla_ku\right)\nabla_iu\nabla_ju\\
+&+\frac{2}{5}T^{ijk}\nabla_iu\nabla_ju\nabla_ku+\frac{2}{5}T^{i}\nabla_iu\Box u\\
+=&\nabla_k E^{kij}\nabla_iu\nabla_ju-\frac{1}{5}T^iT^j\nabla^2_{i,j}u\\
+&+\frac{1}{5}T^{ijk}\nabla_iu\nabla_ju\nabla_ku+\frac{2}{5}T^{i}\nabla_iu\Box u.
 \end{align*}
 \end{proof}
 \begin{lemma}
-\begin{align}
-(\partial_t \Box-\Box\partial_t) u=&\partial_tP^{ij}\cdot\nabla_i\nabla_ju.
-\end{align}
+\begin{align*}
+\frac{1}{2}\Box\left(P^{ij}\nabla_i u\nabla_ju\right)=&\frac{1}{2}\Box P^{ij}\nabla_i u\nabla_ju+2T^{ijk}\nabla^2_{i,j}u\nabla_ku\\
+&+T^i\Box\nabla_i u+P^{kl}P^{ij}\nabla^2_{l,i}u\nabla^2_{k,j}u.
+\end{align*}
+\end{lemma}
+\begin{proof}
+\begin{align*}
+\Box\left(P^{ij}\nabla_i u\nabla_ju\right)=&P^{kl}\nabla_k\left(\nabla_lP^{ij}\nabla_iu\nabla_ju+2P^{ij}\nabla^2_{l,i}u\nabla_ju\right)\\
+=&\Box P^{ij}\nabla_i u\nabla_ju+2T^{kij}\nabla^2_{k,i}u\nabla_ju\\
+&+2T^{lij}\nabla^2_{l,i}u\nabla_ju+2T^i\Box\nabla_i u+2P^{kl}P^{ij}\nabla^2_{l,i}u\nabla^2_{k,j}u.
+\end{align*}
+\end{proof}
+\begin{lemma}
+\begin{align*}
+(\partial_t \Box-\Box\partial_t) u=
+&-\det P\Delta u-H\Box u+\frac{1}{4}T^i\nabla_iu\Box u-\frac{1}{4}T^iT^j\nabla^2_{i,j}u\\
+&+\frac{1}{2}(\Box u)^2-\frac{1}{2}P^{ik}P^{jl}\nabla^2_{k,l}u\nabla^2_{i,j}u\\
+&+\left(\nabla_kD^{knm}+\frac{1}{2}D^{kmn}\nabla_ku\right)\nabla^2_{m,n}u.
+\end{align*}
 \end{lemma}
 \begin{proof}
 \begin{align*}
 (\partial_t \Box-\Box \partial_t)u
-=&\partial_tP^{ij}\cdot\nabla^2_{i,j}u-P^{ij}\partial_t\Gamma_{ij}^k\cdot\nabla_ku.
+=&\partial_tP^{ij}\nabla^2_{i,j}u-P^{ij}\partial_t\Gamma_{ij}^k\nabla_ku.
 \end{align*}
 A calculation shows that the time derivative of the Christoffel symbols is give by
-\begin{align}
+\begin{align*}
 \partial_t \Gamma_{ij}^k&=g^{kl}\left(\nabla_ih_{jl}+\nabla_jh_{il}-\nabla_{l}h_{ij}\right).
-\end{align}
+\end{align*}
 Thus using identity (\ref{equ: important}) we calculate
 \begin{align*}
 P^{ij}\partial_t \Gamma_{ij}^k=&g^{kl}\left(P^{ij}\nabla_ih_{jl}+P^{ij}\nabla_jh_{il}-P^{ij}\nabla_{l}h_{ij}\right)\\
 =&g^{kl}\left(\frac{1}{2}P^{ij}\nabla_lh_{ij}+\frac{1}{2}P^{ij}\nabla_lh_{ij}-P^{ij}\nabla_{l}h_{ij}\right)=0.
 \end{align*}
+Hence the claim follows from Lemma \ref{ev u}.
 \end{proof}
 \begin{lemma}
-\begin{equation}
--2\partial_tH=4\|h\|^2+2\frac{(h^2)_{ij}}{\det P}\partial_tP^{ij}-2H\partial_tu.
-\end{equation}
+\begin{align*}
+-2\partial_tH&=2\|h\|^2+2H^2-\frac{1}{2}HT^i\nabla_iu
+\\&-\frac{1}{2}\det P |\nabla u|^2
+-H\Box u-\det P\Delta u\\
+&+2\left(\nabla_kD^{knm}+\frac{1}{2}D^{kmn}\nabla_ku\right)h_m^lV_{ln}
+-H\left|D^{ijk}\right|_V^2.
+\end{align*}
 \end{lemma}
 \begin{proof}
 \begin{align*}
 \partial_tH=&\partial_t(V\det P)\\
 =&\det P\partial_t V+H\partial_tu\\
 =&\det P(-2h^{ij}V_{ij}-g^{ij}V_{im}V_{jn}\partial_tP^{mn})+H\partial_tu\\
-=&-2\|h\|^2-\frac{(h^2)_{mn}}{\det P}\partial_tP^{mn}+H\partial_tu.
+=&-2\|h\|^2+H\partial_tu-\frac{(h^2)_{mn}}{\det P}\partial_tP^{mn}\\
+=&-2\|h\|^2+H\left(\Box u-2H+\frac{1}{2}\left(\left|D^{ijk}\right|^2_V+\left|T^i\right|_V^2\right)\right)\\
+&-\left(\nabla_kD^{knm}+\frac{1}{2}D^{kmn}\nabla_ku\right)\frac{(h^2)_{mn}}{\det P}+\|h\|^2+H^2\\
+&-\frac{1}{4}HT^k\nabla_ku+\frac{1}{4}T^mT^n\frac{(h^2)_{mn}}{\det P}-\frac{1}{2}H\Box u+\frac{1}{2}\det P\Delta u.
 \end{align*}
+To complete the proof, note that
+\[T^iT^j\frac{(h^2)_{ij}}{\det P}=\det P|\nabla u|^2.\]
 \end{proof}
 \section{The computation}
 Let us define
 \begin{align*}
 w_{kl}:=&\nabla^2_{k,l}u+V_{lm}\nabla_kP^{mn}\nabla_nu-2h_k^mV_{ml},\\
-z:=&\left(P^{jl}\nabla_lP^{ik}-P^{kl}\nabla_l P^{ij}\right)\nabla_kV_{ij}=\left(P^{kl}\nabla_l P^{ij}-P^{jl}\nabla_lP^{ik}\right)V_{im}V_{jn}\nabla_kP^{mn},\\
+z:&=\frac{1}{2}\left(\left|D^{ijk}\right|^2_V+\left|T^i\right|_V^2\right),\\
 w:=&P^{kl}w_{kl}=\Box u-2H=\partial_tu-z.\\
 \end{align*}
 Note that we have
-\begin{align}
+\begin{align*}
 (\partial_t-\Box)w
-&=\Box z-2\partial_tH+\partial_tP^{ij}\cdot\nabla^2_{i,j}u,\quad P^{ik}P^{jl}w_{ij}w_{kl}\geq \frac{1}{3}w^2.
-\end{align}
+&=\Box z-2\partial_tH+\partial_tP^{ij}\cdot\nabla^2_{i,j}u.
+\end{align*}
 \begin{lemma}
 \begin{align*}
-\Box z-2\partial_tH+\partial_tP^{ij}\cdot\nabla_i\nabla_ju&=P^{ij}\nabla_i u\nabla_j w+ \frac{1}{2}\left(P^{ik}P^{jl}w_{ij}w_{kl}+w^2\right).\\
+(\partial_t-\Box)w&=P^{ij}\nabla_i u\nabla_j w+ \frac{1}{2}\left(P^{ik}P^{jl}w_{ij}w_{kl}+w^2\right)+f(D^{ijk}).\\
 \end{align*}
 \end{lemma}
 \begin{proof}
@@ -319,42 +373,55 @@ We have
 P^{ik}P^{jl}w_{ij}w_{kl}=&P^{ik}P^{jl}\nabla^2_{i,j}u\nabla^2_{k,l}u+2P^{ik}P^{jl}V_{lm}\nabla_kP^{mn}\nabla_nu\nabla^2_{i,j}u\\
 &-4P^{ik}P^{jl}h_k^mV_{ml}\nabla^2_{i,j}u+P^{ik}P^{jl}V_{jr}V_{lm}\nabla_iP^{rs}\nabla_kP^{mn}\nabla_su\nabla_nu\\
 &-4P^{ik}P^{jl}V_{jr}h_k^mV_{ml}\nabla_iP^{rs}\nabla_su+4P^{ik}P^{jl}h_i^rV_{rj}h_k^mV_{ml}\\
-=&P^{ik}P^{jl}\nabla^2_{i,j}u\nabla^2_{k,l}u+2P^{ik}\nabla_kP^{nj}\nabla_nu\nabla^2_{i,j}u\\
-&-4\det P g^{ij}\nabla^2_{i,j}u+P^{ik}V_{jr}\nabla_iP^{rs}\nabla_kP^{jn}\nabla_su\nabla_nu\\
-&-4h_{ir}\nabla_iP^{rs}\nabla_su+4\|h\|^2\\
-=&P^{ik}P^{jl}\nabla^2_{i,j}u\nabla^2_{k,l}u+2T^{ijk}\nabla_ku\nabla^2_{i,j}u\\
-&-4\det P \Delta u+T^{ijk}V_{jr}\nabla_iP^{rs}\nabla_su\nabla_ku\\
-&-4h_{ir}\nabla_iP^{rs}\nabla_su+4\|h\|^2.
+=&P^{ik}P^{jl}\nabla^2_{i,j}u\nabla^2_{k,l}u+2P^{ik}\nabla_kP^{nj}\nabla_nu\nabla^2_{i,j}u-4\det P g^{ij}\nabla^2_{i,j}u\\
+&+P^{ik}V_{jr}\nabla_iP^{rs}\nabla_kP^{jn}\nabla_su\nabla_nu-4h^i_r\nabla_iP^{rs}\nabla_su+4\|h\|^2\\
+=&P^{ik}P^{jl}\nabla^2_{i,j}u\nabla^2_{k,l}u+ {2T^{ijk}\nabla^2_{i,j}u\nabla_ku}-4\det P \Delta u\\
+&+T^{ijk}V_{jr}\nabla_iP^{rs}\nabla_su\nabla_ku-4h_{j}^i\nabla_iP^{jk}\nabla_ku+ {4\|h\|^2}\\
+=&P^{ik}P^{jl}\nabla^2_{i,j}u\nabla^2_{k,l}u+ {2T^{ijk}\nabla^2_{i,j}u\nabla_ku}-4\det P \Delta u-4h_{j}^i\nabla_iP^{jk}\nabla_ku\\
+&+ {4\|h\|^2}+E^{ijk}V_{jr}\nabla_iP^{rs}\nabla_su\nabla_ku+\frac{1}{5}T^{ijk}\nabla_iu\nabla_ju\nabla_ku.
 \end{align*}
 We also have
 \begin{align*}
-w^2=&(\Box u)^2-4H\Box u+4H^2.
+w^2=& {(\Box u)^2-4H\Box u}+ {4H^2}.
 \end{align*}
 Next we calculate
 \begin{align*}
 \nabla_k w=&\nabla_k\Box u-2g^{ij}\nabla_k(V_{ij}\det P)\\
-=&\nabla_k(P^{ij}\nabla^2_{i,j} u)+\frac{2}{\det P}(h^2)_{ij}\nabla_kP^{ij}-2H\nabla_ku\\
-=&\nabla_kP^{ij}\nabla^2_{i,j}u+2h_k^i\nabla_iu+\Box\nabla_ku+\frac{2}{\det P}(h^2)_{ij}\nabla_kP^{ij}-2H\nabla_ku.
+=&\nabla_k(P^{ij}\nabla^2_{i,j} u)+2h_i^mV_{mj}\nabla_kP^{ij}-2H\nabla_ku\\
+=&\nabla_kP^{ij}\nabla^2_{i,j}u+2h_k^i\nabla_iu+\Box\nabla_ku+2h_i^mV_{mj}\nabla_kP^{ij}-2H\nabla_ku.
 \end{align*}
 Therefore, we obtain
 \begin{align*}
 P^{kl}\nabla_k w\nabla_lu
-=&P^{kl}\nabla_kP^{ij}\nabla_lu\nabla^2_{i,j}u+2\det Pg^{ij}\nabla_iu\nabla_ju+P^{kl}\Box\nabla_ku\nabla_lu\\
-&+\frac{2}{\det P}(h^2)_{ij}P^{kl}\nabla_kP^{ij}\nabla_lu-2HP^{kl}\nabla_ku\nabla_lu\\
-=&T^{kij}\nabla_lu\nabla^2_{i,j}u+2\det Pg^{ij}\nabla_iu\nabla_ju+P^{kl}\Box\nabla_ku\nabla_lu\\
-&+\frac{2}{\det P}(h^2)_{ij}T^{lij}\nabla_lu-2HP^{kl}\nabla_ku\nabla_lu.
+=&P^{kl}\nabla_kP^{ij}\nabla_lu\nabla^2_{i,j}u+2\det P|\nabla u|^2+P^{kl}\Box\nabla_ku\nabla_lu\\
+&+2h_i^mV_{mj}P^{kl}\nabla_kP^{ij}\nabla_lu-2HP^{kl}\nabla_ku\nabla_lu\\
+=&T^{lij}\nabla^2_{i,j}u\nabla_lu+2\det P|\nabla u|^2+T^{k}\Box\nabla_ku\\
+&+2h_i^mV_{mj}T^{lij}\nabla_lu-2HT^{k}\nabla_ku\\
+=& {T^{ilj}\nabla^2_{i,j}u\nabla_lu}+\left(D^{lij}+\frac{1}{2}\left(P^{ij}T^l-P^{lj}T^i\right)\right)\nabla^2_{i,j}u\nabla_lu\\
+&+2\det P|\nabla u|^2+ {T^{k}\Box\nabla_ku}+2h_i^mV_{mj}T^{lij}\nabla_lu-2HT^{k}\nabla_ku\\
+=& {T^{ijl}\nabla^2_{i,j}u\nabla_lu}+\frac{1}{2}T^l\Box u\nabla_lu-\frac{1}{2}T^iT^j\nabla^2_{i,j}u+2\det P|\nabla u|^2\\
+&+{T^{k}\Box\nabla_ku}+2h_i^kV_{kj}T^{lij}\nabla_lu-2HT^{k}\nabla_ku+D^{lij}\nabla^2_{i,j}u\nabla_lu\\
+=&{T^{ijl}\nabla^2_{i,j}u\nabla_lu}+\frac{1}{2}T^l\Box u\nabla_lu-\frac{1}{2}T^iT^j\nabla^2_{i,j}u+2\det P|\nabla u|^2\\
+&+{T^{k}\Box\nabla_ku}+2h_i^kV_{kj}T^{ijl}\nabla_lu-2HT^{k}\nabla_ku+D^{lij}\nabla^2_{i,j}u\nabla_lu\\
+&+2h_i^kV_{kj}D^{lij}\nabla_lu+h_i^kV_{kj}(P^{ij}T^l-P^{jl}T^i)\nabla_lu\\
+=&{T^{ijk}\nabla^2_{i,j}u\nabla_ku}+\frac{1}{2}T^i\Box u\nabla_iu-\frac{1}{2}T^iT^j\nabla^2_{i,j}u+\det P|\nabla u|^2+{T^i\Box\nabla_iu}\\
+&+2h_{j}^i\nabla_iP^{jk}\nabla_ku-HT^{i}\nabla_iu+\left(2h_i^kV_{kj}+\nabla^2_{i,j}u\right)D^{lij}\nabla_lu.
 \end{align*}
-In addition, we have
+\end{proof}
+
+\bibliographystyle{amsplain}
+\begin{thebibliography}{10}
+\bibitem{Andrewsharnack} B. Andrews. ``Harnack inequalities for evolving hypersurfaces." Mathematische Zeitschrift 217(1994): 179--197.
+\bibitem{Chowcross2002} B. Chow and R.S. Hamilton. ``The cross curvature flow of 3-manifolds with negative sectional curvature." Turkish Journal of Mathematics 28(2004): 1--10.
+\bibitem{BIS4} P. Bryan, M.N. Ivaki, J. Scheuer. ``Harnack inequalities for curvature flows in Riemannian and Lorentzian manifolds." Preprint (2016).
+\end{thebibliography}
+\end{document}
+
 \begin{align*}
--2\partial_tH+\partial_tP^{ij}\cdot\nabla^2_{i,j}u=&4\|h\|^2+2\frac{(h^2)_{ij}}{\det P}\Box P^{ij}-2\frac{(h^2)_{ij}}{\det P}\nabla_lP^{ik}\nabla_kP^{jl}\\
-&-2\|h\|^2-2\frac{H}{\det P}P^{ij}(h^2)_{ij}\\
-&+\Box P^{ij}\nabla^2_{i,j}u-\nabla_lP^{ik}\nabla_kP^{jl}\nabla^2_{i,j}u\\
-&-g^{ij}\det P\nabla^2_{i,j}u-H\Box u-2H\partial_tu\\
-=&2\|h\|^2+2\frac{(h^2)_{ij}}{\det P}\Box P^{ij}-2\frac{(h^2)_{ij}}{\det P}\nabla_lP^{ik}\nabla_kP^{jl}\\
-&+2H^2+\Box P^{ij}\nabla^2_{i,j}u-\nabla_lP^{ik}\nabla_kP^{jl}\nabla^2_{i,j}u\\
-&-g^{ij}\det P\nabla^2_{i,j}u-3H\Box u-2Hz.
+\nabla^2_{i,j}u+V_{ac}V_{bd}\nabla_iP^{cd}\nabla_jP^{ab}=& V_{ab}\nabla^2_{i,j}P^{ab},\\
+\nabla_iu&\leftrightarrow V_{ab}\nabla_iP^{ab}.
 \end{align*}
-On the other hand, we have
+
 \begin{align*}
 \nabla_s z=&\nabla_s\left(\left(P^{kl}\nabla_l P^{ij}-P^{jl}\nabla_lP^{ik}\right)V_{im}V_{jn}\nabla_kP^{mn}\right)\\
 =&V_{im}V_{jn}\nabla_kP^{mn}\nabla_s P^{kl}\nabla_l P^{ij}\\
@@ -405,23 +472,4 @@ Therefore
 &-V_{ia}V_{mb}V_{nq}\nabla_rP^{ab}\nabla_sP^{lq}\nabla_lP^{ik}\nabla_kP^{mn}-V_{na}V_{qb}V_{im}\nabla_rP^{ab}\nabla_sP^{lq}\nabla_lP^{ik}\nabla_kP^{mn}\\
 &+V_{im}V_{nq}\nabla^2_{r,s}P^{lq}\nabla_lP^{ik}\nabla_kP^{mn}+V_{im}V_{nq}\nabla_sP^{lq}\nabla^2_{r,l}P^{ik}\nabla_kP^{mn}+V_{im}V_{nq}\nabla_sP^{lq}\nabla_lP^{ik}\nabla^2_{r,k}P^{mn}\\
 &+V_{ia}V_{mb}\nabla_rP^{ab}\nabla_lP^{ik}\nabla^2_{s,k}P^{ml}-V_{im}\nabla^2_{r,l}P^{ik}\nabla^2_{s,k}P^{ml}-V_{im}\nabla_lP^{ik}\nabla_r\nabla^2_{s,k}P^{ml}.
-\end{align*}
-
-\begin{align*}
-\nabla^2_{i,j}u+V_{ac}V_{bd}\nabla_iP^{cd}\nabla_jP^{ab}=& V_{ab}\nabla^2_{i,j}P^{ab},\\
-\nabla_iu&\leftrightarrow V_{ab}\nabla_iP^{ab}.
-\end{align*}
-\end{proof}
-
-\bibliographystyle{amsplain}
-\begin{thebibliography}{10}
-\bibitem{Andrewsharnack} B. Andrews. ``Harnack inequalities for evolving hypersurfaces." Mathematische Zeitschrift 217(1994): 179--197.
-\bibitem{Chowcross2002} B. Chow and R.S. Hamilton. ``The cross curvature flow of 3-manifolds with negative sectional curvature." Turkish Journal of Mathematics 28(2004): 1--10.
-\bibitem{BIS4} P. Bryan, M.N. Ivaki, J. Scheuer. ``Harnack inequalities for curvature flows in Riemannian and Lorentzian manifolds." Preprint (2016).
-\end{thebibliography}
-\end{document}
-
-\begin{align*}
-\nabla^2_{i,j}u+V_{ac}V_{bd}\nabla_iP^{cd}\nabla_jP^{ab}=& V_{ab}\nabla^2_{i,j}P^{ab},\\
-\nabla_iu&\leftrightarrow V_{ab}\nabla_iP^{ab}.
 \end{align*} 
