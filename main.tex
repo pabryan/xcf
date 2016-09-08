@@ -114,7 +114,7 @@ To obtain a suitable Harnack quadratic for XCF, we follow Hamilton's procedure i
 
 We take the covariant derivative of both sides of (\ref{soliton 0}) with respect to $\nabla_l:$
 \begin{align}\label{eq: soliton derv}
-\nabla_lh_{ij}+\nabla^2_{l,i}W_j+\nabla^2_{l,j}W_i=0.
+2\nabla_lh_{ij}+\nabla^2_{l,i}W_j+\nabla^2_{l,j}W_i=0.
 \end{align}
 We also take the trace of (\ref{soliton 0}) with respect to $P^{ij}$:
 \begin{align}\label{trace}
@@ -126,11 +126,11 @@ Taking the covariant derivative of both sides with respect to $\nabla_l$ yields
 \end{align*}
 In view of
 \begin{align*}
-\nabla^2_{l,i}W_j-\nabla^2_{i,l}W_j={R_{lij}}^mW_m,
+\nabla^2_{l,i}W_j-\nabla^2_{i,l}W_j=R_{lijk} g^{km}W_m,
 \end{align*}
 we obtain
 \begin{align}\label{equ00}
-\lambda \nabla_l P&=3\nabla_l\det P+\nabla_l P^{ij}\nabla_iW_j+P^{ij}(\nabla^2_{i,l}W_j+{R_{lij}}^mW_m)\\
+\lambda \nabla_l P&=3\nabla_l\det P+\nabla_l P^{ij}\nabla_iW_j+P^{ij}(\nabla^2_{i,l}W_m -R_{likj}g^{km}W_m)\\
 &=3\nabla_l\det P+\nabla_l P^{ij}\nabla_iW_j+P^{ij}\nabla^2_{i,l}W_j+2h_l^mW_m.\nonumber
 \end{align}
 For now on  we consider gradient solitons which are by definition, when $W_i=\nabla_if$ for a smooth function (note that in this case $\nabla_iW_j=\nabla_jW_i$).
@@ -177,10 +177,14 @@ So Lemma \ref{ev u} proposes the following candidate as the  Harnack inequality:
 \end{align}
  where
  \[T^{ijk}=E^{ijk}-\frac{1}{10}\left(P^{ij}T^k+P^{ik}T^j\right)+\frac{2}{5}P^{jk}T^i,\]
- and we have $T^{ijk}V_{ij}=0,$ $V_{ij}E^{ijk}=V_{ik}E^{ijk}=V_{jk}E^{ijk}=0;$ see \cite[Prop. 9]{Chowcross2002}. In the case of embeddability into Minkowski or Euclidean 4-space, we have
+ and we have $T^{ijk}V_{ij}=0,$ $V_{ij}E^{ijk}=V_{ik}E^{ijk}=V_{jk}E^{ijk}=0;$ see \cite[Prop. 9]{Chowcross2002}. In the case of embeddability into Minkowski 4-space, we have
  \begin{align*}
 \left|E^{ijk}-E^{jik}\right|^2_V=0,\quad\frac{1}{2}\left|T^i\right|_V^2=\frac{1}{2}P^{ij}\nabla_i u\nabla_ju.
  \end{align*}
+In fact, $E^{ijk}=E^{jik}$ due to the Codazzi equation which yields the full symmetry of the covariant derivative of the second fundamental form. In general, if 
+$\alpha_{ij}:=\sqrt{\det P}V_{ij}$ satisfies
+$\nabla_k\alpha_{ij}=\nabla_i\alpha_{jk},$
+then \[E^{ijk}=E^{jik}.\]
 \begin{theorem}
 Let $(M^3,g(t))$, $t\in [0,T)$, be a solution to the XCF on a closed 3-manifold starting from a metric $g(0)$ with negative sectional curvature. Then $g(t)$ has negative sectional curvature for all $t<T.$
 Moreover, it is not possible that $T<\infty$ and $\inf_{M\times [0,T)}\det P=0.$
@@ -213,7 +217,6 @@ Therefore, by (\ref{eq0}) we obtain
 \begin{align*}
 \Box W_l-2h_l^kW_k=0\Rightarrow W^l\Box W_l-2h_l^kW_kW^l=0.
 \end{align*}
-Let us point out the first identity on the previous line becomes exactly (\ref{eq:a}) if $W=\nabla f.$
 The second identity reads
 \begin{align}\label{soliton equation for W}
 \Box \frac{1}{2}|W|_g^2-P^{kl}g^{ij}\nabla_kW_i\nabla_lW_j-2h^{kl}W_kW_l=0.
@@ -230,8 +233,12 @@ P^{ij}\nabla_ih_{jk}&=\frac{1}{2}P^{ij}\nabla_kh_{ij},\quad
 T^k\nabla_kP^{ij}&=T^{kij}\nabla_ku,\quad P^{ij}\nabla_j T^k=P^{ij}P^{kl}\nabla^2_{j,l}u+T^{ikl}\nabla_lu,\\
 T^{ijk}-T^{jik}&=E^{ijk}-E^{jik}+\frac{1}{2}\left(P^{jk}T^i-P^{ik}T^j\right).
 \end{align}
-For simplicity, we write
+For simplicity, write
 \[D^{ijk}=E^{ijk}-E^{jik}.\]
+The tensor $D^{ijk}$ satisfies
+\begin{align*}
+D^{ijk}=-D^{jik},\quad D^{ijk}+D^{kij}+D^{jki}=0.
+\end{align*}
 \begin{lemma}\label{ev u}
 The following evolution equations hold:
 \begin{align*}
@@ -272,18 +279,19 @@ The second evolution equation follows from \cite[Prop. 9]{Chowcross2002} and  \c
 \end{proof}
 \begin{lemma}
 \begin{align*}
-\frac{1}{2}\Box P^{ij}\nabla_iu\nabla_ju=&\frac{1}{2}\nabla_k E^{kij}\nabla_iu\nabla_ju-\frac{1}{10}T^iT^j\nabla^2_{i,j}u\\
-&+\frac{1}{10}T^{ijk}\nabla_iu\nabla_ju\nabla_ku+\frac{1}{5}T^{i}\nabla_iu\Box u.
+\frac{1}{2}\Box P^{ij}\nabla_iu\nabla_ju=&\frac{1}{2}\nabla_kP^{mi}\nabla_mP^{kj}\nabla_iu\nabla_ju-\frac{1}{2}T^m{{R_{km}}^k}_nP^{ni}\nabla_iu-\frac{1}{2}T^m{{R_{km}}^i}_nP^{kn}\nabla_iu\\
+&+\frac{1}{4}T^i\Box u\nabla_iu-\frac{1}{4}T^iT^j\nabla^2_{i,j}u+\frac{1}{2}\nabla_k D^{kij}\nabla_iu\nabla_ju.
 \end{align*}
 \end{lemma}
 \begin{proof}
 \begin{align*}
-\Box P^{ij}\nabla_iu\nabla_ju=&\nabla_kT^{kij}\nabla_iu\nabla_ju=\nabla_k E^{kij}\nabla_iu\nabla_ju-\frac{1}{5}P^{ik}\nabla_kT^j\nabla_iu\nabla_ju\\
-&+\frac{2}{5}T^{ijk}\nabla_iu\nabla_ju\nabla_ku+\frac{2}{5}T^{i}\nabla_iu\Box u\\
-=&\nabla_k E^{kij}\nabla_iu\nabla_ju-\frac{1}{5}\left(P^{ik}P^{jl}\nabla^2_{k,l}u+T^{ijk}\nabla_ku\right)\nabla_iu\nabla_ju\\
-&+\frac{2}{5}T^{ijk}\nabla_iu\nabla_ju\nabla_ku+\frac{2}{5}T^{i}\nabla_iu\Box u\\
-=&\nabla_k E^{kij}\nabla_iu\nabla_ju-\frac{1}{5}T^iT^j\nabla^2_{i,j}u\\
-&+\frac{1}{5}T^{ijk}\nabla_iu\nabla_ju\nabla_ku+\frac{2}{5}T^{i}\nabla_iu\Box u.
+\Box P^{ij}\nabla_iu\nabla_ju=&\nabla_kT^{kij}\nabla_iu\nabla_ju\\
+=&\nabla_kT^{ikj}\nabla_iu\nabla_ju+\nabla_k D^{kij}\nabla_iu\nabla_ju+\frac{1}{2}\nabla_k\left(P^{ij}T^k-P^{jk}T^i\right)\nabla_iu\nabla_ju\\
+=&\nabla_k(P^{im}\nabla_mP^{kj})\nabla_iu\nabla_ju+\nabla_k D^{kij}\nabla_iu\nabla_ju+\frac{1}{2}T^i\Box u\nabla_iu-\frac{1}{2}T^iT^j\nabla^2_{i,j}u\\
+=&\nabla_kP^{im}\nabla_mP^{kj}\nabla_iu\nabla_ju+T^m\nabla^2_{k,m}P^{ki}\nabla_iu+\frac{1}{2}T^i\Box u\nabla_iu\\
+&-\frac{1}{2}T^iT^j\nabla^2_{i,j}u+\nabla_k D^{kij}\nabla_iu\nabla_ju\\
+=&\nabla_kP^{im}\nabla_mP^{kj}\nabla_iu\nabla_ju-T^m{{R_{km}}^k}_nP^{ni}\nabla_iu-T^m{{R_{km}}^i}_nP^{kn}\nabla_iu\\
+&+\frac{1}{2}T^i\Box u\nabla_iu-\frac{1}{2}T^iT^j\nabla^2_{i,j}u+\nabla_k D^{kij}\nabla_iu\nabla_ju.
 \end{align*}
 \end{proof}
 \begin{lemma}
@@ -312,7 +320,7 @@ The second evolution equation follows from \cite[Prop. 9]{Chowcross2002} and  \c
 (\partial_t \Box-\Box \partial_t)u
 =&\partial_tP^{ij}\nabla^2_{i,j}u-P^{ij}\partial_t\Gamma_{ij}^k\nabla_ku.
 \end{align*}
-A calculation shows that the time derivative of the Christoffel symbols is give by
+A calculation shows that the time derivative of the Christoffel symbols is given by
 \begin{align*}
 \partial_t \Gamma_{ij}^k&=g^{kl}\left(\nabla_ih_{jl}+\nabla_jh_{il}-\nabla_{l}h_{ij}\right).
 \end{align*}
@@ -337,25 +345,30 @@ Hence the claim follows from Lemma \ref{ev u}.
 \partial_tH=&\partial_t(V\det P)\\
 =&\det P\partial_t V+H\partial_tu\\
 =&\det P(-2h^{ij}V_{ij}-g^{ij}V_{im}V_{jn}\partial_tP^{mn})+H\partial_tu\\
-=&-2\|h\|^2+H\partial_tu-\frac{(h^2)_{mn}}{\det P}\partial_tP^{mn}\\
+=&-2\|h\|^2+H\partial_tu-h_m^lV_{ln}\partial_tP^{mn}\\
 =&-2\|h\|^2+H\left(\Box u-2H+\frac{1}{2}\left(\left|D^{ijk}\right|^2_V+\left|T^i\right|_V^2\right)\right)\\
-&-\left(\nabla_kD^{knm}+\frac{1}{2}D^{kmn}\nabla_ku\right)\frac{(h^2)_{mn}}{\det P}+\|h\|^2+H^2\\
-&-\frac{1}{4}HT^k\nabla_ku+\frac{1}{4}T^mT^n\frac{(h^2)_{mn}}{\det P}-\frac{1}{2}H\Box u+\frac{1}{2}\det P\Delta u.
+&-\left(\nabla_kD^{knm}+\frac{1}{2}D^{kmn}\nabla_ku\right)h_m^lV_{ln}+\|h\|^2+H^2\\
+&-\frac{1}{4}HT^k\nabla_ku+\frac{1}{4}T^mT^nh_m^lV_{ln}-\frac{1}{2}H\Box u+\frac{1}{2}\det P\Delta u.
 \end{align*}
 To complete the proof, note that
-\[T^iT^j\frac{(h^2)_{ij}}{\det P}=\det P|\nabla u|^2.\]
+\[T^iT^jh_i^lV_{lj}=\det P|\nabla u|^2.\]
 \end{proof}
+\begin{lemma}
+\[\Box\left|D^{ijk}\right|^2_V=\cdots\]
+\end{lemma}
+\begin{lemma}
+\[\partial_t\left|D^{ijk}\right|^2_V=\Box\left|D^{ijk}\right|^2_V+\cdots\]
+\end{lemma}
 \section{The computation}
 Let us define
 \begin{align*}
 w_{kl}:=&\nabla^2_{k,l}u+V_{lm}\nabla_kP^{mn}\nabla_nu-2h_k^mV_{ml},\\
-z:&=\frac{1}{2}\left(\left|D^{ijk}\right|^2_V+\left|T^i\right|_V^2\right),\\
-w:=&P^{kl}w_{kl}=\Box u-2H=\partial_tu-z.\\
+w:=&\Box u-2H=\partial_tu-\frac{1}{2}\left(\left|D^{ijk}\right|^2_V+\left|T^i\right|_V^2\right).
 \end{align*}
 Note that we have
 \begin{align*}
 (\partial_t-\Box)w
-&=\Box z-2\partial_tH+\partial_tP^{ij}\cdot\nabla^2_{i,j}u.
+&= \frac{1}{2}\Box\left|D^{ijk}\right|^2_V+\frac{1}{2}\Box\left|T^i\right|_V^2+(\partial_t \Box-\Box\partial_t) u-2\partial_tH.
 \end{align*}
 \begin{lemma}
 \begin{align*}
@@ -378,11 +391,17 @@ P^{ik}P^{jl}w_{ij}w_{kl}=&P^{ik}P^{jl}\nabla^2_{i,j}u\nabla^2_{k,l}u+2P^{ik}P^{j
 =&P^{ik}P^{jl}\nabla^2_{i,j}u\nabla^2_{k,l}u+ {2T^{ijk}\nabla^2_{i,j}u\nabla_ku}-4\det P \Delta u\\
 &+T^{ijk}V_{jr}\nabla_iP^{rs}\nabla_su\nabla_ku-4h_{j}^i\nabla_iP^{jk}\nabla_ku+ {4\|h\|^2}\\
 =&P^{ik}P^{jl}\nabla^2_{i,j}u\nabla^2_{k,l}u+ {2T^{ijk}\nabla^2_{i,j}u\nabla_ku}-4\det P \Delta u-4h_{j}^i\nabla_iP^{jk}\nabla_ku\\
-&+ {4\|h\|^2}+E^{ijk}V_{jr}\nabla_iP^{rs}\nabla_su\nabla_ku+\frac{1}{5}T^{ijk}\nabla_iu\nabla_ju\nabla_ku.
+&+ {4\|h\|^2}+T^{jik}V_{jr}\nabla_iP^{rs}\nabla_su\nabla_ku+D^{ijk}V_{jr}\nabla_iP^{rs}\nabla_su\nabla_ku\\
+&+\frac{1}{2}\left(P^{jk}T^i-P^{ik}T^j\right)V_{jr}\nabla_iP^{rs}\nabla_su\nabla_ku.
+\end{align*}
+Therefore,
+\begin{align*}
+\frac{1}{2}P^{ik}P^{jl}w_{ij}w_{kl}=&\frac{1}{2}P^{ik}P^{jl}\nabla^2_{i,j}u\nabla^2_{k,l}u+ {T^{ijk}\nabla^2_{i,j}u\nabla_ku}-2\det P \Delta u-2h_{j}^i\nabla_iP^{jk}\nabla_ku\\
+&+ {2\|h\|^2}+\frac{1}{2}\nabla_mP^{ik}\nabla_iP^{ms}\nabla_su\nabla_ku+\frac{1}{2}D^{ijk}V_{jr}\nabla_iP^{rs}\nabla_su\nabla_ku.
 \end{align*}
 We also have
 \begin{align*}
-w^2=& {(\Box u)^2-4H\Box u}+ {4H^2}.
+\frac{1}{2}w^2=& {\frac{1}{2}(\Box u)^2-2H\Box u}+ {2H^2}.
 \end{align*}
 Next we calculate
 \begin{align*}
@@ -404,8 +423,8 @@ P^{kl}\nabla_k w\nabla_lu
 =&{T^{ijl}\nabla^2_{i,j}u\nabla_lu}+\frac{1}{2}T^l\Box u\nabla_lu-\frac{1}{2}T^iT^j\nabla^2_{i,j}u+2\det P|\nabla u|^2\\
 &+{T^{k}\Box\nabla_ku}+2h_i^kV_{kj}T^{ijl}\nabla_lu-2HT^{k}\nabla_ku+D^{lij}\nabla^2_{i,j}u\nabla_lu\\
 &+2h_i^kV_{kj}D^{lij}\nabla_lu+h_i^kV_{kj}(P^{ij}T^l-P^{jl}T^i)\nabla_lu\\
-=&{T^{ijk}\nabla^2_{i,j}u\nabla_ku}+\frac{1}{2}T^i\Box u\nabla_iu-\frac{1}{2}T^iT^j\nabla^2_{i,j}u+\det P|\nabla u|^2+{T^i\Box\nabla_iu}\\
-&+2h_{j}^i\nabla_iP^{jk}\nabla_ku-HT^{i}\nabla_iu+\left(2h_i^kV_{kj}+\nabla^2_{i,j}u\right)D^{lij}\nabla_lu.
+=&{T^{ijk}\nabla^2_{i,j}u\nabla_ku}+\frac{1}{2}T^i\Box u\nabla_iu-\frac{1}{2}T^iT^j\nabla^2_{i,j}u+\det P|\nabla u|^2\\
+&+{T^i\Box\nabla_iu}+2h_{j}^i\nabla_iP^{jk}\nabla_ku-HT^{i}\nabla_iu+\left(2h_i^kV_{kj}+\nabla^2_{i,j}u\right)D^{lij}\nabla_lu.
 \end{align*}
 \end{proof}
 
