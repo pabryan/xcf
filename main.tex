@@ -29,6 +29,8 @@
   }%
 }
 
+\newenvironment{note}{\hrule}{\hrule}
+
 \begin{document}
 
 \title[Cross curvature flow]
@@ -94,6 +96,20 @@ We also write
 P&=g_{ij}P^{ij},\quad V=g^{ij}V_{ij},\quad H=g^{ij}h_{ij},\quad u:=\log\det P\\
 T^{kij}&=P^{kl}\nabla_l P^{ij},\quad T^i=V_{jk}T^{ijk}=P^{ij}\nabla_ju.
 \end{align}
+
+\begin{note}
+We use
+\[
+\nabla_l \det P = (V^i_j \nabla_l P^{jk} g_{ik}) \det P = V_{ij} \nabla_l P^{ij} \det P = h_{ij} \nabla_l P^{ij}
+\]
+to get
+\[
+T^i = V_{jk}T^{ijk} = V_{jk} P^{il}\nabla_l P^{jk} = \frac{1}{\det P} P^{il} h_{jk} \nabla_l P^{jk} = \frac{1}{\det P} P^{il} \nabla_l \det P = P^{il} \nabla_l u.
+\]
+
+It's also worth noting that \(T^{kij} = T^{kji}\).
+\end{note}
+
 In the sequel, $\mu_{ijk}$ is the volume form and is nonzero only when $i,j,k$ are distinct, in which case it is sign of the permutation $(ijk)$. Using the volume form, we may express $P^{mn}$ as
 \begin{equation}
 P^{mn}=-\frac{1}{4}\mu^{ijm}\mu^{kln}R_{ijkl}.
@@ -150,6 +166,13 @@ where we used
 \begin{equation}\label{eq0}
 \frac{P^{ij}}{\det P}\nabla_lh_{ij}=2\nabla_lu,\quad V_{ij}\nabla_lP^{ij}=\nabla_lu.
 \end{equation}
+
+\begin{note}
+\[
+\nabla_l \det P = (V^i_j \nabla_l P^{jk} g_{ik}) \det P = V_{ij} \nabla_l P^{ij} \det P = h_{ij} \nabla_l P^{ij}
+\]
+\end{note}
+
 Taking the covariant derivative of (\ref{eq:a}) with respect to $\nabla_k$ and then using the first soliton equation (\ref{soliton 0}) yields
 \begin{equation*}
 \nabla^2_{k,l}u+\frac{2}{\det P}\nabla_kh_l^mW_m-\frac{2}{\det P}h_l^mW_m\nabla_ku-2V_l^mh_{km}+2\lambda V_{kl}=0.
@@ -158,6 +181,131 @@ We take the trace with respect to $P^{kl}$ and use the first identity in (\ref{e
 \begin{equation}\label{eq:5}
 \Box u-2H+6\lambda=0.
 \end{equation}
+
+\begin{note}
+We can derive most of the soliton equations for general solitons, not just restricted to gradient solitons.
+
+Recall equation (2.1):
+\[
+2\lambda g_{ij}=2h_{ij}+\nabla_iW_j+\nabla_jW_i.
+\]
+and equation (2.2):
+\[
+2\nabla_lh_{ij}+\nabla^2_{l,i}W_j+\nabla^2_{l,j}W_i=0.
+\]
+Rewrite (2.3) as
+\[
+\lambda P = 3 \det P + \frac{1}{2}P^{ij} \left(\nabla_i W_j + \nabla_j W_i\right).
+\]
+Then differentiating, the new (2.4) becomes,
+\[
+\lambda \nabla_l P = 3 \nabla_l \det P + \frac{1}{2}\nabla_l P^{ij} \left(\nabla_i W_j + \nabla_j W_i\right) + \frac{1}{2} P^{ij} \left(\nabla^2_{l,i} W_j + \nabla^2_{l,j} W_i\right)
+\]
+
+Apply (2.1) to the second term above, and (2.2) to the third term to obtain a new (2.5):
+\[
+\lambda \nabla_l P = 3 \nabla_l \det P + \lambda \nabla_l P - \nabla_l P^{ij}h_{ij} - P^{ij} \nabla_l h_{ij}.
+\]
+
+We may rewrite this new (2.5) as
+\[
+3 \nabla_l \det P - h_{ij} \nabla_l P^{ij} - P^{ij} \nabla_l h_{ij} = 0 
+\]
+
+Dividing by \(\det P\) we obtain the trivial identity
+\begin{align*}
+0 &= 3 \nabla_l u - \frac{1}{\det P} h_{ij} \nabla_l P^{ij} - \frac{1}{\det P} P^{ij} \nabla_l h_{ij} \\
+&= 0.
+\end{align*}
+In the second line we used (2.7):
+\[
+\nabla_l \det P = (V^i_j \nabla_l P^{jk} g_{ik}) \det P = V_{ij} \nabla_l P^{ij} \det P = h_{ij} \nabla_l P^{ij}
+\]
+for the second term, and
+\begin{align*}
+P^{ij} \nabla_l h_{ij} &= \det P P^{ij} \nabla_l V_{ij} + P^{ij} V_{ij} \nabla_l \det P \\
+&= -\det P V_{ij} \nabla_l P^{ij} + 3 \nabla_l \det P \\
+&= 2 \nabla_l \det P
+\end{align*}
+for the third term.
+
+So, to get anything non-trivial, we go back to the new (2.4) and apply the Ricci identity,
+\[
+\nabla^2_{l,i} W_j = \nabla^2_{i,l} W_j + R_{lijk} g^{km} W_m
+\]
+to write
+\begin{align*}
+\frac{1}{2} P^{ij} \left(\nabla^2_{l,i} W_j + \nabla^2_{l,j} W_i\right) &= \frac{1}{2} P^{ij} \left(\nabla^2_{i,l} W_j + \nabla^2_{j,l} W_i\right) + \frac{1}{2} P^{ij} \left(R_{lijk} + R_{ljik}\right) g^{km}W_m \\
+&= \frac{1}{2} P^{ij} \left(\nabla^2_{i,l} W_j + \nabla^2_{j,l} W_i\right) - \frac{1}{2} P^{ij} \left(R_{iljk} + R_{jlik}\right) g^{km}W_m \\
+&= \frac{1}{2} P^{ij} \left(\nabla^2_{i,l} W_j + \nabla^2_{j,l} W_i\right) + 2 h_{kl} g^{km} W_m
+\end{align*}
+Then our (2.5) becomes,
+\[
+3 \nabla_l \det P + 2 h_l^m W_m - \nabla_l P^{ij}h_{ij} + \frac{1}{2} P^{ij} \left(\nabla^2_{i,l} W_j + \nabla^2_{j,l} W_i\right) = 0
+\]
+Dividing by \(\det P\) and using (2.7) we get the new (2.6),
+\[
+2 \nabla_l \det u + \frac{2}{\det P} h_l^m W_m + \frac{1}{2\det P} P^{ij} \left(\nabla^2_{i,l} W_j + \nabla^2_{j,l} W_i\right) = 0
+\]
+
+Now we get a little stuck because we can't apply (2.2) to the last term. If we had a symmetric vector field (\(\nabla_i W_j = \nabla_j W_i\)) - in particular if \(W = \operatorname{grad} f\) - then we could write (2.2) as
+\[
+\nabla^2_{l,i} W_j = -\nabla_l h_{ij}.
+\]
+Then we would do as in the paper,
+\begin{align*}
+\frac{1}{2} P^{ij} \left(\nabla^2_{l,i} W_j + \nabla^2_{l,j} W_i\right) &= P^{ij} \nabla^2_{l,i} W_j \\
+&= P^{ij} \nabla^2_{i,l} W_j + 2 h_{kl} g^{km} W_m \\
+&= -P^{ij} \nabla_i h_{lj} + 2 h_{kl} g^{km} W_m \\
+&= -\frac{1}{2} P^{ij} \nabla_l h_{ij} + 2 h_l^m W_m.
+\end{align*}
+In other words,
+\[
+\frac{1}{2} P^{ij} \left(\nabla^2_{i,l} W_j + \nabla^2_{j,l} W_i\right)  = - \frac{1}{2} P^{ij} \nabla_l h_{ij} = - \nabla_l \det P
+\]
+for gradient solitons after also using (2.7). Putting this in the new (2.6) above, we get the same (2.6) as in the paper,
+\[
+\nabla_l u + \frac{2}{\det P} h_l^m W_m = 0.
+\]
+
+Differentiate with respect \(k\):
+\[
+0 = \nabla^2_{k,l} u + \frac{2}{\det P} \nabla_k h_l^m W_m + \frac{2}{\det P} h_l^m \nabla_k W_m - h_l^m W_m \frac{2}{(\det P)^2} \nabla_k \det P
+\]
+Using (2.1) the second term is
+\[
+\frac{2}{\det P} h_l^m \nabla_k W_m =  \frac{2}{\det P} h_l^m \left(\lambda g_{km} - h_{km}\right) = 2 \lambda V_{kl} - 2 V_{km} h_l^m.
+\]
+The third term is
+\[
+h_l^m W_m \frac{2}{(\det P)^2} \nabla_k \det P = \frac{2}{\det P} h_l^m W_m \nabla_k u.
+\]
+
+Thus we get
+\[
+0 = \nabla^2_{k,l} u + \frac{2}{\det P} \left(\nabla_k h_l^m  - h_l^m \nabla_k u\right) W_m + 2 \lambda V_{kl} - 2 V_{km} h_l^m.
+\]
+Tracing with respect to \(P^{kl}\) gives
+\[
+\begin{split}
+P^{kl} h_l^m \nabla_k u &= P^{kl} h_l^m \frac{2}{\det P} P^{ij} \nabla_k h_{ij} \\
+&= g^{sm} P^{kl} \det P V_{ls} \frac{2}{\det P} P^{ij} \nabla_k h_{ij} \\
+&= 2 g^{km} P^{ij} \nabla_k h_{ij} \\
+&= g^{km} P^{ij} \nabla_i h_{jk} \\
+&= P^{ij} \nabla_i h_j^m
+\end{split}
+\]
+which cancels with \(P^{kl} \nabla_k h_l^m\). For the last term,
+\[
+P^{kl} V_{km} h_l^m = \delta^l_m g^{ms} h_{ls} = g^{ms} h_{ms} = H.
+\]
+
+Thus we get (2.8),
+\[
+\Box u - 2 H + 6 \lambda = 0.
+\]
+\end{note}
+
 %We take the trace with respect to $P^{kl}:$
 %\begin{equation}\label{eq:4}
 %\Box u+P^{kl}\nabla_ku\nabla_lu+2\nabla_kuV^k-2H+6\lambda=0.
@@ -177,6 +325,16 @@ So Lemma \ref{ev u} proposes the following candidate as the  Harnack inequality:
 \end{align}
  where
  \[T^{ijk}=E^{ijk}-\frac{1}{10}\left(P^{ij}T^k+P^{ik}T^j\right)+\frac{2}{5}P^{jk}T^i,\]
+
+\begin{note}
+Since \(T\) is symmetric in the last two indices and the non-\(E\) terms on the right hand side also have this symmetry, \(E\) is symmetric in the last two indices.
+
+The second relation below is not in Prop 9, but on p.6. The first one does not appear to be in the reference at all! That follows by,
+\[
+T^{ijk} V_{ij} = V_{ij} P^{il} \nabla_l P^{jk} = \nabla_j P^{jk} = 0.
+\]
+\end{note}
+
  and we have $T^{ijk}V_{ij}=0,$ $V_{ij}E^{ijk}=V_{ik}E^{ijk}=V_{jk}E^{ijk}=0;$ see \cite[Prop. 9]{Chowcross2002}. In the case of embeddability into Minkowski 4-space, we have
  \begin{align*}
 \left|E^{ijk}-E^{jik}\right|^2_V=0,\quad\frac{1}{2}\left|T^i\right|_V^2=\frac{1}{2}P^{ij}\nabla_i u\nabla_ju.
@@ -194,6 +352,14 @@ Suppose $0<t_{\ast}<T$ is the first time that $g(t_{\ast})$ has a zero sectional
 By our Harnack inequality, we know that $t^{\frac{3}{2}}\det P(\cdot,t) $ is increasing in time on $(0,t_{\ast})$; therefore, for any $t\in [t_{\ast}/2, t_{\ast})$ we have
 \[\det P(\cdot,t)\geq \det P(\cdot,t_{\ast}/2)\left(\frac{1}{2}\right)^{\frac{3}{2}}>0.\]
 Thus by continuity of the solution we obtain $\det P(\cdot,t_{\ast})>0$, which yields a contradiction.
+
+\begin{note}
+We have
+\[
+\partial_t (t^{3/2} \det P) = t^{3/2}\left(\partial_t \det P + \frac{3}{2t} \det P\right) = t^{3/2} \det P\left(\partial_t u + \frac{3}{2t}\right) \geq 0
+\]
+by the Harnack inequality and since \(\det P \geq 0\) for \(t \in (0, t_{\ast})\).
+\end{note}
 
 By the first part of the theorem, $P^{ij}$ is invertible on $[t_1,t_2]$ for any $t_1,t_2$ with $0<t_1\leq t_2<T.$ Thus the Harnack inequality is available on $[t_1,t_2]$ and it gives
 \[\det P(\cdot,t_2)\geq \det P(\cdot,t_1)\left(\frac{t_1}{t_2}\right)^{\frac{3}{2}}.\]
@@ -221,10 +387,42 @@ The second identity reads
 \begin{align}\label{soliton equation for W}
 \Box \frac{1}{2}|W|_g^2-P^{kl}g^{ij}\nabla_kW_i\nabla_lW_j-2h^{kl}W_kW_l=0.
 \end{align}
+
+\begin{note}
+The product rule for \(\Box\) gives,
+\[
+\frac{1}{2}\Box |W|_g^2 = \frac{1}{2} \Box(g^{ij} W_i W_j) = g^{ij} W_j \Box W_i + P^{kl} g^{ij} \nabla_k W_i \nabla_l W_j.
+\]
+Then,
+\[
+\begin{split}
+\Box \frac{1}{2}|W|_g^2 - P^{kl}g^{ij}\nabla_kW_i\nabla_lW_j - 2h^{kl}W_kW_l &= g^{ij} W_j \Box W_i - 2 h^{kl}W_k W_l \\
+&= W^i \Box W_i - 2 g^{il} h^k_i W_k g_{lj} W^j \\
+&= W^i \Box W_i - 2 h^k_i W_k W^i = 0.
+\end{split}
+\]
+\end{note}
+
 Note that, by (\ref{equ: important}), $\int \Box fd\mu_{M}=0$ for any smooth function $f$ defined on $M$. Thus integrating (\ref{soliton equation for W}) against $d\mu_{M}$ and taking into account that $P_{ij}$ and $h_{ij}$ are both positive definite proves that $W\equiv0$ (also note that $g,P$ and $h$ can all be diagonalized simultaneously at any fixed point); therefore, by (\ref{soliton 0}), we get
 \[(\det P)^2=\det h_{ij}=\lambda ^3\Rightarrow \det P=\lambda^{\frac{3}{2}}.\]
+
+\begin{note}
+\ref{soliton 0} says that for \(W = 0\), \(\lambda g_{ij} = h_{ij}\). Then,
+\[
+\det h = \det (g^{km} h_{ml}) = \det (g^{km} \det P V_{mk}) = (\det P)^3 \det V = \det P
+\]
+since \(V=P^{-1}\). On the other hand,
+\[
+\det h = \det \lambda g = \det (\lambda g^{km} g_{ml}) = \lambda^3.
+\]
+\end{note}
+
 Moreover, in view of (\ref{trace}), we have $3\det P=\lambda P$; therefore, we obtain $$3(\det P)^{\frac{1}{3}}=P.$$ Thus the metric has constant negative curvature.
+\begin{note}
+This follows from Chow-Hamilton section 5 by diagonalising and applying the arithmetic-geometric mean inequality.
+\end{note}
 \end{proof}
+
 \section{evolution equations}
 We first collect a few identities that will be used without further mention:
 \begin{align}\label{equ: important1}
@@ -233,12 +431,34 @@ P^{ij}\nabla_ih_{jk}&=\frac{1}{2}P^{ij}\nabla_kh_{ij},\quad
 T^k\nabla_kP^{ij}&=T^{kij}\nabla_ku,\quad P^{ij}\nabla_j T^k=P^{ij}P^{kl}\nabla^2_{j,l}u+T^{ikl}\nabla_lu,\\
 T^{ijk}-T^{jik}&=E^{ijk}-E^{jik}+\frac{1}{2}\left(P^{jk}T^i-P^{ik}T^j\right).
 \end{align}
+
+\begin{note}
+\begin{align*}
+P&=g_{ij}P^{ij},\quad V=g^{ij}V_{ij},\quad H=g^{ij}h_{ij},\quad u:=\log\det P\\
+T^{kij}&=P^{kl}\nabla_l P^{ij},\quad T^i=V_{jk}T^{ijk}=P^{ij}\nabla_ju.
+\end{align*}
+\[
+T^{ijk}=E^{ijk}-\frac{1}{10}\left(P^{ij}T^k+P^{ik}T^j\right)+\frac{2}{5}P^{jk}T^i,
+\]
+and we have $T^{ijk}V_{ij}=0,$ $V_{ij}E^{ijk}=V_{ik}E^{ijk}=V_{jk}E^{ijk}=0$ (from Chow-Hamilton).
+\end{note}
+
 For simplicity, write
 \[D^{ijk}=E^{ijk}-E^{jik}.\]
 The tensor $D^{ijk}$ satisfies
 \begin{align*}
 D^{ijk}=-D^{jik},\quad D^{ijk}+D^{kij}+D^{jki}=0.
 \end{align*}
+
+\begin{note}
+\[
+\begin{split}
+D^{ijk} + D^{kij} + D^{jki} &= E^{ijk}-E^{jik} + E^{kij}-E^{ikj} + E^{jki}-E^{kji} \\
+&= E^{ijk}-E^{jik} + E^{kji}-E^{ijk} + E^{jik}-E^{kji} = 0.
+\end{split}
+\]
+\end{note}
+
 \begin{lemma}\label{ev u}
 The following evolution equations hold:
 \begin{align*}
