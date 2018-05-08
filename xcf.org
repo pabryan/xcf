@@ -1,56 +1,10 @@
-\documentclass{amsart}
-\usepackage[ocgcolorlinks,linktoc=all]{hyperref}
-\usepackage{cancel}
-\hypersetup{citecolor=blue,linkcolor=red}
-\newtheorem{theorem}{Theorem}
-\newtheorem*{thmA}{Theorem}
-\newtheorem*{thmB}{Theorem}
-\newtheorem*{rem}{Remark}
-\newtheorem*{thmmain}{Theorem}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem*{propmain}{Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{xca}[theorem]{Exercise}
+#+LaTeX_class: collab
+#+TITLE: The Cross Curvature Flow, Einstein-Ricci Flow and Adjugate Einstein Flow
 
-\theoremstyle{remark}
-\newtheorem{remark}[theorem]{Remark}
+#+LaTeX_header: \input{setup}
 
-\newcommand{\abs}[1]{\lvert#1\rvert}
-\numberwithin{equation}{section}
-
-\newcommand{\blankbox}[2]{%
-  \parbox{\columnwidth}{\centering
-    \setlength{\fboxsep}{0pt}%
-    \fbox{\raisebox{0pt}[#2]{\hspace{#1}}}%
-  }%
-}
-
-\newenvironment{note}{\hrule}{\hrule}
-
-\begin{document}
-
-\title[Cross curvature flow]
- {Cross curvature flow}
-
-\curraddr{}
-\email{}
-\date{\today}
-
-\dedicatory{}
-\subjclass[2010]{}
-\keywords{}
-
-\begin{abstract}
-\end{abstract}
-
-\maketitle
-
-\section{Notation}
-The Riemannian metric is $g_{ij},$ its inverse is $g^{ij}$. The Levi-Civita connection is given by the Christoffel symbols
+* Notation
+The Riemannian metric is $g_{ij}$, its inverse is $g^{ij}$. The Levi-Civita connection is given by the Christoffel symbols
 \begin{equation}
 \Gamma_{ij}^k=\frac{1}{2}g^{kl}\left(\partial_ig_{jl}+\partial_jg_{il}-\partial_lg_{ij}\right).
 \end{equation}
@@ -68,7 +22,7 @@ The Ricci curvature is the contraction
 \begin{equation}
 R_{ij}=g^{kl}R_{ikjl}.
 \end{equation}
-The scalar curvature $R=g^{ij}R_{ij}.$
+The scalar curvature $R=g^{ij}R_{ij}$.
 
 
 The evolution equation of the metric is given by
@@ -88,8 +42,7 @@ Let $V_{ij}$ be the inverse of $P^{ij}$. We mention that
 \begin{equation}
 h_{ij}=V_{ij}\det P,
 \end{equation}
-where $\det P = \det (g_{km} P^{ml}).$
-
+where $\det P = \det (g_{km} P^{ml})$.
 
 We also write
 \begin{align}
@@ -119,13 +72,14 @@ We conclude this section by scatting the following identities from \cite[Lemma 1
 P^{ij}\nabla_ih_{jk}&=\frac{1}{2}P^{ij}\nabla_kh_{ij},\quad
 \nabla_iP^{ij}=0.
 \end{align}
-\section{Solitons}
+
+* Solitons
+
 A solution to cross curvature flow is a cross curvature soliton if there exists a vector field $W$ and $\lambda\in \mathbb{R}$ such that at some time
 \begin{equation}\label{soliton 0}
 2\lambda g_{ij}=2h_{ij}+\nabla_iW_j+\nabla_jW_i.
 \end{equation}
-For an expanding soliton, (\ref{soliton 0}) holds with $\lambda=\frac{1}{4t}.$
-To obtain a suitable Harnack quadratic for XCF, we follow Hamilton's procedure in obtaining his trace Harnack quantity for the Ricci flow.
+For an expanding soliton, (\ref{soliton 0}) holds with $\lambda=\frac{1}{4t}$. To obtain a suitable Harnack quadratic for XCF, we follow Hamilton's procedure in obtaining his trace Harnack quantity for the Ricci flow.
 
 
 We take the covariant derivative of both sides of (\ref{soliton 0}) with respect to $\nabla_l:$
@@ -306,19 +260,19 @@ Thus we get (2.8),
 \]
 \end{note}
 
-%We take the trace with respect to $P^{kl}:$
-%\begin{equation}\label{eq:4}
-%\Box u+P^{kl}\nabla_ku\nabla_lu+2\nabla_kuV^k-2H+6\lambda=0.
-%\end{equation}
-%On the other hand, there holds
-%\begin{align}\label{first derv test}
-%\nabla^mh_{ij}-\nabla_jh_i^m={{{R_j}^{m}}_{i}}^nV_n\Rightarrow 4V_{kl}V^kV^l+2\nabla_kuV^k=0.
-%\end{align}
-%Hence adding (\ref{first derv test}) to (\ref{eq:4}) implies that
-%\begin{align}\label{harnack quant}
-%\Box u+4\left|V^i+\frac{1}{2}P^{ij}\nabla_ju\right|_{V_{kl}}^2
-%-2H+6\lambda=0.
-%\end{align}
+# We take the trace with respect to $P^{kl}:$
+# \begin{equation}\label{eq:4}
+# \Box u+P^{kl}\nabla_ku\nabla_lu+2\nabla_kuV^k-2H+6\lambda=0.
+# \end{equation}
+# On the other hand, there holds
+# \begin{align}\label{first derv test}
+# \nabla^mh_{ij}-\nabla_jh_i^m={{{R_j}^{m}}_{i}}^nV_n\Rightarrow 4V_{kl}V^kV^l+2\nabla_kuV^k=0.
+# \end{align}
+# Hence adding (\ref{first derv test}) to (\ref{eq:4}) implies that
+# \begin{align}\label{harnack quant}
+# \Box u+4\left|V^i+\frac{1}{2}P^{ij}\nabla_ju\right|_{V_{kl}}^2
+# -2H+6\lambda=0.
+# \end{align}
 So Lemma \ref{ev u} proposes the following candidate as the  Harnack inequality:
  \begin{align}\label{harnack est}
 \partial_tu-\frac{1}{2}\left(\left|E^{ijk}-E^{jik}\right|^2_V+\left|T^i\right|_V^2\right)+\frac{3}{2t}\geq 0,
@@ -341,12 +295,12 @@ T^{ijk} V_{ij} = V_{ij} P^{il} \nabla_l P^{jk} = \nabla_j P^{jk} = 0.
  \end{align*}
 In fact, $E^{ijk}=E^{jik}$ due to the Codazzi equation which yields the full symmetry of the covariant derivative of the second fundamental form. In general, if 
 $\alpha_{ij}:=\sqrt{\det P}V_{ij}$ satisfies
-$\nabla_k\alpha_{ij}=\nabla_i\alpha_{jk},$
+$\nabla_k\alpha_{ij}=\nabla_i\alpha_{jk}$,
 then \[E^{ijk}=E^{jik}.\]
-\begin{theorem}
+\begin{thm}
 Let $(M^3,g(t))$, $t\in [0,T)$, be a solution to the XCF on a closed 3-manifold starting from a metric $g(0)$ with negative sectional curvature. Then $g(t)$ has negative sectional curvature for all $t<T.$
 Moreover, it is not possible that $T<\infty$ and $\inf_{M\times [0,T)}\det P=0.$
-\end{theorem}
+\end{thm}
 \begin{proof}
 Suppose $0<t_{\ast}<T$ is the first time that $g(t_{\ast})$ has a zero sectional curvature at some point $x_{\ast}$. At $(x_{\ast},t_{\ast})$ we must have $\det P(x_{\ast},t_{\ast})=0.$
 By our Harnack inequality, we know that $t^{\frac{3}{2}}\det P(\cdot,t) $ is increasing in time on $(0,t_{\ast})$; therefore, for any $t\in [t_{\ast}/2, t_{\ast})$ we have
@@ -366,9 +320,11 @@ By the first part of the theorem, $P^{ij}$ is invertible on $[t_1,t_2]$ for any 
 Allowing $t_2\to T$ completes the proof.
 \end{proof}
 Before moving on to the proof of Harnack inequality, we give a classification of compact solitons of XCF with negative sectional curvatures.
-\begin{theorem}
+
+\begin{thm}
 The only compact solitons of XCF with negative sectional curvature are metrics with constant negative curvature.
-\end{theorem}
+\end{thm}
+
 \begin{proof}
 Apply (\ref{soliton 0}) to (\ref{equ00}):
 \begin{align*}
@@ -423,7 +379,8 @@ This follows from Chow-Hamilton section 5 by diagonalising and applying the arit
 \end{note}
 \end{proof}
 
-\section{evolution equations}
+* Evolution equations
+
 We first collect a few identities that will be used without further mention:
 \begin{align}\label{equ: important1}
 P^{ij}\nabla_ih_{jk}&=\frac{1}{2}P^{ij}\nabla_kh_{ij},\quad
@@ -579,7 +536,9 @@ To complete the proof, note that
 \begin{lemma}
 \[\partial_t\left|D^{ijk}\right|^2_V=\Box\left|D^{ijk}\right|^2_V+\cdots\]
 \end{lemma}
-\section{The computation}
+
+* The Harnack Inequality
+
 Let us define
 \begin{align*}
 w_{kl}:=&\nabla^2_{k,l}u+V_{lm}\nabla_kP^{mn}\nabla_nu-2h_k^mV_{ml},\\
@@ -646,15 +605,6 @@ P^{kl}\nabla_k w\nabla_lu
 =&{T^{ijk}\nabla^2_{i,j}u\nabla_ku}+\frac{1}{2}T^i\Box u\nabla_iu-\frac{1}{2}T^iT^j\nabla^2_{i,j}u+\det P|\nabla u|^2\\
 &+{T^i\Box\nabla_iu}+2h_{j}^i\nabla_iP^{jk}\nabla_ku-HT^{i}\nabla_iu+\left(2h_i^kV_{kj}+\nabla^2_{i,j}u\right)D^{lij}\nabla_lu.
 \end{align*}
-\end{proof}
-
-\bibliographystyle{amsplain}
-\begin{thebibliography}{10}
-\bibitem{Andrewsharnack} B. Andrews. ``Harnack inequalities for evolving hypersurfaces." Mathematische Zeitschrift 217(1994): 179--197.
-\bibitem{Chowcross2002} B. Chow and R.S. Hamilton. ``The cross curvature flow of 3-manifolds with negative sectional curvature." Turkish Journal of Mathematics 28(2004): 1--10.
-\bibitem{BIS4} P. Bryan, M.N. Ivaki, J. Scheuer. ``Harnack inequalities for curvature flows in Riemannian and Lorentzian manifolds." Preprint (2016).
-\end{thebibliography}
-\end{document}
 
 \begin{align*}
 \nabla^2_{i,j}u+V_{ac}V_{bd}\nabla_iP^{cd}\nabla_jP^{ab}=& V_{ab}\nabla^2_{i,j}P^{ab},\\
@@ -711,4 +661,5 @@ Therefore
 &-V_{ia}V_{mb}V_{nq}\nabla_rP^{ab}\nabla_sP^{lq}\nabla_lP^{ik}\nabla_kP^{mn}-V_{na}V_{qb}V_{im}\nabla_rP^{ab}\nabla_sP^{lq}\nabla_lP^{ik}\nabla_kP^{mn}\\
 &+V_{im}V_{nq}\nabla^2_{r,s}P^{lq}\nabla_lP^{ik}\nabla_kP^{mn}+V_{im}V_{nq}\nabla_sP^{lq}\nabla^2_{r,l}P^{ik}\nabla_kP^{mn}+V_{im}V_{nq}\nabla_sP^{lq}\nabla_lP^{ik}\nabla^2_{r,k}P^{mn}\\
 &+V_{ia}V_{mb}\nabla_rP^{ab}\nabla_lP^{ik}\nabla^2_{s,k}P^{ml}-V_{im}\nabla^2_{r,l}P^{ik}\nabla^2_{s,k}P^{ml}-V_{im}\nabla_lP^{ik}\nabla_r\nabla^2_{s,k}P^{ml}.
-\end{align*} 
+\end{align*}
+\end{proof}

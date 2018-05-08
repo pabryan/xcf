@@ -1,0 +1,15 @@
+*~
+*.blg
+*.bbl
+*-blx.bib
+*.run.xml
+*.aux
+*.log
+*.fls
+xcf.pdf
+xcf.tex
+*.dep
+*.fdb_latexmk
+*.out
+*.toc
+auto/
