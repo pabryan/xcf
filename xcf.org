@@ -2,8 +2,19 @@
 #+TITLE: The Cross Curvature Flow, Einstein-Ricci Flow and Adjugate Einstein Flow
 
 #+LaTeX_header: \input{setup}
-
-* Notation
+* Introduction
+* Notation and Conventions
+* Definition of the Flows
+* Short Time Existence and Uniqueness
+* Evolution Equations
+* Cross Curvature Flow of Three Manifolds
+* Vanishing Weyl in Higher Dimensions
+* Embeddability and Integrability
+* Solitons
+* The Harnack Inequality
+* Entropy
+* Convergence
+* Coordinate Notation
 The Riemannian metric is $g_{ij}$, its inverse is $g^{ij}$. The Levi-Civita connection is given by the Christoffel symbols
 \begin{equation}
 \Gamma_{ij}^k=\frac{1}{2}g^{kl}\left(\partial_ig_{jl}+\partial_jg_{il}-\partial_lg_{ij}\right).
