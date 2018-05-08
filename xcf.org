@@ -4,6 +4,192 @@
 #+LaTeX_header: \input{setup}
 * Introduction
 * Notation and Conventions
+
+Here we establish the basic notation and conventions used in this paper. These will be used freely throughout the paper without further mention.
+
+** Algebraic Conventions
+
+For a bilinear form \(B\), we define the transpose \(\tpose{B}\) of \(B\) by
+\[
+\tpose{B}(X, Y) = B(Y, X),
+\]
+the symmetrisation \(\Sym B\) of \(B\) by
+\[
+\Sym B(X, Y) = \frac{1}{2} \left[B(X, Y) + \tpose{B}(X, Y)\right] = \frac{1}{2} \left[B(X, Y) + B(Y, X),
+\right]
+\]
+and the anti-symmetrisation \(\Alt B\) of \(B\) by
+\[
+\Alt B(X, Y) = \frac{1}{2} \left[B(X, Y) - \tpose{B}(X, Y)\right] = \frac{1}{2} \left[B(X, Y) - B(Y, X)\right].
+\]
+Then \(B\) is symmetric if and only if \(B = \Sym B\) if and only if \(\Alt B = 0\) while \(B\) is anti-symmetric if and only if \(B = \Alt B\) if and only if \(\Sym B = 0\).
+
+We also define the \(g\)-representative endomorphism \(\edo{B}\) of \(B\) by
+\[
+B(X, Y) = g(\edo{B} (X), Y).
+\]
+The adjoint \(\adjt{T}\) of an endormophism \(T\) is defined by
+\[
+g(T(X), Y) = g(X, \adjt{T}(Y)),
+\]
+and \(T\) is \(g\)-self adjoint provided, \(\adjt{T} = T\). That is,
+\[
+g(T(X), Y) = g(X, T(Y)).
+\]
+
+Then \(B\) is symmetric if and only if \(\edo{B}\) is \(g\)-self adjoint. The adjoint and the transpose are related by
+\[
+\tpose{B} (X, Y) = B(Y, X) = g(\edo{B}(Y), X) = g(\adjt{\edo{B}} (X), Y)
+\]
+so that
+\[
+\adjt{\edo{B}} = \edo{\tpose{B}}
+\]
+where the notation let's us down a little here with the right hand side supposed to be the \(g\)-representative endomorphism for \(\tpose{B}\).
+
+The self-adjoint endomorphism \(\Sym \edo{B}\) is defined by
+\[
+g(\Sym \edo{B} (X), Y) = \Sym B(X, Y)
+\]
+and the anti self-adjoint endomorphism \(\Alt \edo{B}\) is defined by
+\[
+g(\Alt \edo{B} (X), Y) = \Alt B(X, Y).
+\]
+Then since
+\[
+\frac{1}{2}\left[B(X, Y) + B(Y, X)\right] = \frac{1}{2} g(\edo{B}(X) + \adjt{\edo{B}}(X), Y)
+\]
+we have
+\[
+\Sym \edo{B} = \frac{1}{2} \left[\edo{B} + \adjt{\edo{B}}\right].
+\]
+Likewise,
+\[
+\Alt \edo{B} = \frac{1}{2} \left[\edo{B} - \adjt{\edo{B}}\right].
+\]
+
+We define the adjugate, \(\adjg{T}\) of an endomorphism \(T\) by
+\[
+\adjg{T} (X) \wedge \sigma = X \wedge \Lambda^{n-1} T(\sigma)
+\]
+where \(X\) is a tangent vector, \(\sigma \in \Lambda^{n-1} TM\) is an \(n-1\) vector and \(\Lambda^{n-1} T\) is defined on indecomposable \(n-1\) vectors by
+\[
+\Lambda^{n-1} T (X_1 \wedge \cdots \wedge X_{n-1}) = T(X_1) \wedge \cdots \wedge T(X_{n-1}).
+\]
+In other words, \(\adjg{T}\) is the adjoint of \(\Lambda^{n-1} T\) under the perfect pairing,
+\[
+X, \sigma \mapsto X \wedge \sigma.
+\]
+It satisfies,
+\[
+\adjg{T} \circ T = \det T \Id
+\]
+since
+\[
+\adjg{T} \circ T (X) \wedge \sigma = T(X) \wedge \Lambda^{n-1} T (\sigma) = \Lambda^n T (X \wedge \sigma) = \det T X \wedge \sigma.
+\]
+In particular, if \(T\) is invertible then
+\[
+\adjg{T} = \det T T^{-1}.
+\]
+The adjugate will be discussed in more detail in the next section.
+
+** Differential Geometric Conventions
+
+For a Riemannian manifold \((M, g)\) we write \(\nabla\) for  the Levi-Civita connection. For a function \(f\) and a tangent vector, we write
+\[
+\partial_X f = df(X).
+\]
+Derivatives of tensors \(T\) will be written \(\nabla^k T\) so that for any \(k\) tangent vectors \(X_1, \cdots, X_k\) the contraction of \(\nabla^k T\) with \(X_1, \cdots, X_k\) written,
+\[
+\nabla^k_{X_1, \cdots, X_k} T
+\]
+is a tensor of the same type as \(T\). We also use the notation for contractions of such derivatives,
+\[
+\nabla^k_{X_1, \cdots, X_k} T (Y_1, \cdots, Y_p, \alpha^1, \cdots, \alpha^q)
+\]
+where \(T\) is a \((p, q)\) tensor in \(\otimes^p T^{\ast}M \bigotimes \otimes^q TM\). Sometimes we may also write
+\[
+\nabla^k_{X_1, \cdots, X_k} T (Y_1, \cdots, Y_p, \alpha^1, \cdots, \alpha^q) = \nabla^k T (X_1, \cdots, X_k; Y_1, \cdots, Y_p, \alpha^1, \cdots, \alpha^q).
+\]
+
+In particular, second derivatives will be written as follows: For a function \(f\),
+\[
+\nabla^2_{X, Y} f = \nabla^2 f (X, Y) = \partial_X (\partial_Y f) - \partial_{\nabla_X Y} f.
+\]
+For a vector field \(Z\),
+\[
+\nabla^2_{X, Y} Z = \nabla^2 Z (X, Y) = \nabla_X (\nabla_Y Z) - \nabla_{\nabla_X Y} Z.
+\]
+First derivatives of some higher tensors will be written:
+For an endormorphism \(T\),
+\[
+\nabla_X T (Y) = \nabla T (X; Y) = \nabla_X (T(Y)) - T(\nabla_X Y).
+\]
+For a bilinear form \(\alpha\) on \(TM\),
+\[
+\nabla_X \alpha (Y, Z) = \nabla \alpha(X; Y, Z) =  \partial_X (T(Y, Z)) - T(\nabla_X Y, Z) - T(Y, \nabla_X Z).
+\]
+
+Then for example, we express metric compatibility \(\nabla_X g = 0\) by
+\[
+\partial_X g(Y, Z) = g(\nabla_X Y, Z) + g(Y, \nabla_X Z).
+\]
+
+Our conventions for the curvature tensor are
+\[
+\Rm(X, Y) Z = \nabla_X (\nabla_Y Z) - \nabla_Y (\nabla_X Z) - \nabla_{[X, Y]} Z
+\]
+from which immediately follows the Ricci identity,
+\[
+\Rm(X, Y) Z = \nabla^2_{X, Y} Z - \nabla^2_{Y, X} Z
+\]
+since the Levi-Civita connection is torsion free and hence \(\nabla_X Y - \nabla_Y X = [X, Y]\). The metric contracted curvature tensor will be written,
+\[
+\Rm(X, Y, Z, W) = g(\Rm(X, Y) Z, W).
+\]
+Then we have the sectional curvature,
+\[
+K(X \wedge Y) = \frac{\Rm(X, Y, Y, X)}{\abs{X \wedge Y}_g}.
+\]
+Thus a metric \(g\) of constant sectional curvature \(K\) satisfies,
+\[
+\Rm(X, Y, Z, W) = -K g \owedge g (X, Y, Z, W) = -K [g(X, Z) g(Y, W) - g(X, W) g(Y, Z)]
+\]
+where \(\owedge\) denotes the Kulkarni-Nomizu product.
+
+The Ricci curvature is the symmetric, bilinear form,
+\[
+\Ric(X, Y) = \Tr Z \mapsto \Rm(Z, X) Y.
+\]
+The scalar curvature, \(\Sc\) is obtained by tracing:
+\[
+\Sc = \Tr \edoRic
+\]
+where \(\edoRic\) is the self adjoint endomorphism representing \(\Ric\), defined above by
+\[
+\Ric(X, Y) = g(\edoRic (X), Y).
+\]
+The Einstein tensor, \(\Ein\) is the symmetric bilinear form,
+\[
+\Ein(X, Y) = \Ric(X, Y) - \frac{\Sc}{2} g(X, Y).
+\]
+It's \(g\) representative endomorphism, \(\edoEin\) satisfies
+\[
+\edoEin = \edoRic - \frac{\Sc}{2} \Id
+\]
+where \(\Id\) is the identity endomorphism.
+
+We also introduce the Ricci-Einstein tensor, \(\RicEin\),
+\[
+\RicEin(X, Y) = \Tr Z \mapsto \Rm(\edoEin(Z), X) Y
+\]
+with associated endomorphism, \(\edoRicEin\) satisfying
+\[
+\RicEin(X, Y) = g(\edoRicEin(X), Y).
+\]
+This tensor will be discussed in more detail in the next section.
+
 * Definition of the Flows
 * Short Time Existence and Uniqueness
 * Evolution Equations
@@ -14,7 +200,7 @@
 * The Harnack Inequality
 * Entropy
 * Convergence
-* Coordinate Notation
+* Coordinate Notation                                              :noexport:
 The Riemannian metric is $g_{ij}$, its inverse is $g^{ij}$. The Levi-Civita connection is given by the Christoffel symbols
 \begin{equation}
 \Gamma_{ij}^k=\frac{1}{2}g^{kl}\left(\partial_ig_{jl}+\partial_jg_{il}-\partial_lg_{ij}\right).
@@ -78,13 +264,13 @@ In the sequel, $\mu_{ijk}$ is the volume form and is nonzero only when $i,j,k$ a
 \begin{equation}
 P^{mn}=-\frac{1}{4}\mu^{ijm}\mu^{kln}R_{ijkl}.
 \end{equation}
-We conclude this section by scatting the following identities from \cite[Lemma 1]{Chowcross2002}:
+We conclude this section by scatting the following identities from \cite[Lemma 1]{MR2055396}:
 \begin{align}\label{equ: important}
 P^{ij}\nabla_ih_{jk}&=\frac{1}{2}P^{ij}\nabla_kh_{ij},\quad
 \nabla_iP^{ij}=0.
 \end{align}
 
-* Solitons
+* Solitons                                                         :noexport:
 
 A solution to cross curvature flow is a cross curvature soliton if there exists a vector field $W$ and $\lambda\in \mathbb{R}$ such that at some time
 \begin{equation}\label{soliton 0}
@@ -300,7 +486,7 @@ T^{ijk} V_{ij} = V_{ij} P^{il} \nabla_l P^{jk} = \nabla_j P^{jk} = 0.
 \]
 \end{note}
 
- and we have $T^{ijk}V_{ij}=0$, $V_{ij}E^{ijk}=V_{ik}E^{ijk}=V_{jk}E^{ijk}=0;$ see \cite[Prop. 9]{Chowcross2002}. In the case of embeddability into Minkowski 4-space, we have
+ and we have $T^{ijk}V_{ij}=0$, $V_{ij}E^{ijk}=V_{ik}E^{ijk}=V_{jk}E^{ijk}=0;$ see \cite[Prop. 9]{MR2055396}. In the case of embeddability into Minkowski 4-space, we have
  \begin{align*}
 \left|E^{ijk}-E^{jik}\right|^2_V=0,\quad\frac{1}{2}\left|T^i\right|_V^2=\frac{1}{2}P^{ij}\nabla_i u\nabla_ju.
  \end{align*}
@@ -390,7 +576,7 @@ This follows from Chow-Hamilton section 5 by diagonalising and applying the arit
 \end{note}
 \end{proof}
 
-* Evolution equations
+* Evolution equations                                              :noexport:
 
 We first collect a few identities that will be used without further mention:
 \begin{align}\label{equ: important1}
@@ -463,7 +649,7 @@ we arrive at
 =&\nabla_kD^{knm}+\frac{1}{2}D^{kmn}\nabla_ku-g^{mn}\det P-HP^{mn}+\frac{1}{2}P^{mn}\Box u\\
 &+\frac{1}{4}\left(P^{mn}T^k-P^{nk}T^m\right)\nabla_ku-\frac{1}{2}P^{mk}P^{nl}\nabla^2_{k,l}u.
 \end{align*}
-The second evolution equation follows from \cite[Prop. 9]{Chowcross2002} and  \cite[Equ. (4)]{Chowcross2002}.
+The second evolution equation follows from \cite[Prop. 9]{MR2055396} and  \cite[Equ. (4)]{MR2055396}.
 \end{proof}
 \begin{lemma}
 \begin{align*}
@@ -548,7 +734,7 @@ To complete the proof, note that
 \[\partial_t\left|D^{ijk}\right|^2_V=\Box\left|D^{ijk}\right|^2_V+\cdots\]
 \end{lemma}
 
-* The Harnack Inequality
+* The Harnack Inequality                                           :noexport:
 
 Let us define
 \begin{align*}

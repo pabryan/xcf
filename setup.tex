@@ -24,6 +24,9 @@
 
 \usepackage{graphicx}
 
+\usepackage{stmaryrd}
+\usepackage[cal=dutchcal]{mathalfa}
+
 \declaretheorem[name=Theorem,numberwithin=section]{thm}
 \declaretheorem[name=Remark,style=remark,sibling=thm]{rem}
 \declaretheorem[name=Lemma,sibling=thm]{lemma}
@@ -101,7 +104,12 @@
 \newcommand{\fr}[2]{\frac{#1}{#2}}
 \newcommand{\x}{\times}
 \DeclareMathOperator{\Tr}{Tr}
-
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Alt}{Alt}
+\newcommand{\edo}[1]{\mathcal{#1}}
+\newcommand{\tpose}[1]{{#1}^T}
+\newcommand{\adjt}[1]{{#1}^{\sharp}}
+\newcommand{\adjg}[1]{\text{adjg} {#1}}
 \DeclareMathOperator{\dive}{div}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\Id}{Id}
@@ -114,8 +122,14 @@
 \DeclareMathOperator{\dist}{dist}
 \DeclareMathOperator{\loc}{loc}
 \DeclareMathOperator{\grad}{grad}
-\DeclareMathOperator{\ric}{Ric}
+\DeclareMathOperator{\Ric}{Ric}
+\DeclareMathOperator{\edoRic}{\mathcal{Ric}}
 \DeclareMathOperator{\Rm}{Rm}
+\DeclareMathOperator{\Sc}{R}
+\DeclareMathOperator{\Ein}{E}
+\DeclareMathOperator{\edoEin}{\mathcal{E}}
+\DeclareMathOperator{\RicEin}{\Ric_{\Ein}}
+\DeclareMathOperator{\edoRicEin}{\edoRic_{\edoEin}}
 \DeclareMathOperator{\weingarten}{\mathcal{W}}
 \DeclareMathOperator{\inj}{inj}
 \DeclareMathOperator{\SO}{SO}
