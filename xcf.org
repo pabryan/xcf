@@ -289,7 +289,7 @@ T^{ijk} V_{ij} = V_{ij} P^{il} \nabla_l P^{jk} = \nabla_j P^{jk} = 0.
 \]
 \end{note}
 
- and we have $T^{ijk}V_{ij}=0,$ $V_{ij}E^{ijk}=V_{ik}E^{ijk}=V_{jk}E^{ijk}=0;$ see \cite[Prop. 9]{Chowcross2002}. In the case of embeddability into Minkowski 4-space, we have
+ and we have $T^{ijk}V_{ij}=0$, $V_{ij}E^{ijk}=V_{ik}E^{ijk}=V_{jk}E^{ijk}=0;$ see \cite[Prop. 9]{Chowcross2002}. In the case of embeddability into Minkowski 4-space, we have
  \begin{align*}
 \left|E^{ijk}-E^{jik}\right|^2_V=0,\quad\frac{1}{2}\left|T^i\right|_V^2=\frac{1}{2}P^{ij}\nabla_i u\nabla_ju.
  \end{align*}
@@ -397,7 +397,7 @@ T^{kij}&=P^{kl}\nabla_l P^{ij},\quad T^i=V_{jk}T^{ijk}=P^{ij}\nabla_ju.
 \[
 T^{ijk}=E^{ijk}-\frac{1}{10}\left(P^{ij}T^k+P^{ik}T^j\right)+\frac{2}{5}P^{jk}T^i,
 \]
-and we have $T^{ijk}V_{ij}=0,$ $V_{ij}E^{ijk}=V_{ik}E^{ijk}=V_{jk}E^{ijk}=0$ (from Chow-Hamilton).
+and we have $T^{ijk}V_{ij}=0$, $V_{ij}E^{ijk}=V_{ik}E^{ijk}=V_{jk}E^{ijk}=0$ (from Chow-Hamilton).
 \end{note}
 
 For simplicity, write
