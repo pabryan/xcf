@@ -94,6 +94,52 @@ In particular, if \(T\) is invertible then
 \]
 The adjugate will be discussed in more detail in the next section.
 
+We identify the alternating algebra with the image of the alternating map as a sub-algebra of the tensor algebra:
+\[
+X_1 \wedge \cdots \wedge X_k = \Alt (X_1 \otimes \cdots \otimes X_k) = \frac{1}{k!} \sum_{\sigma \in S_k} (-1)^{\text{sgn} \sigma} X_{\sigma_1} \otimes \cdots \otimes X_{\sigma_k}.
+\]
+For an inner product space, the induced inner product on tensors is defined by,
+\[
+g(X_1 \otimes \cdots \otimes X_k, Y_1 \otimes \cdots \otimes Y_k) = g(X_1, Y_1) \cdots g(X_k, Y_k)
+\]
+and on alternating tensors by
+\[
+g(X_1 \wedge \cdots \wedge X_k, Y_1 \wedge \cdots \wedge Y_k) = k! g(\Alt (X_1 \otimes \cdots \otimes X_k), \Alt (Y_1 \otimes \cdots \otimes Y_k)).
+\]
+
+In particular, for \(k=2\) we have
+\[
+X \wedge Y = \frac{1}{2}(X \otimes Y - Y \otimes X)
+\]
+and
+\[
+g(X \wedge Y, Z \wedge W) = g(X, Z) g(Y, W) - g(X, W) g(Y, Z)
+\]
+so that
+\[
+\abs{X \wedge Y}_g^2 = g(X \wedge Y, X \wedge Y) = |X|_g^2 |Y|_g^2 - g(X, Y)^2.
+\]
+
+Similarly we define the symmetric product,
+\[
+X_1 \odot \cdots \odot X_k = \Sym (X_1 \otimes \cdots \otimes X_k) = \frac{1}{k!} \sum_{\sigma \in S_k} X_{\sigma_1} \otimes \cdots \otimes X_{\sigma_k}
+\]
+and metric
+\[
+g(X_1 \odot \cdots \odot X_k, Y_1 \odot \cdots \odot Y_k) = k! g(\Sym (X_1 \otimes \cdots \otimes X_k), \Sym (Y_1 \otimes \cdots \otimes Y_k)).
+\]
+
+The Kulkarni-Nomizu product is defined for symmetric bilinear forms by
+\begin{align*}
+B \owedge C (X, Y, Z, W) &= B \owedge C (X \wedge Y, Z \wedge W) \\
+&= \frac{1}{2} \big[B(X, Z) C(Y, W) - B(X, W) C(Y, Z) \\
+&\quad + B(Y, W) C(X, Z) - B(Y, Z) C(X, W)\big].
+\end{align*}
+
+In particular,
+\[
+g(X \wedge Y, Z \wedge W) = g \owedge g (X \wedge Y, X \wedge Y).
+\]
 ** Differential Geometric Conventions
 
 For a Riemannian manifold \((M, g)\) we write \(\nabla\) for  the Levi-Civita connection. For a function \(f\) and a tangent vector, we write
@@ -150,7 +196,7 @@ since the Levi-Civita connection is torsion free and hence \(\nabla_X Y - \nabla
 \]
 Then we have the sectional curvature,
 \[
-K(X \wedge Y) = \frac{\Rm(X, Y, Y, X)}{\abs{X \wedge Y}_g}.
+K(X \wedge Y) = \frac{\Rm(X, Y, Y, X)}{\abs{X \wedge Y}_g^2}.
 \]
 Thus a metric \(g\) of constant sectional curvature \(K\) satisfies,
 \[
