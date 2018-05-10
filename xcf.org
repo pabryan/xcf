@@ -251,7 +251,65 @@ where \(\edoRic\) is the self adjoint endomorphism representing \(\Ric\), define
 \[
 \Ric(X, Y) = g(\edoRic (X), Y).
 \]
-The Einstein tensor, \(\Ein\) is the symmetric bilinear form,
+The trace free Ricci tensor is
+\[
+\Trfree{\Ric} = \Ric - \frac{\Sc}{n} g
+\]
+with representing endomorphism,
+\[
+\edoTrfreeRic = \edoRic - \frac{\Sc}{n} \Id.
+\]
+In terms of the \((4, 0)\) curvature tensor, we may also write,
+\[
+\Ric(X, Y) = \Tr_g \Rm(\cdot, X, Y, \cdot)
+\]
+where for a bilinear form, \(B\), we define
+\[
+\Tr_g B = \Tr \edo{B} = g(B, g).
+\]
+This also gives
+\[
+\Sc = \Tr_g \Ric.
+\]
+
+The Ricci decomposition of the \((4, 0)\) curvature tensor is
+\[
+\Rm = -g \owedge \schouten + \weyl = -\frac{R}{n(n-1)} g \owedge g - \frac{2}{n-2} g \owedge \Trfree{\Ric} + \weyl
+\]
+where
+\[
+\weyl = \Rm + g \owedge P
+\]
+is the Weyl tensor and
+\[
+\schouten = \frac{2}{n-2} \Trfree{\Ric} + \frac{R}{n(n-1)} g  = \frac{2}{n-2}\left(\Ric - \frac{R}{n-1} g\right).
+\]
+is the Schouten tensor. A nice way to motivate \(\weyl\) and \(\schouten\) is to observe that if we define for a curvature-like tensor \(K\),
+\[
+c(K) (X, Y) = \Tr_g K(\cdot, X, Y, \cdot)
+\]
+then, \(c\) is the \(g\) adjoint of the map \(B \mapsto \frac{1}{2} g \owedge B\) for a \(B\) a bilinear form. That is,
+\[
+g(c(K), B) = g(K, \frac{1}{2} g \owedge B).
+\]
+Moreover,
+\[
+c(\frac{1}{2} g \owedge B) = (n-2) B + \Tr_g (B) g.
+\]
+Applying this to \(B = \Ric\) gives,
+\[
+P = c(\frac{1}{2} g \owedge \Ric)
+\]
+and the Weyl tensor \(\weyl\) contains the most complexity of \(\Rm\) - ie. that part not arising from the indecomposable element \(-g \owedge P\) built from the Ricci tensor \(\Ric = c(\Rm)\). Let us also note that \(\weyl \equiv 0\) if and only if \((M, g)\) is locally conformally flat.
+
+In particular, in dimensions \(n = 2, 3\), \(\weyl \equiv 0\), so \(\Rm\) is a much simpler object. The Ricci decomposition as written is only valid when \(n > 2\), but when \(n = 2\), \(\Trfree{\Ric} \equiv 0\) and so if we make the convention \(\tfrac{1}{n-2} \Trfree{\Ric} = 0\) for \(n = 2\), the decomposition holds. In dimension \(n = 4\), the Weyl tensor decomposes further as \(\weyl = \weyl^+ + \weyl^-\) into self-dual and anti-self dual parts. For \(n > 5\) it is indecomposable under the action of \(O(n)\). Let us record explicitly,
+\begin{align*}
+\Rm & = -\frac{R}{2} g \owedge g, \quad n = 2, \\
+\Rm & = -\frac{R}{6} g \owedge g - 2 g \owedge \Trfree{\Ric}, \quad n = 3, \\
+\Rm &= -\frac{R}{12} g \owedge g - g \owedge \Trfree{\Ric} + \weyl^+ + \weyl^-, \quad n = 4.
+\end{align*}
+
+The Einstein gravitation tensor, \(\Ein\) is the symmetric bilinear form,
 \[
 \Ein(X, Y) = \Ric(X, Y) - \frac{\Sc}{2} g(X, Y).
 \]
@@ -261,15 +319,19 @@ It's \(g\) representative endomorphism, \(\edoEin\) satisfies
 \]
 where \(\Id\) is the identity endomorphism.
 
-We also introduce the Ricci-Einstein tensor, \(\RicEin\),
+For completeness, we also introduce here the Ricci-Einstein tensor, \(\RicEin\),
 \[
 \RicEin(X, Y) = \Tr Z \mapsto \Rm(\edoEin(Z), X) Y
 \]
 with associated endomorphism, \(\edoRicEin\) satisfying
 \[
-\RicEin(X, Y) = g(\edoRicEin(X), Y).
+\RicEin(X, Y) = g(\edoRicEin(X), Y),
 \]
-This tensor will be discussed in more detail in the next section.
+and the adjugate Einstein tensor,
+\[
+\adjg{\Ein} (X, Y) = g(\adjg{\edoEin} (X), Y).
+\]
+These tensors will be discussed in more detail in the next section where they are used to define our flows.
 
 * Definition of the Flows
 * Short Time Existence and Uniqueness
