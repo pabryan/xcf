@@ -136,10 +136,45 @@ B \owedge C (X, Y, Z, W) &= B \owedge C (X \wedge Y, Z \wedge W) \\
 &\quad + B(Y, W) C(X, Z) - B(Y, Z) C(X, W)\big].
 \end{align*}
 
-In particular,
+We can also define a Kulkarni-Nomizu product for endomorphisms,
+\begin{align*}
+T \owedge S (X, Y) &= T \owedge S (X \wedge Y) \\
+&= \frac{1}{2} \big(T(X) \wedge S(Y) + S(X) \wedge T(Y)\big) \\
+&= \frac{1}{4}\big(T(X) \otimes S(Y) - S(Y) \otimes T(X) + S(X) \otimes T(Y) - T(Y) \otimes S(X)\big).
+\end{align*}
+Then if \(B(X, Y) = g(T(X), Y)\) and \(C(X, Y) = g(S(X), Y)\) we have
 \[
-g(X \wedge Y, Z \wedge W) = g \owedge g (X \wedge Y, X \wedge Y).
+B \owedge C (X \wedge Y, Z \wedge W) = g(T \owedge S (X \wedge Y), Z \wedge W).
 \]
+
+Equivalently, both formulations arise by polarising the quadratic forms,
+\[
+T \mapsto T \wedge T, \quad T \wedge T(X \wedge Y) = T(X) \wedge T(Y)
+\]
+and
+\[
+B \mapsto B \wedge B, \quad B \wedge B (X \wedge Y, Z \wedge W) = B(X, Z) B(Y, W) - B(X, W) B(Y, Z)
+\]
+which also satisfy
+\[
+B \wedge B (X \wedge Y, Z \wedge W) = g(T \wedge T(X \wedge Y), Z \wedge W)
+\]
+whenever \(B(X, Y) = g(T(X), Y)\). From this perspective, it becomes clear why it's necessary to symmetrise \(T \wedge S\) in the definition of \(T \owedge S\) since polarising a quadratic form gives a symmetric form. Alternatively, without the symmetrisation, the map \(X, Y \mapsto T(X) \wedge S(Y)\) is not alternating so does not determine a map on \(X \wedge Y\). In other words, \(T \wedge S\) does not determine a map on \(X \wedge Y\).
+
+So let us note explicitly the symmetry,
+\[
+B \owedge C = C \owedge B \quad, T \owedge S = S \owedge T.
+\]
+
+When \(B = C = g\) we have in particular,
+\[
+g(X \wedge Y, Z \wedge W) = g \owedge g (X \wedge Y, Z \wedge W)
+\]
+and hence
+\[
+\abs{X \wedge Y}_g^2 = g \owedge g(X \wedge Y, X \wedge Y).
+\]
+
 ** Differential Geometric Conventions
 
 For a Riemannian manifold \((M, g)\) we write \(\nabla\) for  the Levi-Civita connection. For a function \(f\) and a tangent vector, we write
