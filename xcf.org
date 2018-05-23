@@ -342,9 +342,103 @@ The adjugate Einstein tensor,
 #+END_defn
 
 * Definition of the Flows
+
+** Ricci-Einstein and Adjugate Einstein Differential Operators
+
+Recall the definition \ref{defn:ricci_einstien}
+\[
+\RicEin(X, Y) = \Tr Z \mapsto \Rm(\edoEin(Z), X) Y
+\]
+and definition \ref{defn:adjugate_einstien},
+\[
+\adjg{\Ein} (X, Y) = g(\adjg{\edoEin} (X), Y).
+\]
+These are degenerate differential operators (acting on \(g\)) unless the sectional curvature has a sign. Thus let us write,
+\begin{equation}
+\label{eq:K_sign}
+\sK = \begin{cases}
+1, & \K > 0, \\
+-1, & \K < 0.
+\end{cases}
+\end{equation}
+Thus we express that \(\K > 0\) /or/ \(\K < 0\) by the single inequality
+\[
+\sK\K > 0.
+\]
+
+Since these operators are geometric, they are diffeomorphism invariant and thus have zero's in the principal symbols corresponding to these tangential directions hence they can be at best only weakly elliptic. As is well known however, by applying the technique of DeTurck \cite{} this degeneracy can be removed by a suitable choice of diffeomorphism. With this in mind, let us make the following definition:
+
+#+BEGIN_defn
+A differential operator \(D : E \to F\) between vector bundles \(E, F\) over a base manifold \(M\) is (strictly) /geometrically elliptic/ if
+1. \(D\) is diffeomorphism invariant; that is for every section \(s \in \Gamma(E)\) and every diffemorphism \(\varphi : M \to M\), \(D(\varphi^{\ast} s) = \varphi^{\ast} D (s)\), and
+2. up to diffeomorphism, \(D\) is elliptic; that is for each smooth section \(s \in \Gamma(E)\), there exists a diffeomorphism \(\varphi : M \to M\) such that
+   \[
+   \psym[D'(\varphi^{\ast} s)] \geq \lambda > 0
+   \]
+   where \(D'(\varphi^{\ast} s) (\xi) = \partial_u|_{u=0} D(\varphi^{\ast} s + u\xi)\) denotes the linearisation of \(D\) at \(\varphi^{\ast} s\) and \(\psym\) denotes the principal symbol.
+#+END_defn
+
+Before showing the ellipticity of \(\RicEin\) and \(\adjg{\Ein}\), let us show that both these tensors are symmetric. Recall that if \(u \mapsto g_u\) is a curve of metrics, then \(\partial_u g_u (X, Y) := \partial_u [g_u (X, Y)]\) is a symmetric bilinear form and conversely that if \(B\) is any field of symmetric bilinear forms, for sufficiently small \(u\), \(g + uB\) is a positive definite symmetric bilinear form hence a metric. Here we use the fact that \(M\) is compact and thus the unit tangent bundle \(UM = \{X \in TM : g(X, X) = 1\}\) is compact to ensure \(g_x + uB_x\) is positive definite uniformly in \(x\). That is there is an \(\epsilon > 0\) independent of \(x\) such that for all \(x\), \(g_x + uB_x\) is positive definite for all \(u \in (-\epsilon, \epsilon)\). Thus we may identify the tangent space to the space of metrics with the bundle \(T^{\ast} M \odot T^{\ast} M\) of symmetric bilinear forms acting on \(TM\). The following two lemmas then show that \(\RicEin\) and \(\adjg{\Ein}\) are in this tangent space.
+
+#+BEGIN_lemma
+\label{lem:EinRicsym}
+The Ricci-Einstien tensor is symmetric. That is, for all tangent vectors \(X, Y \in TM\) with \(\pi_{TM} (X) = \pi_{TM} (Y)\) we have
+\[
+\RicEin (X, Y) = \RicEin (Y, X).
+\]
+#+END_lemma
+
+#+BEGIN_proof
+
+#+END_proof
+
+#+BEGIN_lemma
+\label{lem:EinRicsym}
+The adjugate Einstien tensor is symmetric. That is, for all tangent vectors \(X, Y \in TM\) with \(\pi_{TM} (X) = \pi_{TM} (Y)\) we have
+\[
+\adjg{\Ein} (X, Y) = \adjg{\Ein} (Y, X).
+\]
+#+END_lemma
+
+#+BEGIN_proof
+
+#+END_proof
+
+#+BEGIN_thm
+On the open set of all metrics \(g\) satisfying \(\sK\K > 0\), the (signed) Ricci-Einstien tensor \(-\sK \RicEin\) is geometrically elliptic.
+#+END_thm
+
+#+BEGIN_thm
+On the open set of all metrics \(g\) satisfying \(\sK\K > 0\), the (signed) adjugate Einstien tensor \(-\sK \adjg{\Ein}\) is geometrically elliptic.
+#+END_thm
+
+** The flows
+
+Here we let \(g_t\) be a smooth, one-parameter family of metrics.
+
+#+BEGIN_defn
+The family \(g_t\) satisfies the /Ricci Einstein flow/ provided
+\[
+\partial_t g_t = -\frac{1}{2} \sK \RicEin.
+\]
+#+END_defn
+
+#+BEGIN_defn
+The family \(g_t\) satisfies the /adjugate Einstein flow/ provided
+\[
+\partial_t g_t = -\frac{1}{2} \sK \adjg{\Ein}.
+\]
+#+END_defn
+
+#+BEGIN_rem
+In dimension, \(n = 3\) in fact, \(\RicEin = \adjg{\Ein}\) and the common flow is known as the /cross curvature flow/. See section \ref{sec:xcf3} for details.
+#+END_rem
+
 * Short Time Existence and Uniqueness
 * Evolution Equations
 * Cross Curvature Flow of Three Manifolds
+\label{sec:xcf3}
+
 * Vanishing Weyl in Higher Dimensions
 * Embeddability and Integrability
 * Solitons
