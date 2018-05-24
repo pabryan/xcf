@@ -1,5 +1,5 @@
 #+LaTeX_class: collab
-#+TITLE: The Cross Curvature Flow, Einstein-Ricci Flow and Adjugate Einstein Flow
+#+TITLE: The Cross Curvature Flow, Ricci-Einstein Flow and Adjugate Einstein Flow
 
 #+LaTeX_header: \input{setup}
 * Introduction
@@ -343,17 +343,60 @@ The adjugate Einstein tensor,
 
 * Definition of the Flows
 
+** Symmetry of the Ricci-Einstein and Adjugate Einstien Tensors
+
+Recall that if \(u \mapsto g_u\) is a curve of metrics, then \(\partial_u g_u (X, Y) := \partial_u [g_u (X, Y)]\) is a symmetric bilinear form and conversely that if \(B\) is any field of symmetric bilinear forms, for sufficiently small \(u\), \(g + uB\) is a positive definite symmetric bilinear form hence a metric. Here we use the fact that \(M\) is compact and thus the unit tangent bundle \(UM = \{X \in TM : g(X, X) = 1\}\) is compact to ensure \(g_x + uB_x\) is positive definite uniformly in \(x\). That is there is an \(\epsilon > 0\) independent of \(x\) such that for all \(x\), \(g_x + uB_x\) is positive definite for all \(u \in (-\epsilon, \epsilon)\). Thus we may identify the tangent space to the space of metrics with the bundle \(T^{\ast} M \odot T^{\ast} M\) of symmetric bilinear forms acting on \(TM\). The following two lemmas then show that \(\RicEin\) and \(\adjg{\Ein}\) are in this tangent space.
+
+#+BEGIN_lemma
+\label{lem:EinRicsym}
+The Ricci-Einstien tensor is symmetric. That is, for all tangent vectors \(X, Y \in TM\) with \(\pi_{TM} (X) = \pi_{TM} (Y)\) we have
+\[
+\RicEin (X, Y) = \RicEin (Y, X).
+\]
+#+END_lemma
+
+#+BEGIN_proof
+This follows by essentially the same proof that \(\Ric\) is symmetric using the fact that \(\edoEin\) is \(g\)-self adjoint. That is, we compute,
+\begin{align*}
+\Rm(\edoEin(Z), X)Y - \Rm(\edoEin(Z), Y) X &= \Rm(\edoEin(Z), X)Y + \Rm(Y, \edoEin(Z)) X \\
+&= -\Rm(X, Y) \edoEin(Z)
+\end{align*}
+with the first inequality by the anti-symmetry of \(\Rm\) in the first two slots and the second by the Bianchi identity. Therefore,
+\[
+\RicEin(X, Y) - \RicEin(Y, X) = -\Tr\left[Z \mapsto \Rm(X, Y) \edoEin(Z)\right].
+\]
+
+Letting \(Z\) range over an orthonormal basis, \(\{E_i\}\) of eigenvectors for \(\edoEin\) (so that \(g(E_i, E_j) = \delta_{ij}\) and \(\edoEin(E_i) = \lambda_i E_i\)), we obtain the result from
+\begin{align*}
+\RicEin(X, Y) - \RicEin(Y, X) &= -\sum_i g(\Rm(X, Y) \edoEin(E_i), E_i) \\
+&= -\sum_i \lambda_i \Rm(X, Y, E_i, E_i) = 0
+\end{align*}
+by the anti-symmetry of \(\Rm\) in the last two slots.
+#+END_proof
+
+#+BEGIN_lemma
+\label{lem:EinRicsym}
+The adjugate Einstien tensor is symmetric. That is, for all tangent vectors \(X, Y \in TM\) with \(\pi_{TM} (X) = \pi_{TM} (Y)\) we have
+\[
+\adjg{\Ein} (X, Y) = \adjg{\Ein} (Y, X).
+\]
+#+END_lemma
+
+#+BEGIN_proof
+In the case the \(\edoEin\) is invertible this is straight forward: since \(\Ein\) is symmetric, we have \(\edoEin\) is self adjoint. The for any \(X, Y\) we have
+\[
+g(\edoEin^{-1} (X), Y) = g(\edoEin^{-1} (X), \edoEin \circ \edoEin^{-1} (Y)) = g(\edoEin \circ \edoEin^{-1} (X), \edoEin^{-1}(Y)) = g(X, \edoEin^{-1} (Y))
+\]
+so that \(\edoEin^{-1}\) is self adjoint, hence so too is \(\adjg{\edoEin} = \det \edoEin \edoEin^{-1}\) and hence
+\[
+\adjg{\Ein}(X, Y) = g(\det \edoEin \edoEin^{-1} (X), Y) = \det \edoEin g(X, \edoEin^{-1}(Y)) = g(X, \det\edoEin \edoEin^{-1}(Y)) = \adjg{\Ein}(Y, X).
+\]
+
+In fact, this is the only case we require in what follows, but we give the general proof to be complete.
+#+END_proof
 ** Ricci-Einstein and Adjugate Einstein Differential Operators
 
-Recall the definition \ref{defn:ricci_einstien}
-\[
-\RicEin(X, Y) = \Tr Z \mapsto \Rm(\edoEin(Z), X) Y
-\]
-and definition \ref{defn:adjugate_einstien},
-\[
-\adjg{\Ein} (X, Y) = g(\adjg{\edoEin} (X), Y).
-\]
-These are degenerate differential operators (acting on \(g\)) unless the sectional curvature has a sign. Thus let us write,
+We will see that the Ricci-Einstein and Adjugate-Einstein tensors are degenerate differential operators (acting on \(g\)) unless the sectional curvature has a sign. Thus let us write,
 \begin{equation}
 \label{eq:K_sign}
 \sK = \begin{cases}
@@ -366,7 +409,7 @@ Thus we express that \(\K > 0\) /or/ \(\K < 0\) by the single inequality
 \sK\K > 0.
 \]
 
-Since these operators are geometric, they are diffeomorphism invariant and thus have zero's in the principal symbols corresponding to these tangential directions hence they can be at best only weakly elliptic. As is well known however, by applying the technique of DeTurck \cite{} this degeneracy can be removed by a suitable choice of diffeomorphism. With this in mind, let us make the following definition:
+Since these operators are geometric, they are diffeomorphism invariant and thus have zero's in the principal symbols corresponding to these tangential directions. Hence they can be at best only weakly elliptic. As is well known however, by applying the technique of DeTurck \cite{} this degeneracy can be removed by a suitable choice of diffeomorphism. With this in mind, let us make the following definition:
 
 #+BEGIN_defn
 A differential operator \(D : E \to F\) between vector bundles \(E, F\) over a base manifold \(M\) is (strictly) /geometrically elliptic/ if
@@ -377,32 +420,6 @@ A differential operator \(D : E \to F\) between vector bundles \(E, F\) over a b
    \]
    where \(D'(\varphi^{\ast} s) (\xi) = \partial_u|_{u=0} D(\varphi^{\ast} s + u\xi)\) denotes the linearisation of \(D\) at \(\varphi^{\ast} s\) and \(\psym\) denotes the principal symbol.
 #+END_defn
-
-Before showing the ellipticity of \(\RicEin\) and \(\adjg{\Ein}\), let us show that both these tensors are symmetric. Recall that if \(u \mapsto g_u\) is a curve of metrics, then \(\partial_u g_u (X, Y) := \partial_u [g_u (X, Y)]\) is a symmetric bilinear form and conversely that if \(B\) is any field of symmetric bilinear forms, for sufficiently small \(u\), \(g + uB\) is a positive definite symmetric bilinear form hence a metric. Here we use the fact that \(M\) is compact and thus the unit tangent bundle \(UM = \{X \in TM : g(X, X) = 1\}\) is compact to ensure \(g_x + uB_x\) is positive definite uniformly in \(x\). That is there is an \(\epsilon > 0\) independent of \(x\) such that for all \(x\), \(g_x + uB_x\) is positive definite for all \(u \in (-\epsilon, \epsilon)\). Thus we may identify the tangent space to the space of metrics with the bundle \(T^{\ast} M \odot T^{\ast} M\) of symmetric bilinear forms acting on \(TM\). The following two lemmas then show that \(\RicEin\) and \(\adjg{\Ein}\) are in this tangent space.
-
-#+BEGIN_lemma
-\label{lem:EinRicsym}
-The Ricci-Einstien tensor is symmetric. That is, for all tangent vectors \(X, Y \in TM\) with \(\pi_{TM} (X) = \pi_{TM} (Y)\) we have
-\[
-\RicEin (X, Y) = \RicEin (Y, X).
-\]
-#+END_lemma
-
-#+BEGIN_proof
-
-#+END_proof
-
-#+BEGIN_lemma
-\label{lem:EinRicsym}
-The adjugate Einstien tensor is symmetric. That is, for all tangent vectors \(X, Y \in TM\) with \(\pi_{TM} (X) = \pi_{TM} (Y)\) we have
-\[
-\adjg{\Ein} (X, Y) = \adjg{\Ein} (Y, X).
-\]
-#+END_lemma
-
-#+BEGIN_proof
-
-#+END_proof
 
 #+BEGIN_thm
 On the open set of all metrics \(g\) satisfying \(\sK\K > 0\), the (signed) Ricci-Einstien tensor \(-\sK \RicEin\) is geometrically elliptic.
