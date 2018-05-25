@@ -383,44 +383,71 @@ The adjugate Einstien tensor is symmetric. That is, for all tangent vectors \(X,
 #+END_lemma
 
 #+BEGIN_proof
-In the case the \(\edoEin\) is invertible at the point \(x\), this is straight forward: since \(\Ein\) is symmetric, we have \(\edoEin\) is self adjoint. The for any \(X, Y \in T_x M\) we have
+We give the proof in three cases.
+
+1. \(\edoEin_x\) is invertible.
+2. \(\dim \ker \edoEin_x = 1\).
+3. \(\dim \ker \edoEin_x > 1\).
+
+These are natural cases to consider because we will see that
+\begin{equation}
+\label{eq:adjg_trich}
+\adjg{\edoEin} = \begin{cases}
+\det \edoEin \edoEin^{-1}, & \dim \ker \edoEin = 0, \\
+\det \edoEin' \pi_{\ker \edoEin}, & \dim \ker \edoEin = 1, \\
+0, & \dim \ker \edoEin > 1
+\end{cases}
+\end{equation}
+where \(\edoEin' = \edoEin|_{\ker \edoEin}\) and \(\pi_{\ker \edoEin}\) is the \(g\)-orthogonal projection onto \(\ker \edoEin\).
+
+In fact, in what follows we only require the first case since our flows will only be parabolic with the assumption that \(\edoEin_x\) is invertible for all \(x \in M\). We give the general proof here anyway to be complete but the reader may skip the proof of the second two cases (which is a litle longer) without affecting the remainder of this paper. Thus let us consider case one in \eqref{eq:adjg_trich} first.
+
+*Case 1* In this case, \(\edoEin_x\) is invertible at the point \(x\) and equation \eqref{eq:adjg_trich} follows from the general formula \(\adjg{\edoEin_x} \circ \edoEin_x = \det \edoEin_x \Id\). Then, since \(\Ein_x\) is symmetric, we have \(\edoEin_x\) is self adjoint. Then for any \(X, Y \in T_x M\) we have
 \begin{align*}
-g(\edoEin^{-1} (X), Y) &= g(\edoEin^{-1} (X), \edoEin \circ \edoEin^{-1} (Y)) = g(\edoEin \circ \edoEin^{-1} (X), \edoEin^{-1}(Y)) \\
-&= g(X, \edoEin^{-1} (Y))
+g(\edoEin_x^{-1} (X), Y) &= g(\edoEin_x^{-1} (X), \edoEin_x \circ \edoEin_x^{-1} (Y)) = g(\edoEin_x \circ \edoEin_x^{-1} (X), \edoEin_x^{-1}(Y)) \\
+&= g(X, \edoEin_x^{-1} (Y))
 \end{align*}
-so that \(\edoEin^{-1}\) is self adjoint, hence so too is \(\adjg{\edoEin} = \det \edoEin \edoEin^{-1}\) and hence
+so that \(\edoEin_x^{-1}\) is self adjoint, hence so too is \(\adjg{\edoEin_x} = \det \edoEin_x \edoEin_x^{-1}\) and hence
 \begin{align*}
-\adjg{\Ein}(X, Y) &= g(\det \edoEin \edoEin^{-1} (X), Y) = \det \edoEin g(X, \edoEin^{-1}(Y)) \\
-&= g(X, \det\edoEin \edoEin^{-1}(Y)) = \adjg{\Ein}(Y, X).
+\adjg{\Ein_x}(X, Y) &= g(\det \edoEin_x \edoEin_x^{-1} (X), Y) = \det \edoEin_x g(X, \edoEin_x^{-1}(Y)) \\
+&= g(X, \det\edoEin_x \edoEin_x^{-1}(Y)) = \adjg{\Ein_x}(Y, X).
 \end{align*}
 
-In fact, this is the only case we require in what follows since there we will assume \(\edoEin_x\) is invertible for all \(x \in M\), but we give the general proof here anyway to be complete.
+*Proof of self adjointness assuming equation \eqref{eq:adjg_trich} holds.* The third case is easy, being the zero map which is self adjoint. The second case is easily self adjoint also because orthogonal projections are always self adjoint since we can uniquely write \(X = X' + X^{\perp}\) with \(X' \in \ker \edoEin\) and \(X^{\perp} \in \ker^{\perp} \edoEin\) so that
+\begin{align*}
+g(\det \edoEin' \pi_{\ker \edoEin} (X), Y) &= \det \edoEin' g(X', Y' + Y^{\perp}) \\
+&= \det \edoEin' g(X' + X^{\perp}, Y') \\
+&= g(X, \det \edoEin' \pi_{\ker \edoEin} (Y))).
+\end{align*}
 
-That is now assume \(\edoEin_x\) is not invertible so that \(\det \edoEin_x = 0\) and \(\ker \edoEin_x \ne \emptyset\). Then we have the splitting
+Now let us prove cases 2 and 3.
+
+*Proof of Case 2 and Case 3.* Now assume \(\edoEin_x\) is not invertible so that \(\det \edoEin_x = 0\) and \(\ker \edoEin_x \ne \emptyset\). Then we have the splitting
 \[
 T_x M = \ker \edoEin_x \oplus \ker^{\perp} \edoEin_x
 \]
-where \(\ker^{\perp} \edoEin_x\) is the \(g_x\)-orthogonal complement to \(\ker \edoEin_x\). Moreover, \(\ker^{\perp} \edoEin_x = \text{image} (\edoEin_x)\), since firstly for any \(X\) and any \(Y \in \ker \edoEin_x\) we have
+where \(\ker^{\perp} \edoEin_x\) is the \(g_x\)-orthogonal complement to \(\ker \edoEin_x\). Any \(X\) may be written uniquely as
+\[
+X = X_0 + \edoEin(Z)
+\]
+where \(\edoEin(X_0) = 0\) and \(Z \in \ker^{\perp} \edoEin_x\). Recall this follows since, \(\ker^{\perp} \edoEin_x \simeq \text{image} (\edoEin_x)\): firstly for any \(X\) and any \(Y \in \ker \edoEin_x\) we have
 \[
 g(\edoEin_x(X), Y) = g(X, \edoEin_x(Y)) = 0
 \]
-so that \(\edoEin_x(X) \perp Y\) and hence \(\edoEin_x(X) \in \ker^{\perp} \edoEin_x\). Secondly, \(\ker^{\perp} \edoEin_x \cap \ker \edoEin_x = \{0\}\) so that \(\edoEin_x|_{\ker^{\perp} \edoEin_x} : \ker^{\perp} \edoEin_x \to \ker^{\perp} \edoEin_x\) is injective and hence surjective. Thus any \(X\) may be written uniquely as
-\[
-X = \edoEin(Z) + X_0
-\]
-where \(\edoEin(X_0) = 0\) and \(Z \in \ker^{\perp} \edoEin_x\).
+so that \(\edoEin_x(X) \perp Y\) and hence \(\edoEin_x(X) \in \ker^{\perp} \edoEin_x\). Secondly, \(\ker^{\perp} \edoEin_x \cap \ker \edoEin_x = \{0\}\) so that \(\edoEin_x|_{\ker^{\perp} \edoEin_x} : \ker^{\perp} \edoEin_x \to \ker^{\perp} \edoEin_x\) is an injective endomorphims and hence also surjective.
 
-Next for any \(Y \in \ker \edoEin_x\), let \(\edoEin_x' = \edoEin_x|_{Y^{\perp}}\) where \(Y^{\perp}\) is the \(g\) orthogonal complement of the one-dimensional subspace spanned by \(Y\). Then we claim that
-\[
+Now, for any \(Y \in \ker \edoEin_x\), let \(\edoEin_x' = \edoEin_x|_{Y^{\perp}}\) where \(Y^{\perp}\) is the \(g\) orthogonal complement of the one-dimensional subspace spanned by \(Y\). Then we claim that
+\begin{equation}
+\label{eq:adjgeinker}
 \adjg{\edoEin_x} = \det \edoEin_x' \pi_Y
-\]
-where \(\pi_Y\) is the orthogonal projection onto the one-dimensional subspace spanned by \(Y\). Note here that \(\edoEin_x' : Y^{\perp} \to Y{\perp}\) since \(\edoEin_x\) is self adjoint, hence for \(X \in Y^{\perp}\),
+\end{equation}
+where \(\pi_Y\) is the orthogonal projection onto the one-dimensional subspace spanned by \(Y\). Note here that \(\edoEin_x' : Y^{\perp} \to Y^{\perp}\) since \(\edoEin_x\) is self adjoint, hence for \(X \in Y^{\perp}\),
 \[
 g(\edoEin_x'(X), Y) = g(X, \edoEin_x (Y)) = 0
 \]
 so that \(\edoEin_x'(X) \perp Y\).
 
-Now to see the claim, first observe that \(\adjg{\edoEin_x}|_{\ker^{\perp} \edoEin_x} \equiv 0\) since for any \(X \in \ker^{\perp} \edoEin_x\),
+Now to see the claim equation \eqref{eq:adjgeinker}, first observe that \(\adjg{\edoEin_x}|_{\ker^{\perp} \edoEin_x} \equiv 0\) since for any \(X \in \ker^{\perp} \edoEin_x\),
 \[
 \adjg{\edoEin_x} (X) = \adjg{\edoEin_x} (\edoEin_x(Z)) = \det \edoEin_x Z = 0.
 \]
@@ -442,7 +469,7 @@ where the last inequality follows since \(\edoEin_x|_{Y^{\perp}} = \edoEin_x'\).
 \[
 \adjg{\edoEin_x}(Y) = \det \edoEin_x' Y = \det \edoEin_x' \pi_Y(Y).
 \]
-If \(\dim \ker \edoEin_x = 1\), then we are done since then \(Y\) spans \(\ker \edoEin_x\). If \(\dim \ker \edoEin_x > 1\), then taking any \(X \in \ker \edoEin_x\) \(g\) linearly independent of \(Y\), we may write \(\sigma = X \wedge \sigma'\) by taking for example \(\sigma'\) to span \(\Lambda^{n-2} V\) where \(V\) is any complement to the span of \(X\) and \(Y\). Hence,
+If \(\dim \ker \edoEin_x = 1\), then we are done since then \(Y\) spans \(\ker \edoEin_x\). If \(\dim \ker \edoEin_x > 1\), then taking any \(X \in \ker \edoEin_x\) and \(g\) linearly independent of \(Y\), we may write \(\sigma = X \wedge \sigma'\) by taking for example \(\sigma'\) to span \(\Lambda^{n-2} V\) where \(V\) is any complement to the span of \(X\) and \(Y\). Hence,
 \[
 \adjg{\edoEin_x} (X) \wedge \sigma = \adjg{\edoEin_x} (X) \wedge X \wedge \sigma' = X \wedge \edoEin_x(X) \wedge \Lambda^{n-2} \edoEin_x (\sigma') = 0
 \]
@@ -452,21 +479,7 @@ since \(\edoEin_x(X) = 0\). Notice also in this case that,
 \]
 since \(\edoEin_x' : Y^{\perp} \to Y^{\perp}\) has a kernel as (\(\dim \ker \edoEin_x > 1\)) and hence \(\det \edoEin_x' = 0\).
 
-In summary, then we have
-\[
-\adjg{\edoEin} = \begin{cases}
-\det \edoEin \edoEin^{-1}, & \dim \ker \edoEin = 0, \\
-\det \edoEin' \pi_{\ker \edoEin}, & \dim \ker \edoEin = 1, \\
-0, & \dim \ker \edoEin > 1.
-\end{cases}
-\]
-
-We have already shown the first case is self adjoint and the third case, being the zero map is self adjoint. The second case is also self adjoint because orthogonal projections are always self adjoint since we can uniquely write \(X = X' + X^{\perp}\) with \(X' \in \ker \edoEin\) and \(X^{\perp} \in \ker^{\perp} \edoEin\) so that
-\begin{align*}
-g(\det \edoEin' \pi_{\ker \edoEin} (X), Y) &= \det \edoEin' g(X', Y' + Y^{\perp}) \\
-&= \det \edoEin' g(X' + X^{\perp}, Y') \\
-&= g(X, \det \edoEin' \pi_{\ker \edoEin} (Y))).
-\end{align*}
+Thus we have established the claim in equation \eqref{eq:adjgeinker}. This is precisely case 2 in \eqref{eq:adjg_trich} and as just noted, identically zero in case 3 as required.
 #+END_proof
 
 ** Ricci-Einstein and Adjugate Einstein Differential Operators
